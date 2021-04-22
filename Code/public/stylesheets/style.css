@@ -39,14 +39,13 @@ header{
   justify-content: space-between;
 }
 
-
-
+  
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
   z-index: 1100;
-  min-width: 154px;
+  min-width: 105px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
@@ -66,6 +65,8 @@ header{
 .selected {
   background-color: #CECECE;
 }
+
+
 
 
 #hamburgerIcon{
@@ -100,4 +101,20 @@ header{
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+
+
+.topBoxLogo{
+  width: 33.3%;
+}
+.topBoxTitulo{
+  width: 33.3%;
+  display: flex;
+  justify-content:center;
+}
+.topBoxAvatar{
+  width: 33.3%;
+  display: flex;
+  justify-content: right;
 }

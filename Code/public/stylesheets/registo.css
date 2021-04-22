@@ -37,32 +37,36 @@ body{
   }
   
   
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    z-index: 1100;
-    min-width: 154px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  }
-  
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .dropdown-content a:hover {background-color: #f1f1f1}
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-  .selected {
-    background-color: #CECECE;
-  }
+    
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  z-index: 1100;
+  min-width: 105px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.selected {
+  background-color: #CECECE;
+}
+
+
+
+
   
   
   #hamburgerIcon{
@@ -116,4 +120,18 @@ body{
   border: 2px solid #2D2D2D;
   cursor: pointer;
   width: 100px;
+}
+
+.topBoxLogo{
+  width: 33.3%;
+}
+.topBoxTitulo{
+  width: 33.3%;
+  display: flex;
+  justify-content:center;
+}
+.topBoxAvatar{
+  width: 33.3%;
+  display: flex;
+  justify-content: right;
 }

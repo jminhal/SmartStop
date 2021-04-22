@@ -6,22 +6,24 @@
   </head>
   <body>
     <header class= "header">
-      <img id="smartstopLogo" src="./icons/smartstopLogo.png" alt="smartstopLogo">
-      <div><h1>Login</h1></div>
-          <section class="dropdown">
-            <div class="menuBar">
-              <img id="hamburgerIcon" src="./icons/hamburgerIcon.png" alt="hamburgerIcon">
-            </div>
-            <div class="dropdown-content" id="userDropBox">
-              <a href='index.html'>Início</a>
-              <a href='registo.html'>Registo</a>
-            </div>
-          </section>
-    </header> 
+      <section class="topBoxLogo"> <img id="smartstopLogo" src="./icons/smartstopLogo.png" alt="smartstopLogo"> </section>
+      <section class="topBoxTitulo"><h1>Login</h1></section>
+      <section class= "topBoxAvatar">
+          <div class="dropdown">
+              <div class="tbaChild">
+                <img id="hamburgerIcon" src="./icons/hamburgerIcon.png" alt="hamburgerIcon">
+              </div>
+              <div class="dropdown-content" id="userDropBox">
+                <a href='index.html'>Início</a>
+                <a href='registo.html'>Registo</a>
+              </div>
+          </div>
+      </section>
+  </header> 
     <div class="boxInputBtn">
       <div class="inputBox">
-        <input type="text"  placeholder="Escreva o seu email" class="input">
-        <input type="password" placeholder="A sua senha" class="input" style="margin-top: 10%;">
+        <input type="text" placeholder="Escreva o seu email" class="input" id="email">
+        <input type="password" placeholder="A sua senha" class="input" style="margin-top: 10%;" id="pw">
       </div>
       <div class="btnBox">
           <button class="btn" onclick='login()'>Login</button>
