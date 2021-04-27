@@ -16,7 +16,7 @@ create table users (
     user_birthday date not null,    
     user_mobile int not null,
     user_nif int not null,                        
-    user_moderador boolean not null default false,
+    user_moderador boolean null default false,
     unique key unique_email(user_email));
     
 create table vehicles (
@@ -25,7 +25,7 @@ create table vehicles (
     vehicle_brand varchar(30) not null,
     vehicle_registration varchar(30) not null,
     vehicle_user_id int not null,
-    vehicle_category varchar(10) not null,
+    vehicle_category int not null,
     foreign key (vehicle_user_id) references users(user_id),
     foreign key (vehicle_category) references vehicleCategories(vehicleCategory_id ));
 
@@ -36,17 +36,6 @@ create table payment_methods (
     payment_method_cvv int not null,
     payment_method_user_id int not null,
     foreign key (payment_method_user_id) references users(user_id));
-    
-create table reservations (
-    reservation_id int not null primary key auto_increment,
-    reservation_date datetime default current_timestamp,
-    reservation_duration datetime not null,
-    reservation_start_day datetime not null,
-    reservation_status int not null default 4, 
-    reservation_park_id int not null,
-    reservation_payment_method int not null,
-    foreign key (reservation_park_id) references parks(park_id),
-    foreign key (reservation_payment_method) references payment_methods(payment_method_id));
     
 create table parks (
     park_id int not null primary key auto_increment,
@@ -60,3 +49,15 @@ create table parks (
     park_price_hour double not null,
 	park_create_user_id int not null,
 	foreign key (park_create_user_id) references users(user_id));
+
+    create table reservations (
+    reservation_id int not null primary key auto_increment,
+    reservation_date datetime default current_timestamp,
+    reservation_duration datetime not null,
+    reservation_start_day datetime not null,
+    reservation_status int not null default 4, 
+    reservation_park_id int not null,
+    reservation_payment_method int not null,
+    foreign key (reservation_park_id) references parks(park_id),
+    foreign key (reservation_payment_method) references payment_methods(payment_method_id));
+    
