@@ -4,10 +4,13 @@ INSERT INTO vehicleCategories(category) VALUES("B");
 INSERT INTO vehicleCategories(category) VALUES("C");
 INSERT INTO vehicleCategories(category) VALUES("D");
 
-INSERT INTO user (user_fullname, user_email, user_password, user_birthday, user_mobile, user_nif, user_moderador,moderador) VALUES ("Jorge Minhalma" , "jorge@IADE.pt", "asd123", '2000-12-12 15:00:00',96969696,213456789,1);
-INSERT INTO user (user_fullname, user_email, user_password, user_birthday, user_mobile, user_nif, user_moderador,moderador) VALUES ("Miguel Amaro" , "miguel@IADE.pt", "asd123",'2000-12-12 15:00:00' ,96969696,213456789,1);
-INSERT INTO user (user_fullname, user_email, user_password, user_birthday, user_mobile, user_nif, user_moderador,moderador) VALUES ("José Brandão" , "jose@IADE.pt", "asd123", '2000-12-12 15:00:00',213456789,0);
-INSERT INTO user (user_fullname, user_email, user_password, user_birthday, user_mobile, user_nif, user_moderador,moderador) VALUES ("Pedro Amaro" , "pedro@IADE.pt", "asd123", '2000-12-12 15:00:00',96969696,213456789,0);
+
+INSERT INTO user (user_fullname, user_email, user_password, user_birthday, user_mobile, user_nif, user_moderador) VALUES ("Jorge Minhalma" , "jorge@IADE.pt", "asd123", '2000-12-12',96969696,213456789,1);
+INSERT INTO user (user_fullname, user_email, user_password, user_birthday, user_mobile, user_nif, user_moderador) VALUES ("Miguel Amaro" , "miguel@IADE.pt", "asd123",'2000-12-12' ,96969696,213456789,1);
+INSERT INTO user (user_fullname, user_email, user_password, user_birthday, user_mobile, user_nif, user_moderador) VALUES ("José Brandão" , "jose@IADE.pt", "asd123", '2000-12-12',213456789,0);
+INSERT INTO user (user_fullname, user_email, user_password, user_birthday, user_mobile, user_nif, user_moderador) VALUES ("Pedro Amaro" , "pedro@IADE.pt", "asd123", '2000-12-12',96969696,213456789,0);
+
+
 
 INSERT INTO mPagamento(payment_method_card_number,dExpiration,payment_method_cvv,payment_method_user_id) VALUES(4400440044004400,'2000-12-12 15:00:00',"256",0);
 INSERT INTO mPagamento(payment_method_card_number,dExpiration,payment_method_cvv,payment_method_user_id) VALUES(4400440044004400,'2000-12-12 15:00:00',"256",1);

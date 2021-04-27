@@ -13,7 +13,7 @@ create table users (
     user_fullname varchar(60) not null,
     user_email varchar(30) not null,
     user_password varchar(100) not null,
-    user_birthday datetime not null,    
+    user_birthday date not null,    
     user_mobile int not null,
     user_nif int not null,                        
     user_moderador boolean not null default false,
