@@ -5,7 +5,7 @@ const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'actfirst'
+  database: 'smartsto_app'
 })
 
 // Ping database to check for common exception errors.
