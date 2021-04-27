@@ -3,10 +3,8 @@ var pool = require("./connection");
 // vai verificar se o utilizador existe e fazer o login
 module.exports.login = async function(obj) {
     try {
-
-        let sql = "SELECT * FROM user WHERE user_email = ? AND user_password = ?";
+        let sql = "SELECT * FROM users WHERE user_email = ? AND user_password = ?";
         let utilizador = await pool.query(sql, [ obj.email, obj.pw]);
-
         if (utilizador.length > 0) {
             return {status: 200, data: utilizador[0]};
         }

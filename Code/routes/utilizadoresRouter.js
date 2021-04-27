@@ -51,7 +51,7 @@ router.post('/', async function(req, res, next) {
 */
 //vai verificar se o utilizador existe e vai buscar
 router.get('/', async function(req, res, next) {
-    let obj = req.query;
+    let obj = req.body;
     let result = await utilizadoresModel.login(obj);
     res.status(result.status).send(result.data);
 });
