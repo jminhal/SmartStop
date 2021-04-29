@@ -8,6 +8,7 @@
    
      <!-- JS -->
      <script src="javascripts/registo.js"></script>
+
     <title>SmartStop</title>
   </head>
   <body>
@@ -26,17 +27,40 @@
           </div>
       </section>
   </header> 
-    <div class="boxInputBtn">
-      <div class="inputBox">
-        <input type="text"  placeholder="Escreva o seu email" id="input">
+    <section class="lableInput">
+      <div class="boxLabel">
+        <label class="label">Nome Completo:</label>
+        <label class="label">Palavra-Chave:</label>
+        <label class="label">Email:</label>
+        <label class="label">Data de Nascimento:</label> 
+        <label class="label">Numero Telemovel:</label>
+        <label class="label">NIF:</label>
       </div>
-      <div class="btnBox">
-          <button class="btn">Registar</button>
+      <div class="boxInput">
+        <div>
+          <input type="text" placeholder="Escreva o seu nome" class="input" id="name">
+        </div>
+        <div>
+          <input type="password" placeholder="A sua senha" class="input" id="pw">
+        </div>
+        <div>
+          <input type="text"  placeholder="Escreva o seu email" class="input" id="email">
+        </div>
+        <div>
+          <input id="date" class="input" type="date" >
+        </div>
+        <div>
+          <input type="text" placeholder="Escreva o seu telemovel" class="input" id="telemovel">
+        </div>
+        <div>
+          <input type="text" placeholder="Escreva o seu nif" class="input" id="nif">
+        </div>
       </div>
-    </div>
-    <div id="img">
-      <img src="./imagens/registoIMG.png" alt="registoIMG">
-    </div>
+    </section>
+  <section class="btnBox">
+    <button class="btn" onclick="registo()">Registar</button>
+  </section>
+  
   </body>
 </html>
 

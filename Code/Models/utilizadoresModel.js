@@ -1,33 +1,10 @@
 var pool = require("./connection");
 
 
-// vai buscar a informação de um certo utilizador
-module.exports.getUser = async function(id) {
+module.exports.getUserByEmail = async function(email) {
     try {
-
-        let sql = "SELECT * FROM users WHERE user_id = ?";
-        let utilizador = await pool.query(sql, [ id ]);
-
-        if (utilizador.length > 0) {
-            return {status: 200, data: utilizador[0]};
-        }
-        else {
-            return {status: 404, data: {msg: "This username does not exist"}};
-        }
-
-    } catch (err) {
-        console.log(err);
-        return {status: 500, data: err};
-    } 
-};
-
-
-
-// vai verificar se o utilizador existe e fazer o login
-module.exports.login = async function(obj) {
-    try {
-        let sql = "SELECT * FROM users WHERE user_email = ? AND user_password = ?";
-        let utilizador = await pool.query(sql, [ obj.email, obj.pw]);
+        let sql = "SELECT * FROM users WHERE user_email = ?";
+        let utilizador = await pool.query(sql, [email]);
         if (utilizador.length > 0) {
             return {status: 200, data: utilizador[0]};
         }

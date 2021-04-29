@@ -7,13 +7,17 @@ async function login() {
         try {
             
             let utilizador = await $.ajax({
-                url: "/api/utilizadores?email="+email+"&pw="+pw,
+                url: "/api/utilizadores/login?email="+email+"&password="+pw,
                 method: "get",
                 dataType: "json"
             });
 
-                sessionStorage.setItem("user", JSON.stringify(utilizador));
+            if (utilizador.success == 1) {
+                sessionStorage.setItem("user", JSON.stringify(utilizador.data));
                 window.location = "account.html";
+            } else {
+                alert(utilizador.msg);
+            }
 
             } catch (err) {
                 console.log(err);
