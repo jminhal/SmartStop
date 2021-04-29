@@ -49,9 +49,18 @@ router.post('/', async function(req, res, next) {
     }
 });
 */
+
+//vai buscar a informação de um utilizador à base de dados
+router.get('/:pos', async function(req, res, next) {
+    let pos = req.params.pos;
+    let result = await utilizadoresModel.getUser(pos);
+    res.status(result.status).send(result.data);
+});
+
+
 //vai verificar se o utilizador existe e vai buscar
 router.get('/', async function(req, res, next) {
-    let obj = req.body;
+    let obj = req.query;
     let result = await utilizadoresModel.login(obj);
     res.status(result.status).send(result.data);
 });

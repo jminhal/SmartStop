@@ -4,21 +4,14 @@ async function login() {
     let pw = document.getElementById("pw").value;
     console.log(pw)
     if (email != "" && pw != "") { //Verificar se o input do email não está vazio
-        let data = {
-            email: email,
-            pw: pw
-    }
-
         try {
             
             let utilizador = await $.ajax({
-                url: "/api/utilizadores",
+                url: "/api/utilizadores?email="+email+"&pw="+pw,
                 method: "get",
-                data: JSON.stringify(data),
-                contentType: "application/json",
                 dataType: "json"
             });
-        
+
                 sessionStorage.setItem("user", JSON.stringify(utilizador));
                 window.location = "account.html";
 
