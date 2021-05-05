@@ -2,7 +2,7 @@ async function login() {
 
     let email = document.getElementById("email").value;
     let pw = document.getElementById("pw").value;
-    console.log(pw)
+
     if (email != "" && pw != "") { //Verificar se o input do email não está vazio
         try {
             
@@ -15,7 +15,8 @@ async function login() {
             if (utilizador.success == 1) {
                 sessionStorage.setItem("user", JSON.stringify(utilizador.data));
                 window.location = "account.html";
-            } else {
+            } 
+            else {
                 alert(utilizador.msg);
             }
 

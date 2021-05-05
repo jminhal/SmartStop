@@ -38,6 +38,8 @@ router.post('/register', async function(req, res, next) {
 
         console.log("Message sent: %s", info.messageId);
 
+        await utilizadoresModel.createToken(result.data.insertId, token);
+
         return res.json({
             success: 1,
             msg: "register successfully",
@@ -58,11 +60,18 @@ router.get('/login', async function(req, res, next) {
 
         let checkPassword = compareSync(obj.password, result.data.user_password);
         if (checkPassword) {
-            return res.json({
-                success: 1,
-                msg: "login successfully",
-                data: result.data
-            });
+            if (result.data.user_active) { //se estiver verificada
+                return res.json({
+                    success: 1,
+                    msg: "login successfully",
+                    data: result.data
+                });
+            } else {
+                return res.json({
+                    success: 3,
+                    msg: "Your account is not yet active!"
+                });
+            }
         } else {
             return res.json({
                 success: 0,
@@ -72,6 +81,28 @@ router.get('/login', async function(req, res, next) {
 
     }
 
+    res.status(result.status).send(result.data);
+});
+
+router.put('/verify', async function(req, res, next) {
+    let body = req.body;
+    let result = await utilizadoresModel.getUserByEmail(body.email);
+    let checkPassword = compareSync(body.password, result.data.user_password); //Verifica se as passwords sao iguais
+    if (checkPassword) { //se for igual, então vai verificar se token está bem
+        result = await utilizadoresModel.verifyAccount(result.data.user_id, body.token);
+        if (result.status === 200) {
+            return res.json({
+                success: 1,
+                msg: "Account successfully verified!"
+            });
+        }
+    }
+    else {
+        return res.json({
+            success: 0,
+            msg: "Invalid email or password"
+        });
+    }
     res.status(result.status).send(result.data);
 });
 

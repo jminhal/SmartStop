@@ -1,7 +1,5 @@
 async function registo() {
 
-console.log("fdjfjdjdjgdjggjdjggjdjgjdg");
-
     let name = document.getElementById("name").value;
     let email = document.getElementById("email").value;
     let pw = document.getElementById("pw").value;
@@ -9,12 +7,10 @@ console.log("fdjfjdjdjgdjggjdjggjdjgjdg");
     let nif = document.getElementById("nif").value;
     let telemovel = document.getElementById("telemovel").value;
 
-
-    console.log(pw)
     if (email != "" && pw != ""&& pw != "" && data != "" && nif != "" && telemovel != "" && name != "") { //Verificar se o input do email não está vazio
         try {
 
-            data = {
+            let info = {
                 fullname: name,
                 email: email,
                 password: pw,
@@ -26,14 +22,35 @@ console.log("fdjfjdjdjgdjggjdjggjdjgjdg");
             let utilizador = await $.ajax({
                 url: "/api/utilizadores/register?email="+email+"&password="+pw,
                 method: "post",
-                data: JSON.stringify(data),
+                data: JSON.stringify(info),
                 contentType: "application/json",
                 dataType: "json"
             });
 
+            var token;
             if (utilizador.success == 1) {
                
-                console.log(utilizador.msg);
+                token = prompt("Coloque o código enviado para o seu email:");
+
+                let info = {
+                    email: email,
+                    password: pw,
+                    token: token
+                }
+
+                let verify = await $.ajax({
+                    url: "/api/utilizadores/verify",
+                    method: "put",
+                    data: JSON.stringify(info),
+                    contentType: "application/json",
+                    dataType: "json"
+                });
+
+                if (verify.success === 1) {
+                    
+                    alert("Conta verificada com sucesso!");
+                    window.location = "cuvp.html";
+                }        
 
             } else {
                 alert(utilizador.msg);
