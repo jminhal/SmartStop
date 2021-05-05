@@ -16,7 +16,8 @@ create table users (
     user_birthday date not null,    
     user_mobile int not null,
     user_nif int not null,                        
-    user_moderador boolean null default false,
+    user_moderador boolean default false,
+    user_active boolean default false,
     unique key unique_email(user_email));
     
 create table vehicles (
@@ -61,3 +62,9 @@ create table parks (
     foreign key (reservation_park_id) references parks(park_id),
     foreign key (reservation_payment_method) references payment_methods(payment_method_id));
     
+
+    create table register_tokens (
+	register_token_id int not null primary key auto_increment,
+	register_token varchar(50) not null,
+	register_token_user_id int not null,
+	foreign key (register_token_user_id) references users(user_id));
