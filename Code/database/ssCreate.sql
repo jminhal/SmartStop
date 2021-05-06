@@ -27,6 +27,7 @@ create table vehicles (
     vehicle_registration varchar(30) not null,
     vehicle_user_id int not null,
     vehicle_category int not null,
+    vehicle_ON boolean default true,
     foreign key (vehicle_user_id) references users(user_id),
     foreign key (vehicle_category) references vehicleCategories(vehicleCategory_id ));
 
@@ -36,6 +37,7 @@ create table payment_methods (
     payment_method_expiry_date varchar(10) not null,
     payment_method_cvv int not null,
     payment_method_user_id int not null,
+    payment_method_ON boolean default true,
     foreign key (payment_method_user_id) references users(user_id));
     
 create table parks (
@@ -49,6 +51,7 @@ create table parks (
     park_contact int(9) not null,
     park_price_hour double not null,
 	park_create_user_id int not null,
+    park_ON boolean default true,
 	foreign key (park_create_user_id) references users(user_id));
 
     create table reservations (
