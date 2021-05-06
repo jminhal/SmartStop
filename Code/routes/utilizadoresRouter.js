@@ -84,6 +84,7 @@ router.get('/login', async function(req, res, next) {
     res.status(result.status).send(result.data);
 });
 
+//vai verificar um utilizador
 router.put('/verify', async function(req, res, next) {
     let body = req.body;
     let result = await utilizadoresModel.getUserByEmail(body.email);
@@ -105,5 +106,44 @@ router.put('/verify', async function(req, res, next) {
     }
     res.status(result.status).send(result.data);
 });
+
+//Vai buscar os veiculos de um certo utilizador
+router.get('/:id/veiculos', async function(req, res, next) {
+    let id = req.params.id;
+    let result = await utilizadoresModel.getUserVeiculos(id);
+    res.status(result.status).send(result.data);  
+});
+
+
+
+//Vai adicionar um novo veiculo a um certo utilizador
+router.post('/:id/veiculos/novo', async function(req, res, next) {
+    let id = req.params.id; 
+    let body = req.body;
+    body.vehicle_user_id = id;
+    let result = await utilizadoresModel.novoVeiculo(body);
+    res.status(result.status).send(result.data);  
+});
+
+//Vai adicionar um nnovo parque
+router.post('/:id/veiculos/novo', async function(req, res, next) {
+    let id = req.params.id;
+    let body = req.body;
+    body.park_create_user_id = id;
+    let result = await utilizadoresModel.novoParque(body);
+    res.status(result.status).send(result.data); 
+});
+
+//Vai adicionar um novo meio de pagamento a um certo utilizador
+router.post('/:id/veiculos/novo', async function(req, res, next) {
+    let id = req.params.id;
+    let body = req.body;
+    body.payment_method_user_id = id;
+    let result = await utilizadoresModel.novoMeioPagamento(body);
+    res.status(result.status).send(result.data); 
+});
+
+
+
 
 module.exports = router;

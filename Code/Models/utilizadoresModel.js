@@ -1,3 +1,4 @@
+const { addListener } = require("./connection");
 var pool = require("./connection");
 
 
@@ -63,6 +64,61 @@ module.exports.verifyAccount = async function(id, token) {
         else {
             return {status: 404, data: {msg: "Invalid token!"}};
         }
+
+    } catch (err) {
+        console.log(err);
+        return {status: 500, data: err};
+    } 
+};
+
+
+
+module.exports.getUserVeiculos = async function(id) {
+    try {
+        let sql = "SELECT * FROM vehicles WHERE vehicle_user_id = ?";
+        let result = await pool.query(sql, [id]);
+        if (result.length > 0) {
+            return {status: 200, data: result};
+        }
+        else {
+            return {status: 404, data: {msg: "Não existe veiculos!"}};
+        }
+
+    } catch (err) {
+        console.log(err);
+        return {status: 500, data: err};
+    } 
+};
+
+
+module.exports.novoVeiculo = async function(body) {
+    try {
+        let sql = "INSERT INTO vehicles(vehicle_model,vehicle_brand,vehicle_registration,vehicle_user_id,vehicle_category) VALUES (?,?,?,?,?)";
+        let result = await pool.query(sql, [body.model, body.brand, body.registration, body.vehicle_user_id, body.category]);
+        return {status: 200, data: result};
+
+    } catch (err) {
+        console.log(err);
+        return {status: 500, data: err};
+    } 
+};
+
+module.exports.novoParque = async function(body) {
+    try {
+        let sql = "INSERT INTO park(park_name,park_spots,park_latitude,park_longitude,park_hour_open,park_hour_close,park_contact,park_price_hour, park_create_user_id) VALUES (?,?,?,?,?)";
+        let result = await pool.query(sql, [body.name, body.sports, body.latitude, body.longitude, body.openHour,body.closeHour,body.contact, body.contact, body.price,body.create_user_id]);
+        return {status: 200, data: result};
+
+    } catch (err) {
+        console.log(err);
+        return {status: 500, data: err};
+    } 
+};
+module.exports.novoMeioPagamento = async function(body) {
+    try {
+        let sql = "INSERT INTO park(payment_method_card_number,payment_method_expiry_date,payment_method_cvv,payment_method_user_id) VALUES (?,?,?,?)";
+        let result = await pool.query(sql,[body.cardNumber,body.expiryDate, body.cvv, body.cardNumber, body.payment_method_id]);
+        return {status: 200, data: result};
 
     } catch (err) {
         console.log(err);
