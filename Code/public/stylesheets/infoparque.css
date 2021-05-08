@@ -1,4 +1,3 @@
-
 body{
     color: black;
     background-color: #FAF9FF;
@@ -67,31 +66,10 @@ body{
   
  
 
-.bottomBox{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 5%;
 
-}
 
-.mPagamento,.veiculo,.descontos, .hParque{
-  display: flex;
-  flex-direction: row;
-  padding-bottom: 20px;
-}
-.icon{
-  width: 50px;
-  height: 50px;
-  padding-right: 20px;
-}
-.avatarImg{
-  padding-top: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
+
 #avatar{
   margin-top: 25px;
   width: 13%;
@@ -113,20 +91,69 @@ body{
 #logoIcon{
 width: 100px;
 }
+
 .tbaChild{
   display: flex;
   align-items: center;
 }
 
 
-#map { height: 765px; }
 
-
-#btnInfo{
-  color: white;
-  background-color: black;
-  padding: 10px 24px;
-  border-radius: 8px;
-  border: 2px solid black;
-  cursor: pointer;
+#map { 
+    height: 550px;
+    width: 700px;
+    border-radius: 40px;
 }
+
+#maisInfoBox{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+  .botao{
+      padding-top: 5%;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+  }
+  #backArrow img {
+    margin-top: 25px;
+    margin-left: 50px;
+    width: 50px;
+  }
+
+  .mapaBox{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .checkBoxs {
+    justify-content: space-between;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+  }
+  
+  .checkBoxs div {
+    margin-bottom: 10px;
+  }
+  .boxs{
+    margin-top: 25px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .infoAndMap{
+    display: flex;
+  }
+
+
+  
