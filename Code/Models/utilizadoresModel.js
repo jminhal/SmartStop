@@ -75,13 +75,32 @@ module.exports.verifyAccount = async function(id, token) {
 
 module.exports.getUserVeiculos = async function(id) {
     try {
-        let sql = "SELECT * FROM vehicles WHERE vehicle_user_id = ?";
+        let sql = "SELECT * FROM vehicles WHERE vehicle_user_id = ? AND vehicle_ON = true";
         let result = await pool.query(sql, [id]);
         if (result.length > 0) {
             return {status: 200, data: result};
         }
         else {
             return {status: 404, data: {msg: "Não existe veiculos!"}};
+        }
+
+    } catch (err) {
+        console.log(err);
+        return {status: 500, data: err};
+    } 
+};
+
+
+
+module.exports.getUserMeiospagamento = async function(id) {
+    try {
+        let sql = "SELECT * FROM payment_methods WHERE payment_method_id = ? AND payment_method_ON = true";
+        let result = await pool.query(sql, [id]);
+        if (result.length > 0) {
+            return {status: 200, data: result};
+        }
+        else {
+            return {status: 404, data: {msg: "Não existe meios de pagamento!"}};
         }
 
     } catch (err) {
@@ -105,7 +124,7 @@ module.exports.novoVeiculo = async function(body) {
 
 module.exports.novoParque = async function(body) {
     try {
-        let sql = "INSERT INTO park(park_name,park_spots,park_latitude,park_longitude,park_hour_open,park_hour_close,park_contact,park_price_hour, park_create_user_id) VALUES (?,?,?,?,?)";
+        let sql = "INSERT INTO park(park_name,park_spots,park_latitude,park_longitude,park_hour_open,park_hour_close,park_contact,park_price_hour, park_create_user_id) VALUES (?,?,?,?,?,?,?,?,?)";
         let result = await pool.query(sql, [body.name, body.sports, body.latitude, body.longitude, body.openHour,body.closeHour,body.contact, body.contact, body.price,body.create_user_id]);
         return {status: 200, data: result};
 
