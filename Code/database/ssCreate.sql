@@ -31,6 +31,11 @@ create table vehicles (
     foreign key (vehicle_user_id) references users(user_id),
     foreign key (vehicle_category) references vehicleCategories(vehicleCategory_id ));
 
+
+
+
+
+
 create table payment_methods (
     payment_method_id int not null primary key auto_increment,
     payment_method_card_number int not null,

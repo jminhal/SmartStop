@@ -23,3 +23,7 @@ INSERT INTO parks(park_name, park_spots, park_latitude, park_longitude, park_hou
 INSERT INTO parks(park_name, park_spots, park_latitude, park_longitude, park_hour_open, park_hour_close, park_contact, park_price_hour, park_create_user_id ) VALUES ("Park4", 25, 38.722098, -9.1212317, "07:00:00", "23:00:00", 934349003, 5, 2);
 INSERT INTO parks(park_name, park_spots, park_latitude, park_longitude, park_hour_open, park_hour_close, park_contact, park_price_hour, park_create_user_id) VALUES ("Park5", 43, 38.4652694, -8.6760867, "07:00:00", "23:00:00", 939759003, 1.5, 2);
 
+
+INSERT INTO vehicles(vehicle_model,vehicle_brand,vehicle_registration,vehicle_user_id, vehicle_category) VALUES('Opel','crosa','2000-12-12',1,1);
+INSERT INTO vehicles(vehicle_model,vehicle_brand,vehicle_registration,vehicle_user_id, vehicle_category) VALUES('Tesla','X','2000-12-12',2,1);
+INSERT INTO vehicles(vehicle_model,vehicle_brand,vehicle_registration,vehicle_user_id, vehicle_category) VALUES('Ferrari','458','2000-12-12',3,1);
