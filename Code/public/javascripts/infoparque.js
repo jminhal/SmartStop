@@ -57,7 +57,7 @@ function mapSetup(position) {
   let latitude=position.coords.latitude;
   let longitude=position.coords.longitude;
   //faz aparecer o mapa 
-  map = L.map('map',{minZoom: 12}).setView(new L.LatLng(38.7476289, -9.1518309), 13);
+  map = L.map('map').setView(new L.LatLng(38.7476289, -9.1518309), 13);
 
   L.tileLayer('https://api.mapbox.com/styles/v1/krscripter/ckigd79nk5gtv19qry86qdzsi/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoia3JzY3JpcHRlciIsImEiOiJja2lnZDNlbWQwbmJvMnVxazYwcWU5MDRlIn0.jqnlOPKhrK-r7-Il14uaYQ', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

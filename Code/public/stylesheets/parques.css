@@ -111,7 +111,7 @@ body{
   justify-content: right;
 }
 #logoIcon{
-width: 100px;
+  width: 100px;
 }
 .tbaChild{
   display: flex;
@@ -129,4 +129,18 @@ width: 100px;
   border-radius: 8px;
   border: 2px solid black;
   cursor: pointer;
+}
+
+#caixaPesquisa{
+  position: absolute;
+  z-index: 1000;
+  left: 100px;
+  margin-top: 50px;
+}
+
+#caixaPesquisa input{
+  width: 200px;
+  padding: 5px;
+  
+  font-size: larger;
 }
