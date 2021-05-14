@@ -112,8 +112,8 @@ module.exports.getUserMeiospagamento = async function(id) {
 
 module.exports.novoVeiculo = async function(body) {
     try {
-        let sql = "INSERT INTO vehicles(vehicle_model,vehicle_brand,vehicle_registration,vehicle_user_id,vehicle_category) VALUES (?,?,?,?,?)";
-        let result = await pool.query(sql, [body.model, body.brand, body.registration, body.vehicle_user_id, body.category]);
+        let sql = "INSERT INTO vehicles(vehicle_model,vehicle_brand,vehicle_registration, vehicle_registration_date, vehicle_user_id,vehicle_category) VALUES (?,?,?,?,?,?)";
+        let result = await pool.query(sql, [body.model, body.brand, body.registration,body.registrationDate, body.vehicle_user_id, body.category]);
         return {status: 200, data: result};
 
     } catch (err) {
@@ -135,8 +135,8 @@ module.exports.novoParque = async function(body) {
 };
 module.exports.novoMeioPagamento = async function(body) {
     try {
-        let sql = "INSERT INTO park(payment_method_card_number,payment_method_expiry_date,payment_method_cvv,payment_method_user_id) VALUES (?,?,?,?)";
-        let result = await pool.query(sql,[body.cardNumber,body.expiryDate, body.cvv, body.cardNumber, body.payment_method_id]);
+        let sql = "INSERT INTO park(payment_method_card_name, payment_method_card_number,payment_method_expiry_date,payment_method_cvv,payment_method_user_id) VALUES (?,?,?,?,?)";
+        let result = await pool.query(sql,[body.cardName, body.cardNumber, body.cardExpiry, body.cardCVV, body.payment_method_id]);
         return {status: 200, data: result};
 
     } catch (err) {

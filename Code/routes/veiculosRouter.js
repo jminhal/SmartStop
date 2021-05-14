@@ -19,5 +19,11 @@ router.put('/:id/editar', async function(req, res, next) {
     res.status(result.status).send(result.data);  
 });
 
+//vai buscar as informações dos tipos de veiculo
+router.get('/tipoVeiculo', async function(req, res, next) {
+    let result = await veiculosModel.getTipoVeiculo();
+    res.status(result.status).send(result.data);  
+});
+
 
 module.exports = router;

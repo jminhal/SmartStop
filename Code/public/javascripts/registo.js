@@ -1,5 +1,4 @@
 async function registo() {
-
     let name = document.getElementById("name").value;
     let email = document.getElementById("email").value;
     let pw = document.getElementById("pw").value;
@@ -7,7 +6,7 @@ async function registo() {
     let nif = document.getElementById("nif").value;
     let telemovel = document.getElementById("telemovel").value;
 
-    if (email != "" && pw != ""&& pw != "" && data != "" && nif != "" && telemovel != "" && name != "") { //Verificar se o input do email não está vazio
+    if (email != "" &&  pw != "" && data != "" && nif != "" && telemovel != "" && name != "") { //Verificar se o input do email não está vazio
         try {
 
             let info = {
@@ -26,7 +25,7 @@ async function registo() {
                 contentType: "application/json",
                 dataType: "json"
             });
-
+            sessionStorage.setItem("userID", JSON.stringify(utilizador.data.insertId));
             var token;
             if (utilizador.success == 1) {
                

@@ -26,4 +26,17 @@ module.exports.removerVeiculo = async function(id) {
     } 
 };
 
+//vai buscar as informações dos tipos de veiculo
+module.exports.getTipoVeiculo = async function() {
+    try {
+        let sql = "SELECT * FROM vehicleCategories";
+        let result = await pool.query(sql);
+        return {status: 200, data: result};
+
+    } catch (err) {
+        console.log(err);
+        return {status: 500, data: err};
+    } 
+};
+
 

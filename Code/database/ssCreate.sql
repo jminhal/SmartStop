@@ -25,6 +25,7 @@ create table vehicles (
     vehicle_model varchar(30) not null,
     vehicle_brand varchar(30) not null,
     vehicle_registration varchar(30) not null,
+    vehicle_registration_date varchar(6) not null,
     vehicle_user_id int not null,
     vehicle_category int not null,
     vehicle_ON boolean default true,
@@ -38,6 +39,7 @@ create table vehicles (
 
 create table payment_methods (
     payment_method_id int not null primary key auto_increment,
+    payment_method_card_name varchar(40) not null,
     payment_method_card_number int not null,
     payment_method_expiry_date varchar(10) not null,
     payment_method_cvv int not null,
