@@ -124,8 +124,8 @@ module.exports.novoVeiculo = async function(body) {
 
 module.exports.novoParque = async function(body) {
     try {
-        let sql = "INSERT INTO park(park_name,park_spots,park_latitude,park_longitude,park_hour_open,park_hour_close,park_contact,park_price_hour, park_create_user_id) VALUES (?,?,?,?,?,?,?,?,?)";
-        let result = await pool.query(sql, [body.name, body.sports, body.latitude, body.longitude, body.openHour,body.closeHour,body.contact, body.contact, body.price,body.create_user_id]);
+        let sql = "INSERT INTO park(park_name, park_spots, park_latitude, park_longitude, park_localization, park_hour_open, park_hour_close, park_contact, park_price_hour, park_create_user_id) VALUES (?,?,?,?,?,?,?,?,?)";
+        let result = await pool.query(sql, [body.name, body.sports, body.latitude, body.longitude, body.localizacao, body.openHour, body.closeHour, body.contact, body.park_email, body.price,body.create_user_id]);
         return {status: 200, data: result};
 
     } catch (err) {
