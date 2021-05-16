@@ -25,11 +25,11 @@ window.onload = async function () {
 
 
   document.getElementById("parqueNome").innerHTML= park.park_name;
-  document.getElementById("email").innerHTML= "alterar na BD";
+  document.getElementById("email").innerHTML= park.park_email;
   document.getElementById("telemovel").innerHTML= park.park_contact;
   document.getElementById("horasAbertura").innerHTML= park.park_hour_open;
   document.getElementById("horaFecho").innerHTML= park.park_hour_close;
-  document.getElementById("localizacao").innerHTML= "alterar na BD";
+  document.getElementById("localizacao").innerHTML= park.park_localization;
   document.getElementById("lugaresMax").innerHTML= park.park_spots+"/"+park.park_spots;
 
 

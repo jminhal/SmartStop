@@ -20,6 +20,11 @@ window.onload = async function () {
 
   }
   mapSetup();
+
+
+
+
+
 }
 
 
@@ -35,7 +40,7 @@ function logout() {
 
 async function mapSetup() {
   map = L.map('map', { minZoom: 12 }).setView(new L.LatLng(38.7476289, -9.1518309), 13);
-
+  let lista = document.getElementById("listaParques");
   try {
 
     let parques = await $.ajax({
@@ -43,7 +48,7 @@ async function mapSetup() {
       method: "get",
       dataType: "json"
     });
-
+    let html = "";
     for (let parque of parques) {
 
       let marker = new L.marker(new L.LatLng(parque.park_latitude, parque.park_longitude)).addTo(map);
@@ -55,6 +60,12 @@ async function mapSetup() {
         "<p> Horas de fecho do parque:" + parque.park_hour_close + "</p></section>" +
         "<button id='btnInfo' onclick='maisInfo(" + parque.park_id + ")'>Informações</button>");
 
+        //Lista com as ações
+        html += "<div class='parqueLista' onclick='parqueCenter("+parque.park_latitude+","+parque.park_longitude+")'>"+
+        "<p> Nome do parque:     " + parque.park_name + "</p>"+
+        "<p> Total de lugares/ lugares ocupados:     " + parque.park_spots + "/" + parque.park_spots + "</p></div><hr>";
+
+
       //Quando clica no parque
       marker.on("click", function () {
         marker.openPopup();
@@ -62,7 +73,8 @@ async function mapSetup() {
 
 
     }
-
+    lista.style.display = "block";
+    lista.innerHTML = html;
   } catch (err) {
     console.log(err);
     if (err.status == 404) {
@@ -86,7 +98,6 @@ function maisInfo(park_id) {
 
 async function pesquisar() {
   let parquePesquisado = document.getElementById("parquePesquisado").value;
-  console.log(parquePesquisado);
   try {
 
     let parques = await $.ajax({
@@ -107,4 +118,8 @@ async function pesquisar() {
       alert(err.responseJSON.msg);
     }
   }
+}
+
+function parqueCenter(lat, lng) {
+  map.setView(new L.LatLng(parque.park_latitude, parque.park_longitude),30);
 }

@@ -86,8 +86,8 @@ body{
 .boxInput{
   display: flex;
   flex-direction: column;
-  width: min-content;}
-
+  width: min-content;
+}
 .input{
   width: 250px;
   height: 50px;
