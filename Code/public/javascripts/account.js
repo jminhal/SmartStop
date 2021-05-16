@@ -2,8 +2,7 @@ let user = JSON.parse(sessionStorage.getItem("user"));
 var utilizadorID= user.user_id;
 var moderador= user.user_moderador;
 
-console.log(user.user_fullname)
-console.log(utilizadorID)
+
 
 window.onload = async function () {
   document.getElementById("userName").innerHTML=user.user_fullname;

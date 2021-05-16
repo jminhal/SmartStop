@@ -1,25 +1,20 @@
-let userID = JSON.parse(sessionStorage.getItem("userID"));
+let user = JSON.parse(sessionStorage.getItem("user"));
+var utilizadorID= user.user_id;
+var moderador= user.user_moderador;
 
-
-if (user.user_moderador==0) {
-    alert("Não tem premissões para aceder a esta pagina!"); 
-    window.location = "prarques.html";
-}
 
 window.onload = async function () {
 
     document.getElementById("userName").innerHTML = user.user_fullname;
     if (moderador == 0) {
-      let userDropBox = "<a href='account.html'>Conta</a>" +
-        "<a href='parques.html' class='selected' >Parques</a>" +
-        "<a href='#' onclick='logout()'>Logout</a>";
-      document.getElementById("userDropBox").innerHTML = userDropBox;
+        alert("Não tem premissões para aceder a esta pagina!"); 
+        window.location = "prarques.html";
   
     }
     if (moderador == 1) {
-      let userDropBox = "<a href='#' >Conta</a>" +
-        "<a href='parques.html' class='selected'>Parques</a>" +
-        "<a href='addparque.html'>Adicionar Parque</a>" +
+      let userDropBox = "<a href='account.html' >Conta</a>" +
+        "<a href='parques.html' >Parques</a>" +
+        "<a href='#' class='selected' >Adicionar Parque</a>" +
         "<a href='#' onclick='logout()'>Logout</a>";
       document.getElementById("userDropBox").innerHTML = userDropBox;
   
