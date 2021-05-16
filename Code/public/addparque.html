@@ -1,0 +1,63 @@
+<html>
+  <head>
+     <!-- CSS -->
+     <link rel="stylesheet" href="./stylesheets/addparque.css">
+
+     <!-- JQuery -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   
+     <!-- JS -->
+     <script src="javascripts/addparque.js"></script>
+
+     <title>SmartStop</title>
+  </head>
+  <body>
+    <header class= "header">
+        <section class="topBoxLogo"> <img id="smartstopLogo" src="./icons/smartstopLogo.png" alt="smartstopLogo"> </section>
+        <section class="topBoxTitulo"><h1>Novo Parque</h1></section>
+        <section class= "topBoxAvatar">
+            <div class="dropdown">
+                <div class="tbaChild">
+                    <h3 id="userName"></h3>
+                    <img id="logoIcon" src="./icons/logoIcon.png" alt="logoIcon">
+                </div>
+                <div class="dropdown-content" id="userDropBox"></div>
+            </div>
+        </section>
+    </header> 
+    <main class="main">
+        <section>
+            <div class="lableInput">
+                <div class="boxLabel">
+                <label class="label" >Nome do parque:</label>
+                <label class="label" >Email do parque:</label>
+                <label class="label" >Numero do parque:</label>
+                <label class="label" >Horas de abertura do parque:</label>
+                <label class="label" >Horas de fecho do parque:</label>
+                <label class="label" >Localizacao:</label>
+                <label class="label" >Preço por hora:</label>
+                <label class="label" >Categorias aceites pelo parque:</label>
+                <label class="label" >Maximo de pessoas:</label>
+            </div>
+                <div class="boxInput">
+                <input class="input" type="text" id="nome">
+                <input class="input" type="email" id="email">
+                <input class="input" type="number" id="telemovel">
+                <input class="input" type="time" id="horaInicio">
+                <input class="input" type="time" id="horaFim">
+                <input class="input" type="text" id="localizacao">
+                <input class="input" type="number" id="horaPreco">
+                <select class="input" id="vCategoria"></select>
+                <input class="input" type="number" id="maxPessoas">
+            </div>
+        </section>
+        <section class="criarParque">
+          <button type="button" id="btnInfo" onclick="criarParque()" >Criar Parque</button> 
+        </section>
+    </main>
+
+
+
+  </body>
+</html>
+
