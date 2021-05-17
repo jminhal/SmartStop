@@ -113,9 +113,12 @@ module.exports.getUserMeiospagamento = async function(id) {
 module.exports.novoVeiculo = async function(body) {
     try {
         let sql = "INSERT INTO vehicles(vehicle_model,vehicle_brand,vehicle_registration, vehicle_registration_date, vehicle_user_id,vehicle_category) VALUES (?,?,?,?,?,?)";
-        let result = await pool.query(sql, [body.model, body.brand, body.registration,body.registrationDate, body.vehicle_user_id, body.category]);
+        let result = await pool.query(sql, [body.vehicleModel, body.vehicleBrand, body.vehicleRegistration, body.vehicleRegistrationDate, body.vehicleUser, body.vehicleCategory]);
         return {status: 200, data: result};
+ 
 
+
+        
     } catch (err) {
         console.log(err);
         return {status: 500, data: err};
@@ -124,9 +127,16 @@ module.exports.novoVeiculo = async function(body) {
 
 module.exports.novoParque = async function(body) {
     try {
-        let sql = "INSERT INTO park(park_name, park_spots, park_latitude, park_longitude, park_localization, park_hour_open, park_hour_close, park_contact, park_price_hour, park_create_user_id) VALUES (?,?,?,?,?,?,?,?,?)";
-        let result = await pool.query(sql, [body.name, body.sports, body.latitude, body.longitude, body.localizacao, body.openHour, body.closeHour, body.contact, body.park_email, body.price,body.create_user_id]);
+        let sql = "INSERT INTO parks (park_name, park_spots, park_types, park_latitude, park_longitude, park_localization, park_hour_open, park_hour_close, park_contact, park_price_hour, park_create_user_id) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        let result = await pool.query(sql, [body.parkName, body.parkSports, body.parkTypes, body.parkLatitude, body.parkLongitude, body.parkLocalizacao, body.parkOpenHour, body.parkCloseHour, body.parkContact, body.parkEmail, body.parkPrice, body.parkUserCreate]);
         return {status: 200, data: result};
+
+
+
+
+
+
+
 
     } catch (err) {
         console.log(err);
@@ -135,10 +145,15 @@ module.exports.novoParque = async function(body) {
 };
 module.exports.novoMeioPagamento = async function(body) {
     try {
-        let sql = "INSERT INTO park(payment_method_card_name, payment_method_card_number,payment_method_expiry_date,payment_method_cvv,payment_method_user_id) VALUES (?,?,?,?,?)";
-        let result = await pool.query(sql,[body.cardName, body.cardNumber, body.cardExpiry, body.cardCVV, body.payment_method_id]);
+        let sql = "INSERT INTO payment_methods(payment_method_card_name, payment_method_card_number,payment_method_expiry_date,payment_method_cvv,payment_method_user_id) VALUES (?,?,?,?,?)";
+        let result = await pool.query(sql,[body.cardName, body.cardNumber, body.cardExpiry, body.cardCVV, body.cardUser]);
         return {status: 200, data: result};
 
+
+
+
+
+        
     } catch (err) {
         console.log(err);
         return {status: 500, data: err};

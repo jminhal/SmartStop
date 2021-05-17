@@ -1,7 +1,10 @@
 let user = JSON.parse(sessionStorage.getItem("user"));
 var utilizadorID= user.user_id;
 var moderador= user.user_moderador;
+console.log(user)
+console.log(utilizadorID)
 
+var moderador= user.user_moderador;
 
 window.onload = async function () {
 
@@ -72,24 +75,22 @@ async function criarParque(){
 
                     let infoLocalizacao = info.items[0];
                     let data = {
-
-
-                        name: nome,
-                        sports: maxPessoas,
-                        latitude: infoLocalizacao.position.lat,
-                        longitude: infoLocalizacao.position.lng,
-                        localizacao: infoLocalizacao.address.city,
-                        openHour: horaInicio,
-                        closeHour: horaFim,
-                        contact: telemovel,
-                        email: email,
-                        vCategoria: vCategoria,
-                        price: horaPreco,
-                        create_user_id:userID
+                        parkName: nome,
+                        parkSports: maxPessoas,
+                        parkTypes: vCategoria,
+                        parkLatitude: infoLocalizacao.position.lat,
+                        parkLongitude: infoLocalizacao.position.lng,
+                        parkLocalizacao: infoLocalizacao.address.city,
+                        parkOpenHour: horaInicio,
+                        parkCloseHour: horaFim,
+                        parkContact: telemovel,
+                        parkEmail: email,
+                        parkPrice: horaPreco,
+                        parkUserCreate:utilizadorID
                     }
 
                     let result = $.ajax({
-                        url: "/api/utilizadores/"+userID+"/parque/novo",
+                        url: "/api/utilizadores/"+utilizadorID+"/parque/novo",
                         method: "post",
                         data: JSON.stringify(data),
                         contentType: "application/json",
@@ -97,7 +98,7 @@ async function criarParque(){
                     });
         
                     alert("Parque adicionado com sucesso!!");
-                    window.location = "login.html";
+                    window.location = "parques.html";
 
                 }
                 else {

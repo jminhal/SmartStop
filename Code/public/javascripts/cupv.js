@@ -42,7 +42,8 @@ async function registo(){
                 cardName: nTitular,
                 cardNumber: nCartao,
                 cardExpiry: dCartao,
-                cardCVV: cvcCode
+                cardCVV: cvcCode,
+                cardUser:userID
         
             }
 
@@ -69,11 +70,12 @@ async function registo(){
     if(vMarca!="" && vModelo!="" && vData!="" && vMatricula!="" && vCategoria!="" ){
         try {
             let info = {
-                model: vModelo,
-                brand: vMarca,
-                registration: vMatricula,
-                registrationDate: vData,
-                category: vCategoria
+                vehicleModel: vModelo,
+                vehicleBrand: vMarca,
+                vehicleRegistration: vMatricula,
+                vehicleRegistrationDate: vData,
+                vehicleUser:userID,
+                vehicleCategory: vCategoria
 
 
             }

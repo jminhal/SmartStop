@@ -2,9 +2,9 @@ const util = require('util')
 const mysql = require('mysql')
 const pool = mysql.createPool({
   connectionLimit: 10,
-  host: '149.56.78.29',
-  user: 'smartsto_admin',
-  password: 'smartstopadmin',
+  host: 'localhost',
+  user: 'root',
+  password: '',
   database: 'smartsto_app'
 })
 
