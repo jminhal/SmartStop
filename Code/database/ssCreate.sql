@@ -51,6 +51,7 @@ create table parks (
     park_id int not null primary key auto_increment,
     park_name varchar(30) not null,
     park_spots int not null,
+    park_types varchar(10) not null,
     park_latitude decimal(10,8) not null,
     park_longitude decimal(11,8) not null,
     park_localization varchar(30) not null,
