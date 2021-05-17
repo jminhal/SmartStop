@@ -127,11 +127,9 @@ module.exports.novoVeiculo = async function(body) {
 
 module.exports.novoParque = async function(body) {
     try {
-        let sql = "INSERT INTO parks (park_name, park_spots, park_types, park_latitude, park_longitude, park_localization, park_hour_open, park_hour_close, park_contact, park_price_hour, park_create_user_id) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        let sql = "INSERT INTO parks (park_name, park_spots, park_types, park_latitude, park_longitude, park_localization, park_hour_open, park_hour_close, park_contact, park_email, park_price_hour, park_create_user_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         let result = await pool.query(sql, [body.parkName, body.parkSports, body.parkTypes, body.parkLatitude, body.parkLongitude, body.parkLocalizacao, body.parkOpenHour, body.parkCloseHour, body.parkContact, body.parkEmail, body.parkPrice, body.parkUserCreate]);
         return {status: 200, data: result};
-
-
 
 
 

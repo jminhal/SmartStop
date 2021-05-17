@@ -41,7 +41,6 @@ window.onload = async function () {
 
   }
   if(moderador==1){
-    console.log("kaksdkd");
     let userDropBox= "<a href='#' class='selected'>Conta</a>"+
     "<a href='parques.html' >Parques</a>"+
     "<a href='addparque.html'>Adicionar Parque</a>"+

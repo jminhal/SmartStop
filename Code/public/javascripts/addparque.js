@@ -72,7 +72,7 @@ async function criarParque(){
             }).done(function(info) {//quando vai buscar as coisas ao URL
                 //verificar se o array da localização está vazio
                 if (info.items.length > 0) {
-
+                    console.log(utilizadorID)
                     let infoLocalizacao = info.items[0];
                     let data = {
                         parkName: nome,
