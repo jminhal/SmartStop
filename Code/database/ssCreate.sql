@@ -64,6 +64,9 @@ create table parks (
     park_ON boolean default true,
 	foreign key (park_create_user_id) references users(user_id));
 
+
+    
+
     create table reservations (
     reservation_id int not null primary key auto_increment,
     reservation_date datetime default current_timestamp,
