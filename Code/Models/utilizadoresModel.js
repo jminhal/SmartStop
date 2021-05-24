@@ -94,7 +94,8 @@ module.exports.getUserVeiculos = async function(id) {
 
 module.exports.getUserMeiospagamento = async function(id) {
     try {
-        let sql = "SELECT * FROM payment_methods WHERE payment_method_id = ? AND payment_method_ON = true";
+        console.log("tou cá")
+        let sql = "SELECT * FROM payment_methods AS PM, users AS U WHERE U.user_id=? AND PM.payment_method_user_id = U.user_id AND PM.payment_method_ON = true";
         let result = await pool.query(sql, [id]);
         if (result.length > 0) {
             return {status: 200, data: result};

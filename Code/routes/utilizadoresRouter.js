@@ -115,7 +115,7 @@ router.get('/:id/veiculos', async function(req, res, next) {
 });
 
 
-//Vai buscar os veiculos de um certo utilizador
+//Vai buscar os meios de pagamento de um certo utilizador
 router.get('/:id/meiospagamento', async function(req, res, next) {
     let id = req.params.id;
     let result = await utilizadoresModel.getUserMeiospagamento(id);
