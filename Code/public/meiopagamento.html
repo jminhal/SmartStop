@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <head>
+
+      <!-- CSS -->
+      <link rel="stylesheet" href="./stylesheets/meiopagamento.css">
+ 
+      <!-- JQuery -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+      <!-- JS -->
+      <script src="javascripts/meiopagamento.js"></script>
+ 
+   </head>
+
+    <title>SmartStop</title>
+  </head>
+  <body>
+    <header class= "header">
+      <section class="topBoxLogo"> <img id="smartstopLogo" src="./icons/smartstopLogo.png" alt="smartstopLogo"> </section>
+      <section class="topBoxTitulo"><h1> Editar Métodos de pagamento</h1></section>
+      <section class= "topBoxAvatar">
+          </div>
+      </section>
+  </header> 
+  <section class="main">
+    <section class="pagamento">
+            <div class="subTituloIcon">
+                <img src="./icons/cardIcon.png" alt="cardIcon" class="icon">
+                <h3 style="width:300px ;">Métodos de pagamento</h3>
+                <section class="selecionarCartao">
+                    <h3 style="width: 195px ;">Selecione o cartão:</h3>
+                    <select class="input" id="cartaoNumero" onchange="Aparecer()"></select>
+                </section>
+            </h3>
+            </div>
+            
+            <div class="lableInput" id="lableInput">
+                <div class="boxLabel">
+                  <label class="label">Nome do titular:</label>
+                  <label class="label">Numero do cartão:</label>
+                  <label class="label">Data do cartão:</label>
+                  <label class="label">CVC code:</label>
+                </div>
+                <div class="boxInput">
+                  <input type="text" placeholder="Escreva o nome" class="input" id="nTitular">
+                  <input type="text" placeholder="Digite o numero" class="input" id="nCartao">
+                  <input type="date"  class="input" id="dCartao">
+                  <input type="password" placeholder="CVC" class="input" id="cvcCode">
+                </div>
+              </div>
+
+    </section>
+  </section>
+
+
+
+
+
+
+  <section class="btnBox">
+    <button class="btn" onclick="registo()">Registar</button>
+  </section>
+  
+  </body>
+</html>
+
