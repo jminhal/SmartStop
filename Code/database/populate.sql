@@ -6,11 +6,11 @@ INSERT INTO vehicleCategories(category) VALUES("D");
 
 
 
-INSERT INTO parks(park_name, park_spots, park_latitude, park_longitude, park_hour_open, park_hour_close, park_contact, park_price_hour, park_create_user_id) VALUES ("Park1", 35, 38.7009012, -9.217223, "07:00:00", "23:00:00", 935649003, 3, 1);
-INSERT INTO parks(park_name, park_spots, park_latitude, park_longitude, park_hour_open, park_hour_close, park_contact, park_price_hour, park_create_user_id) VALUES ("Park2", 55, 38.703566, -9.168966, "07:00:00", "23:00:00", 935981003, 2,1);
-INSERT INTO parks(park_name, park_spots, park_latitude, park_longitude, park_hour_open, park_hour_close, park_contact, park_price_hour, park_create_user_id) VALUES ("Park3", 17, 38.744641, -9.199860, "07:00:00", "23:00:00", 935649408, 3.5, 2);
-INSERT INTO parks(park_name, park_spots, park_latitude, park_longitude, park_hour_open, park_hour_close, park_contact, park_price_hour, park_create_user_id ) VALUES ("Park4", 25, 38.722098, -9.1212317, "07:00:00", "23:00:00", 934349003, 5, 2);
-INSERT INTO parks(park_name, park_spots, park_latitude, park_longitude, park_hour_open, park_hour_close, park_contact, park_price_hour, park_create_user_id) VALUES ("Park5", 43, 38.4652694, -8.6760867, "07:00:00", "23:00:00", 939759003, 1.5, 2);
+INSERT INTO parks(park_name, park_spots ,park_types, park_latitude, park_longitude, park_localization, park_hour_open, park_hour_close, park_contact, park_email, park_price_hour, park_create_user_id) VALUES ("Park1", 35, 1, 38.7009012, -9.217223,"Lisboa", "07:00:00", "23:00:00", 935649003,"Park1@park.com", 3, 1);
+INSERT INTO parks(park_name, park_spots ,park_types, park_latitude, park_longitude, park_localization, park_hour_open, park_hour_close, park_contact, park_email, park_price_hour, park_create_user_id) VALUES ("Park2", 55, 1, 38.703566, -9.168966,"Lisboa", "07:00:00", "23:00:00", 935981003,"Park2@park.com", 2,1);
+INSERT INTO parks(park_name, park_spots ,park_types, park_latitude, park_longitude, park_localization, park_hour_open, park_hour_close, park_contact, park_email, park_price_hour, park_create_user_id) VALUES ("Park3", 17, 1, 38.744641, -9.199860,"Lisboa", "07:00:00", "23:00:00", 935649408,"Park3@park.com", 3.5, 2);
+INSERT INTO parks(park_name, park_spots ,park_types, park_latitude, park_longitude, park_localization, park_hour_open, park_hour_close, park_contact, park_email, park_price_hour, park_create_user_id ) VALUES ("Park4", 25, 1, 38.722098, -9.1212317,"Lisboa", "07:00:00", "23:00:00", 934349003,"Park4@park.com", 5, 2);
+INSERT INTO parks(park_name, park_spots ,park_types, park_latitude, park_longitude, park_localization, park_hour_open, park_hour_close, park_contact, park_email, park_price_hour, park_create_user_id) VALUES ("Park5", 43, 1, 38.4652694, -8.6760867,"Lisboa", "07:00:00", "23:00:00", 939759003,"Park5@park.com", 1.5, 2);
 
 
     
