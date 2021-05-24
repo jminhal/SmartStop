@@ -34,3 +34,6 @@ function editarMeioPagamento(){
   
   window.location = "meiopagamento.html";
 }
+function editareditarVeiculo(){
+  window.location = "veiculo.html";
+}
