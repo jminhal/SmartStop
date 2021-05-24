@@ -30,4 +30,7 @@ function logout(){
   window.location = "login.html";
 }
 
-
+function editarMeioPagamento(){
+  
+  window.location = "meiopagamento.html";
+}
