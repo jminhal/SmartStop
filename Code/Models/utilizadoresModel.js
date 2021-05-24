@@ -73,9 +73,12 @@ module.exports.verifyAccount = async function(id, token) {
 
 
 
+
+
+
 module.exports.getUserVeiculos = async function(id) {
     try {
-        let sql = "SELECT * FROM vehicles WHERE vehicle_user_id = ? AND vehicle_ON = true";
+        let sql = "SELECT * FROM vehicles AS V, users AS U WHERE U.user_id=? AND V.vehicle_user_id = U.user_id AND V.vehicle_ON = true";
         let result = await pool.query(sql, [id]);
         if (result.length > 0) {
             return {status: 200, data: result};
@@ -94,7 +97,6 @@ module.exports.getUserVeiculos = async function(id) {
 
 module.exports.getUserMeiospagamento = async function(id) {
     try {
-        console.log("tou cá")
         let sql = "SELECT * FROM payment_methods AS PM, users AS U WHERE U.user_id=? AND PM.payment_method_user_id = U.user_id AND PM.payment_method_ON = true";
         let result = await pool.query(sql, [id]);
         if (result.length > 0) {
@@ -144,8 +146,8 @@ module.exports.novoParque = async function(body) {
 };
 module.exports.novoMeioPagamento = async function(body) {
     try {
-        let sql = "INSERT INTO payment_methods(payment_method_card_name, payment_method_card_number,payment_method_expiry_date,payment_method_cvv,payment_method_user_id) VALUES (?,?,?,?,?)";
-        let result = await pool.query(sql,[body.cardName, body.cardNumber, body.cardExpiry, body.cardCVV, body.cardUser]);
+        let sql = "INSERT INTO payment_methods(payment_method_card_name, payment_method_card_number,payment_method_expiry_date,payment_method_cvv,payment_method_selected,payment_method_user_id) VALUES (?,?,?,?,?)";
+        let result = await pool.query(sql,[body.cardName, body.cardNumber, body.cardExpiry, body.cardCVV,body.selected, body.cardUser]);
         return {status: 200, data: result};
 
 
