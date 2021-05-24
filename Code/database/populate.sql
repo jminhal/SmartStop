@@ -13,12 +13,22 @@ INSERT INTO parks(park_name, park_spots, park_latitude, park_longitude, park_hou
 INSERT INTO parks(park_name, park_spots, park_latitude, park_longitude, park_hour_open, park_hour_close, park_contact, park_price_hour, park_create_user_id) VALUES ("Park5", 43, 38.4652694, -8.6760867, "07:00:00", "23:00:00", 939759003, 1.5, 2);
 
 
+    
+INSERT INTO payment_methods(payment_method_card_name, payment_method_card_number,	payment_method_expiry_date ,payment_method_cvv,payment_method_user_id) VALUES('Jorge Minhalma',4400440044004400,'2000-12-12',256,1);
+INSERT INTO payment_methods(payment_method_card_name, payment_method_card_number,	payment_method_expiry_date ,payment_method_cvv,payment_method_user_id) VALUES('Jorge',4400440044004400,'2000-12-12',256,2);
+INSERT INTO payment_methods(payment_method_card_name, payment_method_card_number,	payment_method_expiry_date ,payment_method_cvv,payment_method_user_id) VALUES('Jorge',4400440044004400,'2000-12-12',256,3);
+INSERT INTO payment_methods(payment_method_card_name, payment_method_card_number,	payment_method_expiry_date ,payment_method_cvv,payment_method_user_id) VALUES('Jorge',4400440044004400,'2000-12-12',256,4);
 
 
-INSERT INTO payment_methods(payment_method_card_number,	payment_method_expiry_date ,payment_method_cvv,payment_method_user_id) VALUES(4400440044004400,'2000-12-12',256,1);
-INSERT INTO payment_methods(payment_method_card_number,	payment_method_expiry_date ,payment_method_cvv,payment_method_user_id) VALUES(4400440044004400,'2000-12-12',256,2);
-INSERT INTO payment_methods(payment_method_card_number,	payment_method_expiry_date ,payment_method_cvv,payment_method_user_id) VALUES(4400440044004400,'2000-12-12',256,3);
-INSERT INTO payment_methods(payment_method_card_number,	payment_method_expiry_date ,payment_method_cvv,payment_method_user_id) VALUES(4400440044004400,'2000-12-12',256,4);
+
+
+INSERT INTO vehicles(vehicle_model,vehicle_brand, vehicle_registration, vehicle_registration_date, vehicle_user_id, vehicle_category) VALUES('Opel','crosa','AA3212','2000-12-12',1,1);
+INSERT INTO vehicles(vehicle_model,vehicle_brand, vehicle_registration, vehicle_registration_date, vehicle_user_id, vehicle_category) VALUES('Tesla','X','AA3212','2000-12-12',2,1);
+INSERT INTO vehicles(vehicle_model,vehicle_brand, vehicle_registration, vehicle_registration_date, vehicle_user_id, vehicle_category) VALUES('Ferrari','458','AA3212','2000-12-12',3,1);
+
+
+
+
 
 
 
@@ -28,6 +38,6 @@ INSERT INTO users (user_fullname, user_email, user_password, user_birthday, user
 INSERT INTO users (user_fullname, user_email, user_password, user_birthday, user_mobile, user_nif, user_moderador) VALUES ("Pedro Amaro" , "pedro@IADE.pt", "asd123", '2000-12-12',96969696,213456789,0);
 
 
-INSERT INTO vehicles(vehicle_model,vehicle_brand,vehicle_registration,vehicle_user_id, vehicle_category) VALUES('Opel','crosa','2000-12-12',1,1);
-INSERT INTO vehicles(vehicle_model,vehicle_brand,vehicle_registration,vehicle_user_id, vehicle_category) VALUES('Tesla','X','2000-12-12',2,1);
-INSERT INTO vehicles(vehicle_model,vehicle_brand,vehicle_registration,vehicle_user_id, vehicle_category) VALUES('Ferrari','458','2000-12-12',3,1);
+
+
+
