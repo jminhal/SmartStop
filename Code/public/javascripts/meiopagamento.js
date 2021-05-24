@@ -1,14 +1,13 @@
 let user = JSON.parse(sessionStorage.getItem("user"));
 let userID=user.user_id;
-console.log(userID)
-
+var meios;
 
 
 
 window.onload = async function () {
 
     try {
-        let meios = await $.ajax({
+        meios = await $.ajax({
 
             url: "/api/utilizadores/"+userID+"/meiospagamento",
             method: "get",
@@ -16,9 +15,9 @@ window.onload = async function () {
           });
           let aux="";
           aux += "<option value= 'void' >  </option>";
-        for(let meio of meios){
+        for(let i in meios){
 
-            aux += "<option value='"+ meio.payment_method_id +"'>  **** **** **** " + meio.payment_method_card_number.toString().substring(11,15)+ "</option>";
+            aux += "<option value='"+i+"'>  **** **** **** " + meios[i].payment_method_card_number.toString().substring(11,15)+ "</option>";
 
 
         }
@@ -40,25 +39,48 @@ function Aparecer(){
     var selectedValue = cartaoNumero.options[cartaoNumero.selectedIndex].value;
     if(selectedValue=='add'){
         document.getElementById("lableInput").style.display="flex";
+
+        document.getElementById("nTitular").value= "";
+        document.getElementById("nCartao").value= "";
+        document.getElementById("dCartao").value= "";
+        document.getElementById("cvcCode").value= "";
+        document.getElementById("btnBox").innerHTML='<button class="btn" onclick="Adicionar()">Adicionar</button>';
+        document.getElementById("checkBoxLable").innerHTML="Deseja tornar este cartão como principal?";
+        document.getElementById("checkBoxInput").innerHTML= '<input type="checkbox">';
+
+
     }
     else if(selectedValue=='void'){
         document.getElementById("lableInput").style.display="none";
+        document.getElementById("btnBox").innerHTML="";
+
     }
     else{
         document.getElementById("lableInput").style.display="flex";
-        let nTitular =    document.getElementById("nTitular").value;
-        let nCartao=    document.getElementById("nCartao").value;
-        let dCartao=    document.getElementById("dCartao").value;
-        let cvcCode=    document.getElementById("cvcCode").value;
-        nTitular=meio.payment_method_card_name;
-        nCartao=meio.payment_method_card_number;
-        dCartao=meio.payment_method_expiry_date;
-        cvcCode=meio.payment_method_cvv;
+        document.getElementById("nTitular").value=meios[selectedValue].payment_method_card_name;
+        document.getElementById("nCartao").value=meios[selectedValue].payment_method_card_number;
+        document.getElementById("dCartao").value=meios[selectedValue].payment_method_expiry_date;
+        document.getElementById("cvcCode").value=meios[selectedValue].payment_method_cvv;
+        document.getElementById("btnBox").innerHTML='<button class="btn" onclick="Remover()">Remover</button><button class="btn" onclick="Atualizar()">Atualizar</button>';
+        if(meios[selectedValue].payment_method_selected==false){
+            document.getElementById("checkBoxLable").innerHTML="Deseja tornar este cartão como principal?";
+            document.getElementById("checkBoxInput").innerHTML= '<input  id="selectedCartao" type="checkbox">';
+
+        }
+        else{
+            document.getElementById("checkBoxLable").innerHTML="";
+            document.getElementById("checkBoxInput").innerHTML="";
+        }
     } 
 }
 
-/*
-async function registo(){
+async function Adicionar(){
+    let nTitular =    document.getElementById("nTitular").value;
+    let nCartao=    document.getElementById("nCartao").value;
+    let dCartao=    document.getElementById("dCartao").value;
+    let cvcCode=    document.getElementById("cvcCode").value;
+    let selectedCartao= document.getElementById("selectedCartao").value;
+    console.log(selectedCartao)
 
 
     if(nTitular!="" && nCartao !="" && dCartao!="" && cvcCode!=""){
@@ -68,6 +90,7 @@ async function registo(){
                 cardNumber: nCartao,
                 cardExpiry: dCartao,
                 cardCVV: cvcCode,
+                selected:selectedCartao,
                 cardUser:userID
         
             }
@@ -96,6 +119,6 @@ async function registo(){
 
 }
 
-*/
+
 
 
