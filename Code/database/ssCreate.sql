@@ -40,7 +40,7 @@ create table vehicles (
 create table payment_methods (
     payment_method_id int not null primary key auto_increment,
     payment_method_card_name varchar(40) not null,
-    payment_method_card_number int not null,
+    payment_method_card_number bigint(16) not null,
     payment_method_expiry_date varchar(10) not null,
     payment_method_cvv int not null,
     payment_method_user_id int not null,
