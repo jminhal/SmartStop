@@ -17,7 +17,7 @@ async function registo() {
                 mobile: telemovel,
                 nif: nif
             }
-            
+            document.getElementById("btn").style.cursor = "wait";
             let utilizador = await $.ajax({
                 url: "/api/utilizadores/register?email="+email+"&password="+pw,
                 method: "post",
