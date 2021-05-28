@@ -129,7 +129,6 @@ router.post('/:id/veiculos/novo', async function(req, res, next) {
     let id = req.params.id; 
     let body = req.body;
     body.vehicle_user_id = id;
-    console.log(body)
     let result = await utilizadoresModel.novoVeiculo(body);
     res.status(result.status).send(result.data);  
 });

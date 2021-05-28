@@ -113,21 +113,6 @@ module.exports.getUserMeiospagamento = async function(id) {
 };
 
 
-module.exports.novoVeiculo = async function(body) {
-    try {
-        let sql = "INSERT INTO vehicles(vehicle_model,vehicle_brand,vehicle_registration, vehicle_registration_date, vehicle_user_id,vehicle_category) VALUES (?,?,?,?,?,?)";
-        let result = await pool.query(sql, [body.vehicleModel, body.vehicleBrand, body.vehicleRegistration, body.vehicleRegistrationDate, body.vehicleUser, body.vehicleCategory]);
-        return {status: 200, data: result};
- 
-
-
-        
-    } catch (err) {
-        console.log(err);
-        return {status: 500, data: err};
-    } 
-};
-
 module.exports.novoParque = async function(body) {
     try {
         let sql = "INSERT INTO parks (park_name, park_spots, park_types, park_latitude, park_longitude, park_localization, park_hour_open, park_hour_close, park_contact, park_email, park_price_hour, park_create_user_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -161,3 +146,22 @@ module.exports.novoMeioPagamento = async function(body) {
         return {status: 500, data: err};
     } 
 };
+
+
+
+
+module.exports.novoVeiculo = async function(body) {
+    try {
+        let sql = "INSERT INTO vehicles(vehicle_model, vehicle_brand, vehicle_registration, vehicle_registration_date, vehicle_category, vehicle_selected, vehicle_user_id) VALUES (?,?,?,?,?,?,?)";
+        let result = await pool.query(sql, [body.vModel, body.vBrand, body.vRegistration, body.vDate, body.vCategory, body.vSelected, body.vUserID]);
+        return {status: 200, data: result};
+ 
+
+
+        
+    } catch (err) {
+        console.log(err);
+        return {status: 500, data: err};
+    } 
+};
+

@@ -63,7 +63,7 @@ function Aparecer(){
         document.getElementById("btnBox").innerHTML='<button class="btn" onclick="Remover('+meios[selectedValue].payment_method_id, meios[selectedValue].payment_method_selected+')">Remover</button><button class="btn" onclick="Atualizar('+meios[selectedValue].payment_method_id+')">Atualizar</button>';
         if(meios[selectedValue].payment_method_selected==false){
             document.getElementById("checkBoxLable").innerHTML="Deseja tornar este cartão como principal?";
-            document.getElementById("checkBoxInput").innerHTML= '<input  id="selectedCartao"  type="checkbox">';
+            document.getElementById("checkBoxInput").innerHTML= '<input  id="selectedCartao" value="selectedCartao" type="checkbox">';
 
         }
         else{

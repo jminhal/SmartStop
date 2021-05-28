@@ -73,7 +73,7 @@ function Aparecer(){
 
         document.getElementById("btnBox").innerHTML='<button class="btn" onclick="Adicionar()">Adicionar</button>';
         document.getElementById("checkBoxLable").innerHTML="Deseja tornar este veiculo como principal?";
-        document.getElementById("checkBoxInput").innerHTML= '<input type="checkbox">';
+        document.getElementById("checkBoxInput").innerHTML= '<input  id="selectedVeiculo" value="selectedVeiculo" type="checkbox">';
 
 
     }
@@ -85,11 +85,8 @@ function Aparecer(){
 
 
     else{
-        document.getElementById("lableInput").style.display="flex";
-
-        console.log(1)
         console.log(veiculos[selectedValue])
-
+        document.getElementById("lableInput").style.display="flex";
         document.getElementById("vMarca").value= veiculos[selectedValue].vehicle_model;
         document.getElementById("vModelo").value= veiculos[selectedValue].vehicle_brand;
         document.getElementById("vData").value= value=veiculos[selectedValue].vehicle_registration_date;
@@ -99,7 +96,7 @@ function Aparecer(){
         document.getElementById("btnBox").innerHTML='<button class="btn" onclick="Remover('+veiculos[selectedValue].vehicle_id, veiculos[selectedValue].vehicle_selected+')">Remover</button><button class="btn" onclick="Atualizar('+meios[selectedValue].payment_method_id+')">Atualizar</button>';
         if(meios[selectedValue].payment_method_selected==false){
             document.getElementById("checkBoxLable").innerHTML="Deseja tornar este veiculo como principal?";
-            document.getElementById("checkBoxInput").innerHTML= '<input  id="selectedVeiculo" type="checkbox">';
+            document.getElementById("checkBoxInput").innerHTML= '<input  id="selectedVeiculo" value="selectedVeiculo" type="checkbox">';
 
         }
         else{
@@ -123,7 +120,6 @@ async function Adicionar(){
     let selectedVeiculo= document.getElementById("selectedVeiculo");
 
     if(vMarca!="" && vModelo!="" && vData!="" && vMatricula!="" && vCategoria!="" ){
-        console.log(selectedVeiculo.checked)
         try {
             let info = {
                 vModel: vModelo,
@@ -132,20 +128,8 @@ async function Adicionar(){
                 vDate: vData,
                 vCategory:vCategoria,
                 vSelected:selectedVeiculo.checked,
-                vON:veiculoON,
-                vID:id,
                 vUserID:userID
-
-
             }
-        
-
-
-
-
-
-            
-
             let veiculo = await $.ajax({
                 url: "/api/utilizadores/"+userID+"/veiculos/novo",
                 method: "post",
@@ -154,22 +138,21 @@ async function Adicionar(){
                 dataType: "json"
             });
 
-
-            } catch (err) {
-                console.log(err);
-                if (err.status == 404) {
-                    alert(err.responseJSON.msg);
-                }
+        } catch (err) {
+            console.log(err);
+            if (err.status == 404) {
+                alert(err.responseJSON.msg);
             }
         }
 
-            else {
-                alert("Falta preencher campos do veicculo");
-            } 
-        
-            alert("Veiculo adicionado com sucesso!")
-            window.location="account.html";
-        
+}
+else {
+    alert("Falta preencher campos do veiculo");
+} 
+
+alert("Veiculo adicionado com sucesso!")
+window.location="account.html";
+
 
 }
 
@@ -194,14 +177,14 @@ function Atualizar(id){
 
 async function EditarMeioPagamento(id,veiculoON,selecionado){
 
-    
+   
     let vMarca=    document.getElementById("vMarca").value;
     let vModelo=    document.getElementById("vModelo").value;
     let vData=    document.getElementById("vData").value;
     let vMatricula=    document.getElementById("vMatricula").value;
     let vCategoria=    document.getElementById("vCategoria").value;
 
-
+    console.log(vData)
     
     let veiculoSelecionado;
 
