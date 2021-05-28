@@ -146,7 +146,8 @@ module.exports.novoParque = async function(body) {
 };
 module.exports.novoMeioPagamento = async function(body) {
     try {
-        let sql = "INSERT INTO payment_methods(payment_method_card_name, payment_method_card_number,payment_method_expiry_date,payment_method_cvv,payment_method_selected,payment_method_user_id) VALUES (?,?,?,?,?)";
+        console.log(body)
+        let sql = "INSERT INTO payment_methods(payment_method_card_name, payment_method_card_number,payment_method_expiry_date,payment_method_cvv,payment_method_selected,payment_method_user_id) VALUES (?,?,?,?,?,?)";
         let result = await pool.query(sql,[body.cardName, body.cardNumber, body.cardExpiry, body.cardCVV,body.selected, body.cardUser]);
         return {status: 200, data: result};
 

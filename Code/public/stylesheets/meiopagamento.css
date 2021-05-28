@@ -99,7 +99,7 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 150px;
+  padding-top: 65px;
 
 }
 .btn{
@@ -153,13 +153,13 @@ body{
 }
 
 .main{
-display: flex;
-justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 
 
 .pagamento{
-  width: 50%;
+  width: 100%;
   margin-top: 5%;
   
 }
@@ -171,7 +171,8 @@ justify-content: center;
 }
 .subTituloIcon{
   display: flex;
-  flex-direction: row;
+  align-content: center;
+  justify-content: center;
 }
 
 

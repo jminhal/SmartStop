@@ -15,6 +15,7 @@ router.put('/:id/editar', async function(req, res, next) {
     let id = req.params.id;
     let body = req.body;
     body.payment_method_id=id;
+    console.log(body)
     let result = await meiosPagamentoModel.editarMeioPagamento(body);
     res.status(result.status).send(result.data);  
 });

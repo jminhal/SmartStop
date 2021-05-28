@@ -43,7 +43,8 @@ async function registo(){
                 cardNumber: nCartao,
                 cardExpiry: dCartao,
                 cardCVV: cvcCode,
-                cardUser:userID
+                cardUser:userID,
+                selected: true,
         
             }
 
