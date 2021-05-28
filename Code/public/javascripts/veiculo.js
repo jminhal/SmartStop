@@ -1,6 +1,6 @@
 let user = JSON.parse(sessionStorage.getItem("user"));
 let userID=user.user_id;
-var veiculos;
+var veiculos, tiposCategoria=[];
 
 
 
@@ -32,6 +32,29 @@ window.onload = async function () {
             }
     }
 
+
+    try {
+        let tipos = await $.ajax({
+            url: "/api/veiculos/tipoVeiculo",
+            method: "get",
+            dataType: "json"
+          });
+          let aux="";
+        for(let tipo of tipos){
+            tiposCategoria.push(tipo)
+            aux += "<option value='"+ tipo.vehicleCategory_id +"'>" + tipo.category + "</option>";
+        }
+            document.getElementById("vCategoria").innerHTML = aux;
+        
+        }catch (err) {
+            console.log(err);
+            if (err.status == 404) {
+                alert(err.responseJSON.msg);
+            }
+        }
+
+
+
 }
 
 function Aparecer(){
@@ -61,18 +84,11 @@ function Aparecer(){
     }
 
 
-
-
-
-
-
-
-
-
-
     else{
         document.getElementById("lableInput").style.display="flex";
 
+        console.log(1)
+        console.log(veiculos[selectedValue])
 
         document.getElementById("vMarca").value= veiculos[selectedValue].vehicle_model;
         document.getElementById("vModelo").value= veiculos[selectedValue].vehicle_brand;
@@ -80,10 +96,10 @@ function Aparecer(){
         document.getElementById("vMatricula").value= value=veiculos[selectedValue].vehicle_registration;
         document.getElementById("vCategoria").value= veiculos[selectedValue].vehicle_category;
 
-        document.getElementById("btnBox").innerHTML='<button class="btn" onclick="Remover()">Remover</button><button class="btn" onclick="Atualizar()">Atualizar</button>';
+        document.getElementById("btnBox").innerHTML='<button class="btn" onclick="Remover('+veiculos[selectedValue].vehicle_id, veiculos[selectedValue].vehicle_selected+')">Remover</button><button class="btn" onclick="Atualizar('+meios[selectedValue].payment_method_id+')">Atualizar</button>';
         if(meios[selectedValue].payment_method_selected==false){
             document.getElementById("checkBoxLable").innerHTML="Deseja tornar este veiculo como principal?";
-            document.getElementById("checkBoxInput").innerHTML= '<input  id="selectedCartao" type="checkbox">';
+            document.getElementById("checkBoxInput").innerHTML= '<input  id="selectedVeiculo" type="checkbox">';
 
         }
         else{
@@ -104,20 +120,31 @@ async function Adicionar(){
     let vData=    document.getElementById("vData").value;
     let vMatricula=    document.getElementById("vMatricula").value;
     let vCategoria=    document.getElementById("vCategoria").value;
+    let selectedVeiculo= document.getElementById("selectedVeiculo");
 
     if(vMarca!="" && vModelo!="" && vData!="" && vMatricula!="" && vCategoria!="" ){
+        console.log(selectedVeiculo.checked)
         try {
             let info = {
-                vehicleModel: vModelo,
-                vehicleBrand: vMarca,
-                vehicleRegistration: vMatricula,
-                vehicleRegistrationDate: vData,
-                vehicleUser:userID,
-                vehicleCategory: vCategoria
+                vModel: vModelo,
+                vBrand: vMarca,
+                vRegistration: vMatricula,
+                vDate: vData,
+                vCategory:vCategoria,
+                vSelected:selectedVeiculo.checked,
+                vON:veiculoON,
+                vID:id,
+                vUserID:userID
 
 
             }
+        
 
+
+
+
+
+            
 
             let veiculo = await $.ajax({
                 url: "/api/utilizadores/"+userID+"/veiculos/novo",
@@ -134,16 +161,107 @@ async function Adicionar(){
                     alert(err.responseJSON.msg);
                 }
             }
-        alert("Conta criada com sucesso, podes agora fazer login!");
-        window.location = "login.html";
+        }
 
-    }
-    else {
-        alert("Falta preencher campos do meio de pagamento");
-    }
+            else {
+                alert("Falta preencher campos do veicculo");
+            } 
+        
+            alert("Veiculo adicionado com sucesso!")
+            window.location="account.html";
+        
+
+}
+
+
+
+function Remover(id,selecionado){
+    let veiculoON= false;
+    EditarMeioPagamento(id,veiculoON,selecionado);
+
+
+}
+
+function Atualizar(id){
+    let veiculoON= true;
+    let selectedVeiculo= document.getElementById("selectedVeiculo").checked;
+    EditarMeioPagamento(id,veiculoON,selectedVeiculo);
 
 }
 
 
 
 
+async function EditarMeioPagamento(id,veiculoON,selecionado){
+
+    
+    let vMarca=    document.getElementById("vMarca").value;
+    let vModelo=    document.getElementById("vModelo").value;
+    let vData=    document.getElementById("vData").value;
+    let vMatricula=    document.getElementById("vMatricula").value;
+    let vCategoria=    document.getElementById("vCategoria").value;
+
+
+    
+    let veiculoSelecionado;
+
+    if(selecionado== null){
+
+        veiculoSelecionado=true;
+    }
+    else{
+        veiculoSelecionado=false;
+
+    }
+    if(vMarca!="" && vModelo!="" && vData!="" && vMatricula!="" && vCategoria!="" ){
+        try {
+            let info = {
+                vModel: vModelo,
+                vBrand: vMarca,
+                vRegistration: vMatricula,
+                vDate: vData,
+                vCategory:vCategoria,
+                vSelected:veiculoSelecionado,
+                vON:veiculoON,
+                vID:id,
+                vUserID:userID
+
+
+            }
+
+
+            let veiculo = await $.ajax({
+                url: "/api/veiculos/"+userID+"/editar",
+                method: "put",
+                data: JSON.stringify(info),
+                contentType: "application/json",
+                dataType: "json"
+            });
+
+
+            } catch (err) {
+                console.log(err);
+                if (err.status == 404) {
+                    alert(err.responseJSON.msg);
+                }
+            }
+
+    }
+    else {
+        if(veiculoON){
+            alert("Falta preencher campos do Veicuo");
+        }
+        else{
+            alert("Por favor volte a selecionar o veiculo que deseja eleminar")
+        }
+    } 
+    if(veiculoON){
+        alert("Informações do veiculo alteradas com sucesso!");
+    }
+    else{
+        alert("veiculo removido com sucesso!")
+    }
+
+    window.location="account.html";
+
+}
