@@ -16,12 +16,6 @@ router.get('/:id', async function(req, res, next) {
     res.status(result.status).send(result.data);  
 });
 
-//vai remover um certo parque 
-router.delete('/:id/remover', async function(req, res, next) {
-    let id = req.params.id;
-    let result = await parquesModel.removerParque(id);
-    res.status(result.status).send(result.data);  
-});
 
 //vai editar as informações de um certo meio de pagamento
 router.put('/:id/editar', async function(req, res, next) { 
