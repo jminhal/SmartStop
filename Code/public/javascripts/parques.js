@@ -3,6 +3,8 @@ var utilizadorID = user.user_id;
 var moderador = user.user_moderador;
 
 window.onload = async function () {
+
+
   document.getElementById("userName").innerHTML = user.user_fullname;
   if (moderador == 0) {
     let userDropBox = "<a href='account.html'>Conta</a>" +
@@ -14,7 +16,7 @@ window.onload = async function () {
   if (moderador == 1) {
     let userDropBox = "<a href='account.html'>Conta</a>" +
       "<a href='#' class='selected'>Parques</a>" +
-      "<a href='addparque.html'>Adicionar Parque</a>" +
+      "<a href='parque.html'>Adicionar Parque</a>" +
       "<a href='#' onclick='logout()'>Logout</a>";
     document.getElementById("userDropBox").innerHTML = userDropBox;
 

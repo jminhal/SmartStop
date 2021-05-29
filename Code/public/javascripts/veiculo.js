@@ -41,7 +41,7 @@ window.onload = async function () {
           });
           let aux="";
         for(let tipo of tipos){
-            tiposCategoria.push(tipo)
+            tiposCategoria.push(tipo);
             aux += "<option value='"+ tipo.vehicleCategory_id +"'>" + tipo.category + "</option>";
         }
             document.getElementById("vCategoria").innerHTML = aux;
@@ -160,7 +160,7 @@ window.location="account.html";
 
 function Remover(id,selecionado){
     let veiculoON= false;
-    EditarMeioPagamento(id,veiculoON,selecionado);
+    EditarVeiculo(id,veiculoON,selecionado);
 
 
 }
@@ -168,14 +168,14 @@ function Remover(id,selecionado){
 function Atualizar(id){
     let veiculoON= true;
     let selectedVeiculo= document.getElementById("selectedVeiculo").checked;
-    EditarMeioPagamento(id,veiculoON,selectedVeiculo);
+    EditarVeiculo(id,veiculoON,selectedVeiculo);
 
 }
 
 
 
 
-async function EditarMeioPagamento(id,veiculoON,selecionado){
+async function EditarVeiculo(id,veiculoON,selecionado){
 
    
     let vMarca=    document.getElementById("vMarca").value;

@@ -36,15 +36,16 @@ async function registo(){
     let vMatricula=    document.getElementById("vMatricula").value;
     let vCategoria=    document.getElementById("vCategoria").value;
 
-    if(nTitular!="" && nCartao !="" && dCartao!="" && cvcCode!=""){
+    if(nTitular!="" && nCartao !="" && dCartao!="" && cvcCode!="" && vMarca!="" && vModelo!="" && vData!="" && vMatricula!="" && vCategoria!=""){
+
         try {
             let info = {
                 cardName: nTitular,
                 cardNumber: nCartao,
                 cardExpiry: dCartao,
                 cardCVV: cvcCode,
-                cardUser:userID,
                 selected: true,
+                cardUser:userID
         
             }
 
@@ -63,48 +64,46 @@ async function registo(){
                 }
             }
 
+            try {
+                let info = {
+                    vModel: vModelo,
+                    vBrand: vMarca,
+                    vRegistration: vMatricula,
+                    vDate: vData,
+                    vCategory:vCategoria,
+                    vSelected:true,
+                    vUserID:userID
+    
+                }
+    
+    
+                let veiculo = await $.ajax({
+                    url: "/api/utilizadores/"+userID+"/veiculos/novo",
+                    method: "post",
+                    data: JSON.stringify(info),
+                    contentType: "application/json",
+                    dataType: "json"
+                });
+    
+    
+                } catch (err) {
+                    console.log(err);
+                    if (err.status == 404) {
+                        alert(err.responseJSON.msg);
+                    }
+                }
+
     }
     else {
         alert("Falta preencher campos do meio de pagamento");
     } 
-
-    if(vMarca!="" && vModelo!="" && vData!="" && vMatricula!="" && vCategoria!="" ){
-        try {
-            let info = {
-                vehicleModel: vModelo,
-                vehicleBrand: vMarca,
-                vehicleRegistration: vMatricula,
-                vehicleRegistrationDate: vData,
-                vehicleUser:userID,
-                vehicleCategory: vCategoria
-
-
-            }
-
-
-            let veiculo = await $.ajax({
-                url: "/api/utilizadores/"+userID+"/veiculos/novo",
-                method: "post",
-                data: JSON.stringify(info),
-                contentType: "application/json",
-                dataType: "json"
-            });
-
-
-            } catch (err) {
-                console.log(err);
-                if (err.status == 404) {
-                    alert(err.responseJSON.msg);
-                }
-            }
+ 
         alert("Conta criada com sucesso, podes agora fazer login!");
         window.location = "login.html";
 
-    }
-    else {
-        alert("Falta preencher campos do meio de pagamento");
-    } 
 }
+
+
 
 
 

@@ -4,7 +4,6 @@ var moderador= user.user_moderador;
 var map, park;
 
 
-
 window.onload = async function () {
 
 
@@ -22,6 +21,7 @@ window.onload = async function () {
       dataType: "json"
   });
 
+  sessionStorage.setItem("parque", JSON.stringify(park));
 
 
   document.getElementById("parqueNome").innerHTML= park.park_name;
@@ -43,9 +43,12 @@ window.onload = async function () {
   if(moderador==1){
     let userDropBox= "<a href='#' class='selected'>Conta</a>"+
     "<a href='parques.html' >Parques</a>"+
-    "<a href='addparque.html'>Adicionar Parque</a>"+
+    "<a href='parque.html'>Adicionar Parque</a>"+
     "<a href='#' onclick='logout()'>Logout</a>";
     document.getElementById("userDropBox").innerHTML = userDropBox;
+
+
+    document.getElementById("btn").innerHTML= "<button id='btnInfo' onclick='EditarParque()' >Editar Parque</button>";
 
   }
 }
@@ -97,3 +100,9 @@ function logout(){
     sessionStorage.clear();
     window.location = "login.html";
   }
+
+function EditarParque(){
+  var editarApagarParque=true;
+  sessionStorage.setItem("editarApagarParque", JSON.stringify(editarApagarParque));
+  window.location = "parque.html";
+}
