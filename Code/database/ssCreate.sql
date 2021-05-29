@@ -53,7 +53,7 @@ create table parks (
     park_id int not null primary key auto_increment,
     park_name varchar(30) not null,
     park_spots int not null,
-    park_types varchar(10) not null,
+    park_types int not null,
     park_latitude decimal(10,8) not null,
     park_longitude decimal(11,8) not null,
     park_localization varchar(30) not null,
@@ -64,7 +64,8 @@ create table parks (
     park_price_hour double not null,
 	park_create_user_id int not null,
     park_ON boolean default true,
-	foreign key (park_create_user_id) references users(user_id));
+	foreign key (park_create_user_id) references users(user_id),
+    foreign key (park_types) references vehicleCategories(vehicleCategory_id ));
 
 
     
