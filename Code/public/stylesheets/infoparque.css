@@ -120,7 +120,6 @@ width: 100px;
       text-align: center;
   }
   #backArrow img {
-    margin-top: 25px;
     margin-left: 50px;
     width: 50px;
   }
@@ -154,6 +153,26 @@ width: 100px;
   .infoAndMap{
     display: flex;
   }
+
+  #btnInfo{
+    color: white;
+    background-color: black;
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: 2px solid black;
+    cursor: pointer;
+  }
+  #btn{
+    width: 140px;
+  }
+
+  #topBar{
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+
+  }
+
 
 
   
