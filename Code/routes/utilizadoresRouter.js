@@ -107,6 +107,14 @@ router.put('/verify', async function(req, res, next) {
     res.status(result.status).send(result.data);
 });
 
+//Vai buscar as reservas de um certo utilizador
+router.get('/:id/reservas', async function(req, res, next) {
+    let id = req.params.id;
+    let result = await utilizadoresModel.getUserReservas(id);
+    res.status(result.status).send(result.data);  
+});
+
+
 //Vai buscar os veiculos de um certo utilizador
 router.get('/:id/veiculos', async function(req, res, next) {
     let id = req.params.id;
@@ -150,6 +158,9 @@ router.post('/:id/meiospagamento/novo', async function(req, res, next) {
     let result = await utilizadoresModel.novoMeioPagamento(body);
     res.status(result.status).send(result.data); 
 });
+
+
+
 
 
 
