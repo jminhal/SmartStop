@@ -37,3 +37,9 @@ function editarMeioPagamento(){
 function editarVeiculo(){
   window.location = "veiculo.html";
 }
+function historicoParques(){
+  window.location = "historico.html";
+}
+
+
+
