@@ -92,14 +92,13 @@ async function registo(){
                         alert(err.responseJSON.msg);
                     }
                 }
+            alert("Conta criada com sucesso, podes agora fazer login!");
+            window.location = "login.html";
 
     }
     else {
         alert("Falta preencher campos do meio de pagamento");
     } 
- 
-        alert("Conta criada com sucesso, podes agora fazer login!");
-        window.location = "login.html";
 
 }
 
