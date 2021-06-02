@@ -1,8 +1,9 @@
 let user = JSON.parse(sessionStorage.getItem("user"));
 let parque = JSON.parse(sessionStorage.getItem("parque"));
-let editarApagarParque = JSON.parse(sessionStorage.getItem("editarApagarParque"));
 var utilizadorID= user.user_id;
 var moderador= user.user_moderador;
+
+let editarApagarParque = JSON.parse(sessionStorage.getItem("editarApagarParque"));
 var tiposCategoria=[];
 
 
@@ -10,7 +11,6 @@ var tiposCategoria=[];
 
 
 window.onload = async function () {
-    console.log(editarApagarParque)
 
     document.getElementById("userName").innerHTML = user.user_fullname;
     if (moderador == 0) {
@@ -26,7 +26,6 @@ window.onload = async function () {
       document.getElementById("userDropBox").innerHTML = userDropBox;
   
     if(editarApagarParque){
-        console.log(parque.park_types)
         document.getElementById("topBoxTitulo").innerHTML="Editar Parque";
         document.getElementById("nome").value=parque.park_name;
         document.getElementById("email").value=parque.park_email;
@@ -40,7 +39,7 @@ window.onload = async function () {
         document.getElementById("vCategoria").value=parque.park_types;
 
         document.getElementById("CriarParque").innerHTML="";
-        document.getElementById("CriarParque").innerHTML= "<button type='button' id='btnInfo' onclick='Atualizar()' >Atualizar</button> <button type='button' id='btnInfo' onclick='Remover()' >Remover</button> "
+        document.getElementById("CriarParque").innerHTML= "<button type='button' id='btnInfo' onclick='Remover()' >Remover</button> <button type='button' id='btnInfo' onclick='Atualizar()' >Atualizar</button> "
 
 
 
@@ -169,7 +168,7 @@ function Atualizar(id){
 }
 
 
-function EditarParque(park_ON){
+function EditarParque(id,park_ON){
 
 
     let nome =    document.getElementById("nome").value;
@@ -181,55 +180,63 @@ function EditarParque(park_ON){
     let vCategoria=    document.getElementById("vCategoria").value;
     let maxPessoas=    document.getElementById("maxPessoas").value;
     let horaPreco=    document.getElementById("horaPreco").value;
-
+    
  
 
     if(nome != "" && email != "" && telemovel != "" && horaInicio != "" && horaFim != "" && localizacao != "" && vCategoria != "" && maxPessoas != "" && horaPreco != ""){
-        getLocalizacao(localizacao);
+        let info=getLocalizacao(localizacao);
+        console.log(info)
 
-        try {
-            let infoLocalizacao = info.items[0];
-            let data = {
-                parkName: nome,
-                parkSports: maxPessoas,
-                parkTypes: vCategoria,
-                parkLatitude: infoLocalizacao.position.lat,
-                parkLongitude: infoLocalizacao.position.lng,
-                parkLocalizacao: infoLocalizacao.address.city,
-                parkOpenHour: horaInicio,
-                parkCloseHour: horaFim,
-                parkContact: telemovel,
-                parkEmail: email,
-                parkPrice: horaPreco,
-                parkUserCreate:utilizadorID,
-                parkON:park_ON
-            }
+        //verificar se o array da localização está vazio
+        if(info.items.length > 0){
+            console.log(1)
 
 
-
-
-
-
-
-            let result = $.ajax({
-                url: "/api/parques/"+utilizadorID+"/editar",
-                method: "put",
-                data: JSON.stringify(data),
-                contentType: "application/json",
-                dataType: "json"
-            });
-
-            } catch (err) {
-                console.log(err);
-                if (err.status == 404) {
-                    alert(err.responseJSON.msg);
+            try {
+                let infoLocalizacao = info.items[0];
+                let data = {
+                    parkName: nome,
+                    parkSports: maxPessoas,
+                    parkTypes: vCategoria,
+                    parkLatitude: infoLocalizacao.position.lat,
+                    parkLongitude: infoLocalizacao.position.lng,
+                    parkLocalizacao: infoLocalizacao.address.city,
+                    parkOpenHour: horaInicio,
+                    parkCloseHour: horaFim,
+                    parkContact: telemovel,
+                    parkEmail: email,
+                    parkPrice: horaPreco,
+                    parkUserCreate:utilizadorID,
+                    parkON:park_ON,
+                    parkID:id
                 }
+                console.log(data)
+
+                let result = $.ajax({
+                    url: "/api/parques/"+utilizadorID+"/editar",
+                    method: "put",
+                    data: JSON.stringify(data),
+                    contentType: "application/json",
+                    dataType: "json"
+                });
+
+
+                } catch (err) {
+                    console.log(err);
+                    if (err.status == 404) {
+                        alert(err.responseJSON.msg);
+                    }
+                }
+            }
+             
+            else {
+                alert("Localização inválida!")
             }
 
     }
     else {
     } 
-    if(veiculoON){
+    if(park_ON){
         alert("Informações do parque alteradas com sucesso!");
     }
     else{
@@ -243,21 +250,11 @@ function EditarParque(park_ON){
 
 }
 
-function getLocalizacao(localizacao){
+async function getLocalizacao(localizacao){
     
 
             //Usa a API do heroapi para saber a latitude, longitude e cidade de uma determinada rua
-            await $.ajax({
+            return await $.ajax({
                 url: 'https://geocode.search.hereapi.com/v1/geocode?q='+localizacao+'&apiKey=DOCDuZ1HR5WGPWZcSqcVS5YftYu2UVsQ1ILVd-uchJA',
-            }).done(function(info) {//quando vai buscar as coisas ao URL
-                //verificar se o array da localização está vazio
-                if (info.items.length > 0) {
-                    return info;
-                }
-
-    else {
-        alert("Localização inválida!")
-    }
-
-});
+            });
 }

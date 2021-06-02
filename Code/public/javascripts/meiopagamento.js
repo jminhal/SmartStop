@@ -4,8 +4,11 @@ var meios;
 
 
 
-window.onload = async function () {
 
+window.onload = async function () {
+    document.getElementById("backArrow").href = "account.html";
+    let aux="";
+    aux += "<option value= 'void' >  </option>";
     try {
         meios = await $.ajax({
 
@@ -13,30 +16,26 @@ window.onload = async function () {
             method: "get",
             dataType: "json"
           });
-          let aux="";
-          aux += "<option value= 'void' >  </option>";
-        for(let i in meios){
-
+          for(let i in meios){
             aux += "<option value='"+i+"'>  **** **** **** " + meios[i].payment_method_card_number.toString().substring(11,15)+ "</option>";
-
-
         }
-            aux += "<option value= 'add'> Adicionar cartão </option>";
-            document.getElementById("cartaoNumero").innerHTML= aux;
-
-        
-        }catch (err) {
+    }
+    catch (err) {
             console.log(err);   
             if (err.status == 404) {
                 alert(err.responseJSON.msg);
             }
     }
+    aux += "<option value= 'add'> Adicionar cartão </option>";
+    document.getElementById("cartaoNumero").innerHTML= aux;
 
 }
+
 
 function Aparecer(){
     var cartaoNumero = document.getElementById("cartaoNumero");
     var selectedValue = cartaoNumero.options[cartaoNumero.selectedIndex].value;
+    console.log(selectedValue)
     if(selectedValue=='add'){
         document.getElementById("lableInput").style.display="flex";
         document.getElementById("nTitular").value= "";
@@ -50,6 +49,7 @@ function Aparecer(){
 
     }
     else if(selectedValue=='void'){
+        console.log(1)
         document.getElementById("lableInput").style.display="none";
         document.getElementById("btnBox").innerHTML="";
 
@@ -60,7 +60,8 @@ function Aparecer(){
         document.getElementById("nCartao").value=meios[selectedValue].payment_method_card_number;
         document.getElementById("dCartao").value=meios[selectedValue].payment_method_expiry_date;
         document.getElementById("cvcCode").value=meios[selectedValue].payment_method_cvv;
-        document.getElementById("btnBox").innerHTML='<button class="btn" onclick="Remover('+meios[selectedValue].payment_method_id, meios[selectedValue].payment_method_selected+')">Remover</button><button class="btn" onclick="Atualizar('+meios[selectedValue].payment_method_id+')">Atualizar</button>';
+
+        document.getElementById("btnBox").innerHTML='<button class="btn" onclick="Remover('+meios[selectedValue].payment_method_id+','+meios[selectedValue].payment_method_selected+')">Remover</button><button class="btn" onclick="Atualizar('+meios[selectedValue].payment_method_id+')">Atualizar</button>';
         if(meios[selectedValue].payment_method_selected==false){
             document.getElementById("checkBoxLable").innerHTML="Deseja tornar este cartão como principal?";
             document.getElementById("checkBoxInput").innerHTML= '<input  id="selectedCartao" value="selectedCartao" type="checkbox">';
@@ -128,7 +129,7 @@ function Remover(id,selecionado){
 
 function Atualizar(id){
     let cartaoON= true;
-    let selectedCartao= document.getElementById("selectedCartao").checked;
+    let selectedCartao= document.getElementById("selectedCartao")?.checked;// se não tiver nada ele dá undefined
     EditarMeioPagamento(id,cartaoON,selectedCartao);
 
 }
@@ -144,16 +145,16 @@ async function EditarMeioPagamento(id,cartaoON,selecionado){
     let nCartao=    document.getElementById("nCartao").value;
     let dCartao=    document.getElementById("dCartao").value;
     let cvcCode=    document.getElementById("cvcCode").value;
-    console.log(selecionado)
-    console.log(cartaoSelecionado)
-    if(selecionado== null){
+
+    if(selecionado){
 
         cartaoSelecionado=true;
     }
-    else{
+    else if(typeof selecionado === 'undefined' ||selecionado==false) {
         cartaoSelecionado=false;
 
     }
+
 
     if(nTitular!="" && nCartao !="" && dCartao!="" && cvcCode!=""){
         try {
