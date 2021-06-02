@@ -44,7 +44,7 @@ module.exports.getParque = async function(id) {
 module.exports.editarParque = async function(body) {
     try {
         let sql = "UPDATE parks SET park_name = ?, park_types = ?, park_spots = ?, park_latitude = ?, park_longitude = ?, park_localization = ?, park_hour_open = ?, park_hour_close = ?, park_contact = ?, park_email = ?, park_price_hour = ?, park_create_user_id = ?, park_ON=? WHERE park_id = ?";
-        let result = await pool.query(sql, [body.parkName, body.parkSports, body.parkTypes, body.parkLatitude, body.parkLongitude, body.parkLocalizacao, body.parkOpenHour, body.parkCloseHour, body.parkContact, body.parkEmail, body.parkPrice, body.parkUserCreate, body.parkON]);
+        let result = await pool.query(sql, [body.parkName, body.parkSports, body.parkTypes, body.parkLatitude, body.parkLongitude, body.parkLocalizacao, body.parkOpenHour, body.parkCloseHour, body.parkContact, body.parkEmail, body.parkPrice, body.parkUserCreate, body.parkON, body.parkID]);
         
 
     } catch (err) {
