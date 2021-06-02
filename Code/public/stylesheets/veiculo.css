@@ -181,7 +181,7 @@ body{
 
 .veiculo{
   width: 100%;
-  margin-top: 5%;
+  margin-top: 2%;
   
 }
 
@@ -194,4 +194,10 @@ body{
   display: flex;
   align-content: center;
   justify-content: center;
+}
+
+
+#backArrow img {
+  margin-left: 50px;
+  width: 50px;
 }

@@ -156,12 +156,14 @@ width: 100px;
 
   #btnInfo{
     color: white;
-    background-color: black;
+    background-color:  #2D2D2D;;
     padding: 10px 24px;
     border-radius: 8px;
-    border: 2px solid black;
+    border: 2px solid #2D2D2D;
     cursor: pointer;
   }
+
+  
   #btn{
     width: 140px;
   }

@@ -1,0 +1,47 @@
+body{
+    color: black;
+    background-color: #FAF9FF;
+    font-size: large;
+}
+  
+.topBoxLogo{
+    width: 33.3%;
+}   
+header{
+    background-color: #eed029;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}  
+  #smartstopLogo {
+    padding: 5px;
+}
+.topBoxTitulo{
+    width: 33.3%;
+    display: flex;
+    justify-content:center;
+}
+.topBoxAvatar{
+    width: 33.3%;
+    display: flex;
+    justify-content: right;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+}
+.historico{
+    width: 50%;
+    margin-top: 5%;
+  }
+  #backArrow img {
+    margin-left: 50px;
+    width: 50px;
+  }
+  
+  td, th {
+    border: 1px solid #000000;
+    text-align: center;
+    padding: 8px;
+  }
+  
