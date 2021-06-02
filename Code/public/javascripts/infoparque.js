@@ -34,14 +34,14 @@ window.onload = async function () {
 
 
   if(moderador==0){
-    let userDropBox= "<a href='#' class='selected'>Conta</a>"+
+    let userDropBox= "<a href='account.html'>Conta</a>"+
     "<a href='parques.html' >Parques</a>"+
     "<a href='#' onclick='logout()'>Logout</a>";
     document.getElementById("userDropBox").innerHTML = userDropBox;
 
   }
   if(moderador==1){
-    let userDropBox= "<a href='#' class='selected'>Conta</a>"+
+    let userDropBox= "<a href='account.html'>Conta</a>"+
     "<a href='parques.html' >Parques</a>"+
     "<a href='parque.html'>Adicionar Parque</a>"+
     "<a href='#' onclick='logout()'>Logout</a>";
