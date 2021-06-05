@@ -78,7 +78,12 @@ create table parks (
     reservation_status int not null default 4, 
     reservation_park_id int not null,
     reservation_payment_method int not null,
+    reservation_vehicle int not null,
+    reservation_user_id int not null,
+    reservation_ON boolean default true,
     foreign key (reservation_park_id) references parks(park_id),
+    foreign key (reservation_vehicle) references vehicles(vehicle_id),
+    foreign key (reservation_user_id) references users(user_id),
     foreign key (reservation_payment_method) references payment_methods(payment_method_id));
     
 

@@ -27,6 +27,7 @@ INSERT INTO vehicles(vehicle_model,vehicle_brand, vehicle_registration, vehicle_
 INSERT INTO vehicles(vehicle_model,vehicle_brand, vehicle_registration, vehicle_registration_date, vehicle_user_id, vehicle_category) VALUES('Ferrari','458','AA3212','2000-12-12',3,1);
 
 
+INSERT INTO reservations(reservation_date, reservation_duration, reservation_start_day, reservation_status, reservation_park_id, reservation_payment_method, reservation_vehicle, reservation_user_id) VALUES('2000-12-12','10:00:00','2000-12-13',4 , 1 , 1, 1, 1);
 
 
 
