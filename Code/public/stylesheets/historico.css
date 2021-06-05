@@ -27,8 +27,6 @@ header{
     justify-content: right;
 }
 .main{
-    display: flex;
-    flex-direction: column;
 }
 .historico{
     width: 50%;
@@ -45,3 +43,8 @@ header{
     padding: 8px;
   }
   
+  #tabela{
+    display: flex;
+    justify-content: center;
+
+  }
