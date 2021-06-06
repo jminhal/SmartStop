@@ -71,14 +71,14 @@ body{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 5%;
+  padding-top: 2%;
 
 }
 
-.mPagamento,.veiculo,.descontos, .hParque{
+.mPagamento,.veiculo,.descontos, .hParque, .minhaConta{
   display: flex;
   flex-direction: row;
-  padding-bottom: 20px;
+  padding-bottom: 5%;
 }
 .icon{
   width: 50px;
@@ -117,7 +117,7 @@ width: 100px;
   align-items: center;
 }
 
-#mPagamento, #veiculo, #hParque{
+#mPagamento, #veiculo, #hParque, #minhaConta{
   cursor: pointer;
 }
 

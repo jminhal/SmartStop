@@ -38,13 +38,27 @@ header{
   }
   
   td, th {
-    border: 1px solid #000000;
+    border: 1px solid #2D2D2D;
     text-align: center;
     padding: 8px;
   }
   
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 75%;
+  }
   #tabela{
     display: flex;
     justify-content: center;
+  }
 
+  th{
+
+    background-color: #2D2D2D;
+    color: white;
+  }
+
+  td{
+    color: #2D2D2D;
   }
