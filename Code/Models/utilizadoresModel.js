@@ -97,7 +97,7 @@ module.exports.getUserVeiculos = async function(id) {
 
 module.exports.getUserReservas = async function(id) {
     try {
-        let sql = "SELECT P.park_name, P.park_id, P.park_localization, DATE_FORMAT(R.reservation_date, '%d-%m-%y') AS 'reservation_date' , DATE_FORMAT(R.reservation_start_day, '%d-%m-%y') AS 'reservation_start_day' , DATE_FORMAT(R.reservation_duration, '%H:%i') AS 'reservation_duration', V.vehicle_model, V.vehicle_brand, MP.payment_method_card_number,R.reservation_duration, P.park_price_hour FROM reservations AS R, payment_methods AS MP, vehicles AS V, users AS U, parks AS P WHERE U.user_id=? AND P.park_id=R.reservation_park_id AND V.vehicle_id=R.reservation_vehicle AND MP.payment_method_id=R.reservation_payment_method GROUP BY R.reservation_id";
+        let sql = "SELECT P.park_name, P.park_id, P.park_localization, DATE_FORMAT(R.reservation_date, '%d/%m/%Y') AS 'reservation_date' , DATE_FORMAT(R.reservation_start_day, '%d/%m/%Y') AS 'reservation_start_day' , DATE_FORMAT(R.reservation_duration, '%H:%i') AS 'reservation_duration', V.vehicle_model, V.vehicle_brand, MP.payment_method_card_number,R.reservation_duration, P.park_price_hour FROM reservations AS R, payment_methods AS MP, vehicles AS V, users AS U, parks AS P WHERE U.user_id=? AND P.park_id=R.reservation_park_id AND V.vehicle_id=R.reservation_vehicle AND MP.payment_method_id=R.reservation_payment_method GROUP BY R.reservation_id";
         let result = await pool.query(sql, [id]);
         if (result.length > 0) {
             return {status: 200, data: result};
