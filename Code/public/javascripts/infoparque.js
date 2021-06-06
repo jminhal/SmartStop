@@ -7,6 +7,9 @@ var map, park;
 window.onload = async function () {
 
 
+
+
+
   document.getElementById("backArrow").href = sessionStorage.getItem("pagina");
   document.getElementById("userName").innerHTML=user.user_fullname;
 
@@ -23,6 +26,7 @@ window.onload = async function () {
 
   sessionStorage.setItem("parque", JSON.stringify(park));
 
+  lugaresOcupados=10;
 
   document.getElementById("parqueNome").innerHTML= park.park_name;
   document.getElementById("email").innerHTML= park.park_email;
@@ -30,7 +34,16 @@ window.onload = async function () {
   document.getElementById("horasAbertura").innerHTML= park.park_hour_open;
   document.getElementById("horaFecho").innerHTML= park.park_hour_close;
   document.getElementById("localizacao").innerHTML= park.park_localization;
-  document.getElementById("lugaresMax").innerHTML= park.park_spots+"/"+park.park_spots;
+  document.getElementById("lugaresMax").innerHTML= park.park_spots+"/"+lugaresOcupados;
+
+
+  let percentagem= Math.round((lugaresOcupados* 100)/park.park_spots);
+ 
+  document.getElementById("estatisticas").innerHTML=percentagem+'%';
+
+
+
+  document.getElementById('estatisticas').style.width = percentagem+'%';
 
 
   if(moderador==0){
@@ -106,3 +119,10 @@ function EditarParque(){
   sessionStorage.setItem("editarApagarParque", JSON.stringify(editarApagarParque));
   window.location = "parque.html";
 }
+
+
+
+
+
+
+

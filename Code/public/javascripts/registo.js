@@ -1,3 +1,26 @@
+var editarInfoConta = true;
+
+window.onload = async function () {
+
+    console.log(editarInfoConta)
+    if(editarInfoConta){
+        document.getElementById("topBoxAvatar").remove();
+
+        document.getElementById("topBoxTitulo").innerHTML="Informação de conta";
+
+        
+
+    }
+    document.getElementById("topBoxTitulo").innerHTML="Registo";
+
+
+}
+
+
+
+
+
+
 async function registo() {
     let name = document.getElementById("name").value;
     let email = document.getElementById("email").value;

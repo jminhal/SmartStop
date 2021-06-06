@@ -41,5 +41,9 @@ function historicoParques(){
   window.location = "historico.html";
 }
 
+function minhaConta(){
+  window.location = "registo.html";
+}
+
 
 
