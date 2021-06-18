@@ -18,6 +18,7 @@ create table users (
     user_nif int not null,                        
     user_moderador boolean default false,
     user_active boolean default false,
+    user_ON boolean default true,
     unique key unique_email(user_email));
     
 create table vehicles (
@@ -69,8 +70,7 @@ create table parks (
 
 
     
-
-    create table reservations (
+create table reservations (
     reservation_id int not null primary key auto_increment,
     reservation_date datetime default current_timestamp,
     reservation_duration datetime not null,
