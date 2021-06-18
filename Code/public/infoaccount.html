@@ -1,0 +1,71 @@
+<html>
+  <head>
+     <!-- CSS -->
+     <link rel="stylesheet" href="./stylesheets/infoaccount.css">
+
+
+
+    <!-- CSS Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
+
+
+     <!-- JQuery -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   
+     <!-- JS -->
+     <script src="javascripts/infoaccount.js"></script>
+
+    <title>SmartStop</title>
+  </head>
+  <body>
+    <header class= "header">
+      <section class="topBoxLogo"> <img id="smartstopLogo" src="./icons/smartstopLogo.png" alt="smartstopLogo"> </section>
+      <section class="topBoxTitulo"><h1 id="topBoxTitulo">Editar conta</h1></section>
+      <section class= "topBoxHamburger">
+        <div class="dropdown">
+            <div class="tbaChild">
+                <img id="hamburgerIcon" src="./icons/hamburgerIcon.png" alt="hamburgerIcon">
+            </div>
+            <div class="dropdown-content" id="userDropBox"></div>
+        </div>
+    </section>
+  </header> 
+    <section class="lableInput">
+      <div class="boxLabel">
+        <label class="label">Nome Completo:</label>
+        <label class="label">Palavra-Chave:</label>
+        <label class="label">Email:</label>
+        <label class="label">Data de Nascimento:</label> 
+        <label class="label">Numero Telemovel:</label>
+        <label class="label">NIF:</label>
+      </div>
+      <div class="boxInput">
+        <div>
+          <input type="text" placeholder="Escreva o seu nome" class="input" id="name">
+        </div>
+        <div>
+          <input type="password" placeholder="A sua senha" class="input" id="pw">
+        </div>
+        <div>
+          <label class="label"  id="email"></label>
+        </div>
+        <div>
+          <input id="date" class="input" type="date" >
+        </div>
+        <div>
+          <input type="text" placeholder="Escreva o seu telemovel" class="input" id="telemovel">
+        </div>
+        <div>
+          <input type="text" placeholder="Escreva o seu nif" class="input" id="nif">
+        </div>
+      </div>
+    </section>
+  <section class="btnBox">
+    <button class="btn" onclick="Atualizar()" id="btn">Editar Informação</button>
+    <button class="btn" onclick="Remover()" id="btn">Apagar Conta</button>
+
+  </section>
+  
+  </body>
+</html>
+
