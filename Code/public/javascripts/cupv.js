@@ -93,7 +93,7 @@ async function registo(){
                     }
                 }
             alert("Conta criada com sucesso, podes agora fazer login!");
-            window.location = "login.html";
+            window.location = "index.html";
 
     }
     else {
