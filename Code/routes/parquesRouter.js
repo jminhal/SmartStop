@@ -22,8 +22,16 @@ router.put('/:id/editar', async function(req, res, next) {
     let id = req.params.id;
     let body = req.body;
     body.park_id=id;
-    console.log(body)
     let result = await parquesModel.editarParque(body);
+    res.status(result.status).send(result.data);  
+});
+
+
+
+//Vai buscar as reservas de um certo utilizador
+router.get('/:id/reservas', async function(req, res, next) {
+    let id = req.params.id;
+    let result = await parquesModel.getReservasParque(id);
     res.status(result.status).send(result.data);  
 });
 
