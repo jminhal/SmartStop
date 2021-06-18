@@ -1,48 +1,92 @@
 <html>
-  <head>
-    <link rel="stylesheet" href="./stylesheets/style.css">
-    <title>SmartStop</title>
-  </head>
-  <body>
-    <header class= "header">
-      <section class="topBoxLogo"> <img id="smartstopLogo" src="./icons/smartstopLogo.png" alt="smartstopLogo"> </section>
-      <section class="topBoxTitulo"></section>
-      <section class= "topBoxAvatar">
-          <div class="dropdown">
-              <div class="tbaChild">
-                <img id="hamburgerIcon" src="./icons/hamburgerIcon.png" alt="hamburgerIcon">
-              </div>
-              <div class="dropdown-content" id="userDropBox">
-                <a href='login.html'>Entrar</a>
-                <a href='registo.html'>Registo</a>
-              </div>
-          </div>
-      </section>
-  </header> 
-    <div class="imgQSN">
-      <section class="img">
-        <img src="./imagens/car1.png" alt="Carro1" class="car">
-        <img src="./imagens/car2.png" alt="Carro2" class="car" style="margin-bottom: 25%;">
-      </section>
-      <section class="qsn">
-        <h1 id="titulo">Quem Somos nós?</h1>
-        <p>XXXXXXXXXXXXXXXXXXX</p>
-      </section>
-    </div>
-    <div class="bottomImgs">
-      <section class="boxBottom">
-        <img src="./icons/checkIcon.png" alt="checkIcon">
-        <h3>Easily accessible</h3>
-        <p>Never has an application been</p>
-        <p>so intuitive and easy to use!</p>
-      </section>
-      <section class="boxBottom" style="margin-left: 10%;">
-        <img src="./icons/freeIcon.png" alt="freeIcon">
-        <h3>Completely free</h3>
-        <p>You don't have to pay anything!</p>
-        <p>Yes our application is free!</p>
-      </section>
-    </div>
-  </body>
-</html>
 
+<head>
+  <!-- CSS -->
+  <link rel="stylesheet" href="./stylesheets/style.css">
+
+  <!-- CSS Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
+
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- JS -->
+  <script src="javascripts/index.js"></script>
+
+
+
+
+
+  <title>SmartStop</title>
+</head>
+
+<body>
+  <header class="header">
+    <section class="topBoxLogo"> <img id="smartstopLogo" src="./icons/smartstopLogo.png" alt="smartstopLogo"> </section>
+    <section class="topBoxTitulo"></section>
+    <section class="topBox">
+      <div id="avaBtn"onclick='teste()'>
+        <img id="avatar" src="./icons/userIconIndex.png" alt="avatar">
+        <h4>Área reservada</h4>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section id="fechar"><img src="./icons/closeIcon.png" alt="fecharIcon" id="fecharIcon" onclick='Fechar()'></section>
+    <section id="LoginRegisto">
+      <section class="boxChild" id="boxChild"></section>
+    </section>
+    <section id="indexInfo">
+      <section id="textoCarro">
+        <section id="texto">
+          <div>
+            <h3>Dificuldade em estacionar?</h3>
+            <h3>Dificuldade em encontrar estacionamento?</h3>
+            <h3>Faz alterações no seu dia-a-dia para encontrar lugar?</h3>
+          </div>
+          <div>
+            <h1>Use SmartSmart e esses problemas</h1>
+            <h1>vão deixar de existir!</h1>
+          </div>
+        </section>
+        <section id="slides">
+          <img src="./imagens/car1.png" alt="carro" id="carro">
+        </section>
+      </section>
+      <section>
+        <div>
+          <div class="tituloPack">
+            <h1>Os nossos Packs!</h1>
+          </div>
+          <div>
+            <img src="./imagens" alt="gratis" id="gratis">
+            <img src="./imagens" alt="estudante" id="estudante">
+            <img src="./imagens" alt="normal" id="normal">
+            <img src="./imagens" alt="amigo" id="amigo">
+            <img src="./imagens" alt="familiar" id="familiar">
+          </div>
+        </div>
+        <div>
+          <div class="tituloPack">
+            <h1>Packs especiais!</h1>
+          </div>
+          <div>
+            <img src="./imagens" alt="extraNormal" id="extraNormal">
+            <img src="./imagens" alt="extraAmigo" id="extraAmigo">
+            <img src="./imagens" alt="extrafamiliar" id="extrafamiliar">
+          </div>
+        </div>
+      </section>
+      <section id="bottomBox">
+        <h2 style="width: 700px">Podes também fazer já o download da nossa aplicação de forma gratuita</h2>
+      </section>
+
+
+
+
+    </section>
+  </main>
+</body>
+
+</html>
