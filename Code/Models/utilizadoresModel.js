@@ -4,7 +4,7 @@ var pool = require("./connection");
 
 module.exports.getUserByEmail = async function(email) {
     try {
-        let sql = "SELECT * FROM users WHERE user_email = ?";
+        let sql = "SELECT user_id, user_fullname, user_email, user_password, DATE_FORMAT(user_birthday, '%Y-%m-%d') AS 'user_birthday', user_mobile, user_nif, user_moderador, user_active FROM users WHERE user_email = ?";
         let utilizador = await pool.query(sql, [email]);
         if (utilizador.length > 0) {
 
@@ -97,7 +97,7 @@ module.exports.getUserVeiculos = async function(id) {
 
 module.exports.getUserReservas = async function(id) {
     try {
-        let sql = "SELECT P.park_name, P.park_id, P.park_localization, DATE_FORMAT(R.reservation_date, '%d/%m/%Y') AS 'reservation_date' , DATE_FORMAT(R.reservation_start_day, '%d/%m/%Y') AS 'reservation_start_day' , DATE_FORMAT(R.reservation_duration, '%H:%i') AS 'reservation_duration', V.vehicle_model, V.vehicle_brand, MP.payment_method_card_number,R.reservation_duration, P.park_price_hour FROM reservations AS R, payment_methods AS MP, vehicles AS V, users AS U, parks AS P WHERE U.user_id=? AND P.park_id=R.reservation_park_id AND V.vehicle_id=R.reservation_vehicle AND MP.payment_method_id=R.reservation_payment_method GROUP BY R.reservation_id";
+        let sql = "SELECT P.park_name, P.park_id, P.park_localization, DATE_FORMAT(R.reservation_date, '%d-%m-%y') AS 'reservation_date' , DATE_FORMAT(R.reservation_start_day, '%d-%m-%y') AS 'reservation_start_day' , DATE_FORMAT(R.reservation_duration, '%H:%i:%s') AS 'reservation_duration', V.vehicle_model, V.vehicle_brand, MP.payment_method_card_number,R.reservation_duration, P.park_price_hour FROM reservations AS R, payment_methods AS MP, vehicles AS V, users AS U, parks AS P WHERE U.user_id=? AND P.park_id=R.reservation_park_id AND V.vehicle_id=R.reservation_vehicle AND MP.payment_method_id=R.reservation_payment_method GROUP BY R.reservation_id";
         let result = await pool.query(sql, [id]);
         if (result.length > 0) {
             return {status: 200, data: result};
@@ -178,3 +178,35 @@ module.exports.novoVeiculo = async function(body) {
     } 
 };
 
+
+
+
+
+
+module.exports.editarUser = async function(body) {
+    try {
+        let sql = "UPDATE users SET user_fullname = ?, user_email = ?, user_password = ?, user_birthday = ?,  user_mobile = ?, user_nif = ? WHERE user_id=?";
+        let result = await pool.query(sql, [body.fullname, body.email, body.password, body.birthday, body.mobile, body.nif, body.userID]);
+        return {status: 200, data: result};
+
+
+        
+    } catch (err) {
+        console.log(err);
+        return {status: 500, data: err};
+    } 
+};
+
+
+
+module.exports.getAllUsers = async function() {
+    try {
+        let sql = "SELECT user_id, user_fullname, user_email, user_password, DATE_FORMAT(user_birthday, '%Y-%m-%d') AS 'user_birthday', user_mobile, user_nif, user_moderador, user_active FROM users";
+        let result = await pool.query(sql);
+        return {status: 200, data: result};
+
+    } catch (err) {
+        console.log(err);
+        return {status: 500, data: err};
+    } 
+};
