@@ -1,7 +1,7 @@
 body{
     color: black;
     background-color: #FAF9FF;
-  
+    font-family: 'Montserrat', sans-serif;
   
 }
   
@@ -67,14 +67,6 @@ body{
  
 
 
-
-
-
-#avatar{
-  margin-top: 25px;
-  width: 13%;
-}
-
 .topBoxLogo{
   width: 33.3%;
 }
@@ -83,19 +75,19 @@ body{
   display: flex;
   justify-content:center;
 }
-.topBoxAvatar{
+
+.topBoxHamburger{
   width: 33.3%;
   display: flex;
   justify-content: right;
 }
-#logoIcon{
-width: 100px;
+#hamburgerIcon{
+width: 60px;
+}
+.tbaChild{
+width: 143px;
 }
 
-.tbaChild{
-  display: flex;
-  align-items: center;
-}
 
 
 
@@ -154,24 +146,27 @@ width: 100px;
     display: flex;
   }
 
-  #btnInfo{
+  #btnEditarParque, #btnHistoricoParque{
     color: white;
     background-color:  #2D2D2D;;
     padding: 10px 24px;
     border-radius: 8px;
     border: 2px solid #2D2D2D;
     cursor: pointer;
+    margin-top: 2%;
   }
 
   
-  #btn{
-    width: 140px;
+  #btns{
+    display: flex;
+    flex-direction: column;
   }
 
   #topBar{
     margin-top: 25px;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 25px;
 
   }
 

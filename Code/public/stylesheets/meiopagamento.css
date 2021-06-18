@@ -2,6 +2,7 @@ body{
     color: black;
     background-color: #FAF9FF;
     font-size: large;
+    font-family: 'Montserrat', sans-serif;
 }
   
 
@@ -160,7 +161,7 @@ body{
 
 .pagamento{
   width: 100%;
-  margin-top: 5%;
+  margin-top: 4%;
   
 }
 
@@ -173,6 +174,7 @@ body{
   display: flex;
   align-content: center;
   justify-content: center;
+
 }
 
 

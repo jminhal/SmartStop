@@ -1,6 +1,7 @@
 body{
     color: black;
     background-color: #FAF9FF;
+    font-family: 'Montserrat', sans-serif;
   
   
 }
@@ -104,21 +105,23 @@ body{
   display: flex;
   justify-content:center;
 }
-.topBoxAvatar{
+.topBoxHamburger{
   width: 33.3%;
   display: flex;
   justify-content: right;
 }
-#logoIcon{
-width: 100px;
+#hamburgerIcon{
+width: 60px;
 }
 .tbaChild{
-  display: flex;
-  align-items: center;
+width: 143px;
+
 }
 
 #mPagamento, #veiculo, #hParque, #minhaConta{
   cursor: pointer;
 }
+
+
 
 

@@ -1,121 +1,173 @@
 body{
-  color: black;
-  background-color: #FAF9FF;
+    color: black;
+    background-color: #FAF9FF;
+    font-size: large;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  header{
+    background-color: #eed029;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+    
+  .topBoxLogo{
+    width: 33.3%;
+
+  }
+  #smartstopLogo {
+    padding: 5px;
+  }
+  .topBoxTitulo{
+    width: 33.3%;
+    display: flex;
+    justify-content:center;
+
+
+  }
+  .topBox{
+    width: 33.3%;
+    justify-content: right;
+    display: flex;
+    margin-right: 25px;
+  }
+  
+  
+  #LoginRegisto,#fechar{
+    z-index: 1100;
+    position: absolute;
+    display: none;
+  
+  }
+  #fecharIcon{
+    width: 55px;
+    height: 55px;
+  }
+  #fechar{
+    margin-top: 50px;
+    margin-left: 50px;
+  }
+  .boxChild{
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+    border: 2px solid #2D2D2D;
+    background-color: whitesmoke;
+  
+  }
   
 
-
-}
-
-
-.imgQSN{
+.inputBox{
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  margin-top: 2%;
+  
+
 }
-.img{
-  padding-top: 5%;
-  width: 50%;
+
+.input{
+  width: 250px;
+  height: 50px;
+  font-size: large;
+  margin-bottom: 2%;
+}
+
+
+.btnBox{
+  width: min-content;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding-left:5%;
+  margin-top: 15%;
+}
+.btn{
+  color: white;
+  background-color: #2D2D2D;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #2D2D2D;
+  cursor: pointer;
+  width: 100px;
+  margin-bottom: 10px;
 }
 
-.qsn{
-  padding-top: 5%;
-  width: 50%;
-}
-
-.car{
-  padding-top: 10%;
-  width: 50%;
-
-}
-#smartstopLogo {
-  padding: 5px;
-}
-header{
+.newPasswordBTN{
+  color: #2D2D2D;
   background-color: #eed029;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid #eed029;
+  cursor: pointer;
+  width: 200px;
+  margin-top: 20px;
 }
-
   
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  z-index: 1100;
-  min-width: 105px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.selected {
-  background-color: #CECECE;
-}
 
 
 
 
-#hamburgerIcon{
-  width: 55px;
-  padding-right: 50px;
-}
 
-#titulo{
-  font-size: 50px;
+
+.label{
   display: flex;
-  justify-content: center;
-
+  flex-direction: column;
+  width: 250px;
+  height: 50px;
+  font-size: large;
 }
-.bottomImgs{
 
+
+#avaBtn{
+  background-color: #2D2D2D;
+  width: 225px;
+  height: 60px;
+  cursor: pointer;
+  color: white;
   display: flex;
-  justify-content: center;
-
+  align-items: center;
+}
+#avatar{
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+  margin-left: 5px;
 
 }
 
-.carro{
+
+#textoCarro{
   display: flex;
-  justify-content: center;
-}
-.checkIcon{
-  width: 10%;
-  height: auto;
-}
-.boxBottom{
-  display: flex;
+  width: 100%;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  margin-top: 30px;
+}
+
+#texto{
+  margin-right: 10%;
+}
+#carro{
+  margin-top: 10%;
+  margin-left: 10%;
 }
 
 
-
-.topBoxLogo{
-  width: 33.3%;
-}
-.topBoxTitulo{
-  width: 33.3%;
+.tituloPack{
   display: flex;
-  justify-content:center;
+  justify-content: center;
 }
-.topBoxAvatar{
-  width: 33.3%;
+
+#bottomBox{
   display: flex;
   justify-content: right;
+
+}
+
+#slides{
+  width: 500px;
+  height: 500px;
 }

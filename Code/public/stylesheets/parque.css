@@ -1,6 +1,7 @@
 body{
   color: black;
   background-color: #FAF9FF;
+  font-family: 'Montserrat', sans-serif;
 
 }
 
@@ -17,19 +18,11 @@ body{
     display: flex;
     justify-content:center;
   }
-  .topBoxAvatar{
+  .topBoxHamburger{
     width: 33.3%;
     display: flex;
     justify-content: right;
   }
-  #logoIcon{
-  width: 100px;
-  }
-  .tbaChild{
-    display: flex;
-    align-items: center;
-  }
-
 
   #smartstopLogo {
     padding: 5px;
@@ -118,5 +111,14 @@ body{
 
 
 .main{
-  margin-top: 5%;
+  margin-top: 4%;
 }
+
+
+#hamburgerIcon{
+  width: 60px;
+  }
+  .tbaChild{
+  width: 143px;
+  
+  }

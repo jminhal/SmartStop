@@ -2,6 +2,7 @@
 body{
     color: black;
     background-color: #FAF9FF;
+    font-family: 'Montserrat', sans-serif;
   
   
 }
@@ -36,7 +37,7 @@ body{
     align-items: center;
     justify-content: space-between;
   }
-  
+
   
   .dropdown-content {
     display: none;
@@ -86,11 +87,10 @@ body{
   height: 50px;
   padding-right: 20px;
 }
-.avatarImg{
-  padding-top: 35px;
+.topBoxHamburger{
+  width: 33.3%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: right;
 }
 #avatar{
   margin-top: 25px;
@@ -110,21 +110,13 @@ body{
   display: flex;
   justify-content: right;
 }
-#logoIcon{
-  width: 100px;
-}
-.tbaChild{
-  display: flex;
-  align-items: center;
-}
 
-
-#map { height: 765px; }
+#map { height: 755px; }
 
 
 #btnInfo{
   color: white;
-  background-color:  #2D2D2D;;
+  background-color:  #2D2D2D;
   padding: 10px 24px;
   border-radius: 8px;
   border: 2px solid #2D2D2D;
@@ -168,3 +160,12 @@ body{
   overflow-y: scroll;
   font-size: 16px;
 }
+
+
+#hamburgerIcon{
+  width: 60px;
+  }
+  .tbaChild{
+  width: 143px;
+  
+  }

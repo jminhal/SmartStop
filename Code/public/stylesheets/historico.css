@@ -2,6 +2,7 @@ body{
     color: black;
     background-color: #FAF9FF;
     font-size: large;
+    font-family: 'Montserrat', sans-serif;
 }
   
 .topBoxLogo{
@@ -26,8 +27,7 @@ header{
     display: flex;
     justify-content: right;
 }
-.main{
-}
+
 .historico{
     width: 50%;
     margin-top: 5%;
