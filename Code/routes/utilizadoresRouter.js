@@ -141,11 +141,14 @@ router.post('/:id/veiculos/novo', async function(req, res, next) {
     res.status(result.status).send(result.data);  
 });
 
+
+
 //Vai adicionar um nnovo parque
 router.post('/:id/parque/novo', async function(req, res, next) {
     let id = req.params.id;
     let body = req.body;
     body.park_create_user_id = id;
+    console.log(body)
     let result = await utilizadoresModel.novoParque(body);
     res.status(result.status).send(result.data); 
 });
@@ -160,6 +163,41 @@ router.post('/:id/meiospagamento/novo', async function(req, res, next) {
 });
 
 
+
+
+
+//vai editar as informações de um certo meio de pagamento
+router.put('/:id/editar', async function(req, res, next) { 
+    let id = req.params.id;
+    let body = req.body;
+    body.userID=id;
+    let salt = genSaltSync(10);
+    body.password = hashSync(body.password, salt);
+    let result = await utilizadoresModel.editarUser(body);
+    if (result.status === 200) {
+
+
+                return res.json({
+                    success: 1,
+                    msg: "informações alteradas com sucesso",
+                    data: result.data
+                });
+
+
+
+    }
+
+    res.status(result.status).send(result.data);
+});
+
+
+
+
+//vai buscar todos os utilizadores
+router.get('/', async function(req, res, next) {
+    let result = await utilizadoresModel.getAllUsers();
+    res.status(result.status).send(result.data);  
+});
 
 
 
