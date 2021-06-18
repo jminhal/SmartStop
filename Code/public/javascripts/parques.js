@@ -2,10 +2,13 @@ let user = JSON.parse(sessionStorage.getItem("user"));
 var utilizadorID = user.user_id;
 var moderador = user.user_moderador;
 
+
+var editarApagarParque=false;
+sessionStorage.setItem("editarApagarParque", JSON.stringify(editarApagarParque));
+
 window.onload = async function () {
 
 
-  document.getElementById("userName").innerHTML = user.user_fullname;
   if (moderador == 0) {
     let userDropBox = "<a href='account.html'>Conta</a>" +
       "<a href='#' class='selected' >Parques</a>" +
@@ -17,6 +20,7 @@ window.onload = async function () {
     let userDropBox = "<a href='account.html'>Conta</a>" +
       "<a href='#' class='selected'>Parques</a>" +
       "<a href='parque.html'>Adicionar Parque</a>" +
+      "<a href='dashboard.html' >Dashboard</a>"+
       "<a href='#' onclick='logout()'>Logout</a>";
     document.getElementById("userDropBox").innerHTML = userDropBox;
 
@@ -34,7 +38,7 @@ window.onload = async function () {
 
 function logout() {
   sessionStorage.clear();
-  window.location = "login.html";
+  window.location = "index.html";
 }
 
 
@@ -65,7 +69,7 @@ async function mapSetup() {
         //Lista com as ações
         html += "<div class='parqueLista' onclick='parqueCenter("+parque.park_latitude+","+parque.park_longitude+")'>"+
         "<p> Nome do parque:     " + parque.park_name + "</p>"+
-        "<p> Total de lugares/ lugares ocupados:     " + parque.park_spots + "/" + parque.park_spots + "</p></div><hr>";
+        "<p> Total de lugares/ lugares ocupados:     " + parque.park_spots + "/" + parque.lugarOcupados + "</p></div><hr>";
 
 
       //Quando clica no parque
@@ -123,5 +127,5 @@ async function pesquisar() {
 }
 
 function parqueCenter(lat, lng) {
-  map.setView(new L.LatLng(parque.park_latitude, parque.park_longitude),30);
+  map.setView(new L.LatLng(lat, lng),30);
 }

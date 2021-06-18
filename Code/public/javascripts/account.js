@@ -1,11 +1,13 @@
 let user = JSON.parse(sessionStorage.getItem("user"));
 var utilizadorID= user.user_id;
 var moderador= user.user_moderador;
+var editarApagarParque=false;
+sessionStorage.setItem("editarApagarParque", JSON.stringify(editarApagarParque));
+
 
 
 window.onload = async function () {
 
-  document.getElementById("userName").innerHTML=user.user_fullname;
   if(moderador==0){
     let userDropBox= "<a href='#' class='selected'>Conta</a>"+
     "<a href='parques.html' >Parques</a>"+
@@ -18,17 +20,18 @@ window.onload = async function () {
     let userDropBox= "<a href='#' class='selected'>Conta</a>"+
     "<a href='parques.html' >Parques</a>"+
     "<a href='parque.html'>Adicionar Parque</a>"+
+    "<a href='dashboard.html' >Dashboard</a>"+
     "<a href='#' onclick='logout()'>Logout</a>";
     document.getElementById("userDropBox").innerHTML = userDropBox;
 
   }
 }
 
-
-function logout(){
+function logout() {
   sessionStorage.clear();
-  window.location = "login.html";
+  window.location = "index.html";
 }
+
 
 function editarMeioPagamento(){
   
@@ -38,11 +41,13 @@ function editarVeiculo(){
   window.location = "veiculo.html";
 }
 function historicoParques(){
+  var userHistorico = true;
+  sessionStorage.setItem("userHistorico", JSON.stringify(userHistorico));
   window.location = "historico.html";
 }
 
 function minhaConta(){
-  window.location = "registo.html";
+  window.location = "infoaccount.html";
 }
 
 
