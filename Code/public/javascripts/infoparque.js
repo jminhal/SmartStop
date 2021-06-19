@@ -35,7 +35,7 @@ window.onload = async function () {
   sessionStorage.setItem("parque", JSON.stringify(park));
 
 
-
+  console.log(park)
   document.getElementById("parqueNome").innerHTML = park.park_name;
   document.getElementById("email").innerHTML = park.park_email;
   document.getElementById("telemovel").innerHTML = park.park_contact;
@@ -43,6 +43,7 @@ window.onload = async function () {
   document.getElementById("horaFecho").innerHTML = park.park_hour_close;
   document.getElementById("localizacao").innerHTML = park.park_localization;
   document.getElementById("lugaresMax").innerHTML = park.park_spots + "/" + park.lugarOcupados;
+  document.getElementById("preco").innerHTML = park.park_price_hour+"€";
 
 
   let percentagem = Math.round((park.lugarOcupados * 100) / park.park_spots);
