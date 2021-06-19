@@ -4,25 +4,7 @@ var moderador= user.user_moderador;
 console.log(user)
 
 window.onload = async function () {
-
-
-  if(moderador==0){
-    let userDropBox= "<a href='account.html'>Conta</a>"+
-    "<a href='parques.html' >Parques</a>"+
-    "<a href='#' onclick='logout()'>Logout</a>";
-    document.getElementById("userDropBox").innerHTML = userDropBox;
-
-  }
-  if(moderador==1){
-
-    let userDropBox= "<a href='account.html'>Conta</a>"+
-    "<a href='parques.html' >Parques</a>"+
-    "<a href='parque.html'>Adicionar Parque</a>"+
-    "<a href='dashboard.html' >Dashboard</a>"+
-    "<a href='#' onclick='logout()'>Logout</a>";
-    document.getElementById("userDropBox").innerHTML = userDropBox;
-
-  }
+  document.getElementById("backArrow").href = "account.html";
 
   let password2 = prompt("Confirmar password:");
 
