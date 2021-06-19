@@ -97,12 +97,6 @@ width: 143px;
     border-radius: 40px;
 }
 
-#maisInfoBox{
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 
 
   .botao{
@@ -117,7 +111,7 @@ width: 143px;
   }
 
   .mapaBox{
-    width: 50%;
+    width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -135,7 +129,7 @@ width: 143px;
   .checkBoxs div {
     margin-bottom: 10px;
   }
-  .boxs{
+  .maisInfoBox{
     margin-top: 25px;
     height: 100%;
     display: flex;
@@ -144,6 +138,7 @@ width: 143px;
 
   .infoAndMap{
     display: flex;
+    justify-content: center;
   }
 
   #btnEditarParque, #btnHistoricoParque{
@@ -189,6 +184,31 @@ width: 143px;
  
 
   }
+
+  
+.boxLabel{
+  display: flex;
+  flex-direction: column;
+  width: min-content;
+}
+
+.label{
+  width: 350px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+
+
+}
+
+.lableInput{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+}
+
 
 
 

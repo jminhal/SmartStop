@@ -171,3 +171,27 @@ body{
   width: 500px;
   height: 500px;
 }
+.imagens{
+  display: flex;
+  justify-content: center;
+}
+
+
+.zoom {
+  transition: transform .2s;
+  margin: 0 10;
+  cursor: pointer;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.1);  /* IE 9 */
+  -webkit-transform: scale(1.1);  /* Safari 3-8 */
+  transform: scale(1.1); 
+}
+
+.packs{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 5%;
+}

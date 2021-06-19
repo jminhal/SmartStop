@@ -169,3 +169,17 @@ body{
   width: 143px;
   
   }
+
+#sectionBtnInfo{
+  display: flex;
+  justify-content: center;
+}
+
+
+.popup{
+  width: 250px;
+}
+
+#conteudo{
+  margin-bottom: 10px;
+}
