@@ -15,7 +15,7 @@ window.onload = async function () {
 
         try {
             reservas = await $.ajax({
-        
+
                 url: "/api/utilizadores/"+userID+"/reservas",
                 method: "get",
                 dataType: "json"
@@ -67,8 +67,15 @@ window.onload = async function () {
                     aux = "<table><tr><th>Nome do parque</th><th>Nome da reserva</th><th>Dia da reserva</th><th>Tempo da reserva</th><th>Preço do parque</th><th>veiculo</th><th>Meio de pagamento usado</th></tr>";
     
                     for (let i in reservas) {
-                        precoPorHora=reservas[i].reservation_duration.substring(0,2)*reservas[i].park_price_hour;
-                
+                        precoPorHora = (parseFloat(reservas[i].reservation_duration.substring(0,2)) + (parseFloat(reservas[i].reservation_duration.substring(3,6)) /60)) *reservas[i].park_price_hour;
+                        
+                        
+                        
+                        
+
+                 
+
+
                         aux+="<tr><td>"+reservas[i].park_name+"</td><td>"+reservas[i].user_fullname+"</td><td>"+reservas[i].reservation_start_day+"</td><td>"+reservas[i].reservation_duration+"</td><td>"+precoPorHora+"</td><td>"+reservas[i].vehicle_model+" - "+reservas[i].vehicle_brand+"</td><td>"+reservas[i].payment_method_card_number+"</td></tr>";
                         
 
