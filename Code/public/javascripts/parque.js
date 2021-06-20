@@ -13,6 +13,7 @@ var tiposCategoria = [];
 
 window.onload = async function () {
 
+     //verificar se é moderador ou utilizador
     if (moderador == 0) {
         alert("Não tem premissões para aceder a esta pagina!");
         window.location = "prarques.html";
@@ -241,6 +242,7 @@ async function EditarParque(id, park_ON) {
 
 
 
+// função para dar logout
 
 function logout() {
     sessionStorage.clear();

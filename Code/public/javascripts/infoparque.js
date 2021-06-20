@@ -6,7 +6,21 @@ var map, park;
 
 
 window.onload = async function () {
+ //verificar se é moderador ou utilizador
+ if (moderador == 0) {
+  let userDropBox = "<a href='account.html'>Conta</a>" +
+    "<a href='parques.html' >Parques</a>" +
+    "<a href='#' onclick='logout()'>Logout</a>";
+  document.getElementById("userDropBox").innerHTML = userDropBox;
 
+}
+if (moderador == 1) {
+  let userDropBox = "<a href='account.html'>Conta</a>" +
+    "<a href='parques.html' >Parques</a>" +
+    "<a href='parque.html'>Adicionar Parque</a>" +
+    "<a href='dashboard.html' >Dashboard</a>"+
+    "<a href='#' onclick='logout()'>Logout</a>";
+  document.getElementById("userDropBox").innerHTML = userDropBox;
 
 
 
@@ -35,7 +49,6 @@ window.onload = async function () {
   sessionStorage.setItem("parque", JSON.stringify(park));
 
 
-  console.log(park)
   document.getElementById("parqueNome").innerHTML = park.park_name;
   document.getElementById("email").innerHTML = park.park_email;
   document.getElementById("telemovel").innerHTML = park.park_contact;
@@ -44,31 +57,11 @@ window.onload = async function () {
   document.getElementById("localizacao").innerHTML = park.park_localization;
   document.getElementById("lugaresMax").innerHTML = park.park_spots + "/" + park.lugarOcupados;
   document.getElementById("preco").innerHTML = park.park_price_hour+"€";
-
-
   let percentagem = Math.round((park.lugarOcupados * 100) / park.park_spots);
-
   document.getElementById("estatisticas").innerHTML = percentagem + '%';
-
-
-
   document.getElementById('estatisticas').style.width = percentagem + '%';
 
-
-  if (moderador == 0) {
-    let userDropBox = "<a href='account.html'>Conta</a>" +
-      "<a href='parques.html' >Parques</a>" +
-      "<a href='#' onclick='logout()'>Logout</a>";
-    document.getElementById("userDropBox").innerHTML = userDropBox;
-
-  }
-  if (moderador == 1) {
-    let userDropBox = "<a href='account.html'>Conta</a>" +
-      "<a href='parques.html' >Parques</a>" +
-      "<a href='parque.html'>Adicionar Parque</a>" +
-      "<a href='dashboard.html' >Dashboard</a>"+
-      "<a href='#' onclick='logout()'>Logout</a>";
-    document.getElementById("userDropBox").innerHTML = userDropBox;
+ 
 
 
     document.getElementById("btns").innerHTML = "<button id='btnHistoricoParque' onclick='historicoParque()' >Historico do parque</button> <button id='btnEditarParque' onclick='EditarParque()' >Editar Parque</button>";
@@ -118,7 +111,7 @@ function getRoute(latitude, longitude, park_latitude, park_longitude) {
   }).addTo(map);
 }
 
-
+// função para dar logout
 function logout() {
   sessionStorage.clear();
   window.location = "index.html";

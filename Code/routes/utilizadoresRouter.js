@@ -5,6 +5,72 @@ var utilizadoresModel = require('../Models/utilizadoresModel');
 var { genSaltSync, hashSync, compareSync } = require('bcrypt');
 var nodemailer = require('nodemailer');
 
+//Vai buscar as reservas de um certo utilizador
+router.get('/:id/reservas', async function(req, res, next) {
+    let id = req.params.id;
+    let result = await utilizadoresModel.getUserReservas(id);
+    res.status(result.status).send(result.data);  
+});
+
+//Vai buscar os veiculos de um certo utilizador
+router.get('/:id/veiculos', async function(req, res, next) {
+    let id = req.params.id;
+    let result = await utilizadoresModel.getUserVeiculos(id);
+    res.status(result.status).send(result.data);  
+});
+
+//Vai buscar os meios de pagamento de um certo utilizador
+router.get('/:id/meiospagamento', async function(req, res, next) {
+    let id = req.params.id;
+    let result = await utilizadoresModel.getUserMeiospagamento(id);
+    res.status(result.status).send(result.data);  
+});
+
+//vai buscar todos os utilizadores
+router.get('/', async function(req, res, next) {
+    let result = await utilizadoresModel.getAllUsers();
+    res.status(result.status).send(result.data);  
+});
+
+//vai verificar se o utilizador existe e vai buscar
+router.get('/login', async function(req, res, next) {
+    let obj = req.query;
+    let result = await utilizadoresModel.getUserByEmail(obj.email);
+
+    if (result.status === 200) {
+
+        let checkPassword = compareSync(obj.password, result.data.user_password);
+        if (checkPassword) {
+            if (result.data.user_active) { //se estiver verificada
+                return res.json({
+                    success: 1,
+                    msg: "login successfully",
+                    data: result.data
+                });
+            } else {
+                return res.json({
+                    success: 3,
+                    msg: "Your account is not yet active!"
+                });
+            }
+        } else {
+            return res.json({
+                success: 0,
+                msg: "Invalid email or password"
+            });
+        }
+
+    }
+
+    res.status(result.status).send(result.data);
+});
+
+
+
+
+
+
+
 //Criar um nova utilizador
 router.post('/register', async function(req, res, next) {
     let body = req.body;
@@ -51,33 +117,58 @@ router.post('/register', async function(req, res, next) {
     }
 });
 
-//vai verificar se o utilizador existe e vai buscar
-router.get('/login', async function(req, res, next) {
-    let obj = req.query;
-    let result = await utilizadoresModel.getUserByEmail(obj.email);
+//Vai adicionar um novo veiculo a um certo utilizador
+router.post('/:id/veiculos/novo', async function(req, res, next) {
+    let id = req.params.id; 
+    let body = req.body;
+    body.vehicle_user_id = id;
+    let result = await utilizadoresModel.novoVeiculo(body);
+    res.status(result.status).send(result.data);  
+});
 
+//Vai adicionar um parque a um certo utilizador
+router.post('/:id/parque/novo', async function(req, res, next) {
+    let id = req.params.id;
+    let body = req.body;
+    body.park_create_user_id = id;
+    let result = await utilizadoresModel.novoParque(body);
+    res.status(result.status).send(result.data); 
+});
+
+//Vai adicionar um novo meio de pagamento a um certo utilizador
+router.post('/:id/meiospagamento/novo', async function(req, res, next) {
+    let id = req.params.id;
+    let body = req.body;
+    body.payment_method_user_id = id;
+    let result = await utilizadoresModel.novoMeioPagamento(body);
+    res.status(result.status).send(result.data); 
+});
+
+
+
+
+
+
+
+
+//vai editar as informações de conta de um certo utilizador
+router.put('/:id/editar', async function(req, res, next) { 
+    let id = req.params.id;
+    let body = req.body;
+    body.userID=id;
+    let salt = genSaltSync(10);
+    body.password = hashSync(body.password, salt);
+    let result = await utilizadoresModel.editarUser(body);
     if (result.status === 200) {
 
-        let checkPassword = compareSync(obj.password, result.data.user_password);
-        if (checkPassword) {
-            if (result.data.user_active) { //se estiver verificada
+
                 return res.json({
                     success: 1,
-                    msg: "login successfully",
+                    msg: "informações alteradas com sucesso",
                     data: result.data
                 });
-            } else {
-                return res.json({
-                    success: 3,
-                    msg: "Your account is not yet active!"
-                });
-            }
-        } else {
-            return res.json({
-                success: 0,
-                msg: "Invalid email or password"
-            });
-        }
+
+
 
     }
 
@@ -107,97 +198,6 @@ router.put('/verify', async function(req, res, next) {
     res.status(result.status).send(result.data);
 });
 
-//Vai buscar as reservas de um certo utilizador
-router.get('/:id/reservas', async function(req, res, next) {
-    let id = req.params.id;
-    let result = await utilizadoresModel.getUserReservas(id);
-    res.status(result.status).send(result.data);  
-});
-
-
-//Vai buscar os veiculos de um certo utilizador
-router.get('/:id/veiculos', async function(req, res, next) {
-    let id = req.params.id;
-    let result = await utilizadoresModel.getUserVeiculos(id);
-    res.status(result.status).send(result.data);  
-});
-
-
-//Vai buscar os meios de pagamento de um certo utilizador
-router.get('/:id/meiospagamento', async function(req, res, next) {
-    let id = req.params.id;
-    let result = await utilizadoresModel.getUserMeiospagamento(id);
-    res.status(result.status).send(result.data);  
-});
-
-
-
-//Vai adicionar um novo veiculo a um certo utilizador
-router.post('/:id/veiculos/novo', async function(req, res, next) {
-    let id = req.params.id; 
-    let body = req.body;
-    body.vehicle_user_id = id;
-    let result = await utilizadoresModel.novoVeiculo(body);
-    res.status(result.status).send(result.data);  
-});
-
-
-
-//Vai adicionar um nnovo parque
-router.post('/:id/parque/novo', async function(req, res, next) {
-    let id = req.params.id;
-    let body = req.body;
-    body.park_create_user_id = id;
-    console.log(body)
-    let result = await utilizadoresModel.novoParque(body);
-    res.status(result.status).send(result.data); 
-});
-
-//Vai adicionar um novo meio de pagamento a um certo utilizador
-router.post('/:id/meiospagamento/novo', async function(req, res, next) {
-    let id = req.params.id;
-    let body = req.body;
-    body.payment_method_user_id = id;
-    let result = await utilizadoresModel.novoMeioPagamento(body);
-    res.status(result.status).send(result.data); 
-});
-
-
-
-
-
-//vai editar as informações de um certo meio de pagamento
-router.put('/:id/editar', async function(req, res, next) { 
-    let id = req.params.id;
-    let body = req.body;
-    body.userID=id;
-    let salt = genSaltSync(10);
-    body.password = hashSync(body.password, salt);
-    let result = await utilizadoresModel.editarUser(body);
-    if (result.status === 200) {
-
-
-                return res.json({
-                    success: 1,
-                    msg: "informações alteradas com sucesso",
-                    data: result.data
-                });
-
-
-
-    }
-
-    res.status(result.status).send(result.data);
-});
-
-
-
-
-//vai buscar todos os utilizadores
-router.get('/', async function(req, res, next) {
-    let result = await utilizadoresModel.getAllUsers();
-    res.status(result.status).send(result.data);  
-});
 
 
 

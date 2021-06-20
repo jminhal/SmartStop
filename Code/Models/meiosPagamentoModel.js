@@ -1,6 +1,6 @@
 var pool = require("./connection");
 
-
+//vai editar os meios de pagamento de um certo utilizador
 module.exports.editarMeioPagamento = async function(body) {
     try {
         let sql ="UPDATE payment_methods SET payment_method_card_name = COALESCE(?,payment_method_card_name), payment_method_card_number = COALESCE(?,payment_method_card_number), payment_method_expiry_date = COALESCE(?,payment_method_expiry_date), payment_method_cvv = COALESCE(?,payment_method_cvv), payment_method_selected = COALESCE(?,payment_method_selected), payment_method_ON = COALESCE(?,payment_method_ON) WHERE payment_method_id=? AND payment_method_user_id=?";
@@ -18,7 +18,7 @@ module.exports.editarMeioPagamento = async function(body) {
     } 
 };
 
-//vai buscar as informações dos tipos de veiculo
+//vai buscar os cartões selecionados de um certo utilizadoor
 module.exports.getMeioPagamentoSelecionado = async function(id) {
     try {
         let sql = "SELECT * FROM payment_methods WHERE payment_method_user_id = ? AND payment_method_selected = true";

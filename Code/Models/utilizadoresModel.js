@@ -1,7 +1,7 @@
 const { addListener } = require("./connection");
 var pool = require("./connection");
 
-
+//vai verificar se o utilizador existe e vai buscar      AND      vai verificar um utilizador
 module.exports.getUserByEmail = async function(email) {
     try {
         let sql = "SELECT user_id, user_fullname, user_email, user_password, DATE_FORMAT(user_birthday, '%Y-%m-%d') AS 'user_birthday', user_mobile, user_nif, user_moderador, user_active FROM users WHERE user_email = ?";
@@ -32,7 +32,7 @@ module.exports.createToken = async function(id, token) {
     } 
 };
 
-// vai adicionar o novo utilizador à base de dados 
+//Criar um nova utilizador
 module.exports.createUser = async function(user) {
     try {
         
@@ -75,7 +75,7 @@ module.exports.verifyAccount = async function(id, token) {
 
 
 
-
+//Vai buscar os veiculos de um certo utilizador
 module.exports.getUserVeiculos = async function(id) {
     try {
         let sql = "SELECT * FROM vehicles AS V, users AS U WHERE U.user_id=? AND V.vehicle_user_id = U.user_id AND V.vehicle_ON = true";
@@ -94,7 +94,7 @@ module.exports.getUserVeiculos = async function(id) {
 };
 
 
-
+//Vai buscar as reservas de um certo utilizador
 module.exports.getUserReservas = async function(id) {
     try {
         let sql = "SELECT P.park_name, P.park_id, P.park_localization, DATE_FORMAT(R.reservation_date, '%d-%m-%y') AS 'reservation_date' , DATE_FORMAT(R.reservation_start_day, '%d-%m-%y') AS 'reservation_start_day' , DATE_FORMAT(R.reservation_duration, '%H:%i') AS 'reservation_duration', V.vehicle_model, V.vehicle_brand, MP.payment_method_card_number,R.reservation_duration, P.park_price_hour FROM reservations R, payment_methods MP, vehicles V, users U, parks P WHERE U.user_id=? AND P.park_id=R.reservation_park_id AND V.vehicle_id=R.reservation_vehicle AND MP.payment_method_id=R.reservation_payment_method GROUP BY R.reservation_id";
@@ -113,7 +113,7 @@ module.exports.getUserReservas = async function(id) {
 };
 
 
-
+//Vai buscar os meios de pagamento de um certo utilizador
 module.exports.getUserMeiospagamento = async function(id) {
     try {
         let sql = "SELECT * FROM payment_methods AS PM, users AS U WHERE U.user_id=? AND PM.payment_method_user_id = U.user_id AND PM.payment_method_ON = true";
@@ -131,7 +131,7 @@ module.exports.getUserMeiospagamento = async function(id) {
     } 
 };
 
-
+//Vai adicionar um parque a um certo utilizador
 module.exports.novoParque = async function(body) {
     try {
         let sql = "INSERT INTO parks (park_name, park_spots, park_types, park_latitude, park_longitude, park_localization, park_hour_open, park_hour_close, park_contact, park_email, park_price_hour, park_create_user_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -148,6 +148,8 @@ module.exports.novoParque = async function(body) {
         return {status: 500, data: err};
     } 
 };
+
+//Vai adicionar um novo meio de pagamento a um certo utilizador
 module.exports.novoMeioPagamento = async function(body) {
     try {
         console.log(body)
@@ -163,7 +165,7 @@ module.exports.novoMeioPagamento = async function(body) {
 
 
 
-
+//Vai adicionar um novo veiculo a um certo utilizador
 module.exports.novoVeiculo = async function(body) {
     try {
         let sql = "INSERT INTO vehicles(vehicle_model, vehicle_brand, vehicle_registration, vehicle_registration_date, vehicle_category, vehicle_selected, vehicle_user_id) VALUES (?,?,?,?,?,?,?)";
@@ -182,7 +184,7 @@ module.exports.novoVeiculo = async function(body) {
 
 
 
-
+//vai editar as informações de conta de um certo utilizador
 module.exports.editarUser = async function(body) {
     try {
         let sql = "UPDATE users SET user_fullname = ?, user_email = ?, user_password = ?, user_birthday = ?,  user_mobile = ?, user_nif = ? WHERE user_id=?";
@@ -198,7 +200,7 @@ module.exports.editarUser = async function(body) {
 };
 
 
-
+//vai buscar todos os utilizadores
 module.exports.getAllUsers = async function() {
     try {
         let sql = "SELECT user_id, user_fullname, user_email, user_password, DATE_FORMAT(user_birthday, '%Y-%m-%d') AS 'user_birthday', user_mobile, user_nif, user_moderador, user_active FROM users";

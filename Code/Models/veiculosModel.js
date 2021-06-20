@@ -1,6 +1,6 @@
 var pool = require("./connection");
 
-// editar um certo veiculo
+//vai editar as informações de um certo veiculo
 module.exports.editarVeiculo = async function(body) {
     try {
         let sql = "UPDATE vehicles SET vehicle_model = ?, vehicle_brand = ?, vehicle_registration = ?, vehicle_registration_date = ?,  vehicle_category = ?, vehicle_selected = ?, vehicle_ON = ? WHERE vehicle_id=? AND vehicle_user_id=?";
@@ -14,7 +14,7 @@ module.exports.editarVeiculo = async function(body) {
 
 
 
-//vai buscar as informações dos tipos de veiculo
+//vai os tipos de veiculo
 module.exports.getTipoVeiculo = async function() {
     try {
         let sql = "SELECT * FROM vehicleCategories";

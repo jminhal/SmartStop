@@ -1,6 +1,6 @@
 var pool = require("./connection");
 
-
+//vai buscar todos os parques
 module.exports.getParques = async function() {
     try {
         let sql = "SELECT * FROM parks WHERE park_ON = true";
@@ -25,7 +25,7 @@ module.exports.getParques = async function() {
 };
 
 
-
+//vai buscar toda a informação de um parque
 module.exports.getParque = async function(id) {
     try {
         let sql = "SELECT park_id, park_name, park_spots,park_types, park_latitude, park_longitude, park_localization, DATE_FORMAT(park_hour_open, '%H:%i') AS 'park_hour_open', DATE_FORMAT(park_hour_close, '%H:%i') AS 'park_hour_close', park_contact ,park_email, park_price_hour, park_create_user_id, park_ON FROM parks WHERE park_id = ?";
@@ -49,7 +49,7 @@ module.exports.getParque = async function(id) {
 };
 
 
-
+//vai editar um certo meio de pagamento
 module.exports.editarParque = async function(body) {
     try {
         console.log(body)

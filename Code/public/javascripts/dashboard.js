@@ -8,14 +8,13 @@ sessionStorage.setItem("editarApagarParque", JSON.stringify(editarApagarParque))
 window.onload = async function () {
     let tipoConta,Estado;
     
-
+    //verificar se é moderador ou utilizador
     if (moderador == 0) {
         alert("Não tem premissões para aceder a esta pagina!");
         window.location = "prarques.html";
 
     }
       if(moderador==1){
-        console.log("kaksdkd");
         let userDropBox= "<a href='account.html' class='selected'>Conta</a>"+
         "<a href='parques.html' >Parques</a>"+
         "<a href='parque.html'>Adicionar Parque</a>"+
@@ -77,7 +76,7 @@ try {
 
 }
 
-
+// função para dar logout
 function logout() {
     sessionStorage.clear();
     window.location = "index.html";
