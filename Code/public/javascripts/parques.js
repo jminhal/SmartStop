@@ -60,11 +60,11 @@ async function mapSetup() {
       let marker = new L.marker(new L.LatLng(parque.park_latitude, parque.park_longitude)).addTo(map);
 
       marker.bindPopup("<section class='popup'>" +
-        "<p> Nome do parque:" + parque.park_name + "</p>" +
-        "<p> Total de lugares/ lugares ocupados:" + parque.park_spots + "/" + parque.park_spots + "</p>" +
+        "<section id='conteudo'><p> Nome do parque:" + parque.park_name + "</p>" +
+        "<p> Total de lugares/ lugares ocupados:" + parque.park_spots + "/" + parque.lugarOcupados + "</p>" +
         "<p> Horas de abertura do parque:" + parque.park_hour_open + "</p>" +
         "<p> Horas de fecho do parque:" + parque.park_hour_close + "</p></section>" +
-        "<button id='btnInfo' onclick='maisInfo(" + parque.park_id + ")'>Informações</button>");
+        "<section id='sectionBtnInfo' ><button id='btnInfo' onclick='maisInfo(" + parque.park_id + ")'>Informações</button></section></section>");
 
         //Lista com as ações
         html += "<div class='parqueLista' onclick='parqueCenter("+parque.park_latitude+","+parque.park_longitude+")'>"+
