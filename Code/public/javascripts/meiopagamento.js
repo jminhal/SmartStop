@@ -5,8 +5,14 @@ var meios;
 
 
 
+
 window.onload = async function () {
     document.getElementById("backArrow").href = "account.html";
+
+
+
+
+
     let aux="";
     aux += "<option value= 'void' >  </option>";
     try {
@@ -49,7 +55,6 @@ function Aparecer(){
 
     }
     else if(selectedValue=='void'){
-        console.log(1)
         document.getElementById("lableInput").style.display="none";
         document.getElementById("btnBox").innerHTML="";
 
@@ -149,6 +154,10 @@ async function EditarMeioPagamento(id,cartaoON,selecionado){
     if(selecionado){
 
         cartaoSelecionado=true;
+        teste();
+        console.log("sdsds")
+
+
     }
     else if(typeof selecionado === 'undefined' ||selecionado==false) {
         cartaoSelecionado=false;
@@ -206,3 +215,48 @@ async function EditarMeioPagamento(id,cartaoON,selecionado){
 
 }
 
+
+
+async function teste(){
+    try {
+        let mpSelecionado = await $.ajax({
+
+            url: "/api/meiosPagamento/"+userID+"/selecionado",
+            method: "get",
+            dataType: "json"
+        });
+
+
+            try {
+                let info = {
+                    selected: false,
+                    cardUserID:userID
+                }
+                
+                let mPagamento = await $.ajax({
+                    url: "/api/meiosPagamento/"+mpSelecionado.payment_method_id+"/editar",
+                    method: "put",
+                    data: JSON.stringify(info),
+                    contentType: "application/json",
+                    dataType: "json"
+                });
+
+    
+                } catch (err) {
+                    console.log(err);
+                    if (err.status == 404) {
+                        alert(err.responseJSON.msg);
+                    }
+                }
+
+
+    } catch (err) {
+        console.log(err);
+        if (err.status == 404) {
+            alert(err.responseJSON.msg);
+        }
+    }
+    console.log(123)
+    return
+
+}
