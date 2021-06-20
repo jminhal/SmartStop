@@ -35,7 +35,7 @@ window.onload = async function () {
 
 
 
-// função para dar logout
+// função para dar logouts
 function logout() {
   sessionStorage.clear();
   window.location = "index.html";

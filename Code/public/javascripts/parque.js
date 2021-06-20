@@ -243,7 +243,6 @@ async function EditarParque(id, park_ON) {
 
 
 // função para dar logout
-
 function logout() {
     sessionStorage.clear();
     window.location = "index.html";
