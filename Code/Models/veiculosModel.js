@@ -27,4 +27,18 @@ module.exports.getTipoVeiculo = async function() {
     } 
 };
 
+//vai buscar os veiculos selecionados de um certo utilizadoor
+module.exports.getMeioPagamentoSelecionado = async function(id) {
+    try {
+        let sql = "SELECT * FROM vehicles WHERE vehicle_user_id = ? AND vehicle_selected = true";
+        let result = await pool.query(sql,[id]);
+        return {status: 200, data: result[0]};
+
+    } catch (err) {
+        console.log(err);
+        return {status: 500, data: err};
+    } 
+};
+
+
 
