@@ -9,10 +9,6 @@ var meios;
 window.onload = async function () {
     document.getElementById("backArrow").href = "account.html";
 
-
-
-
-
     let aux="";
     aux += "<option value= 'void' >  </option>";
     try {
@@ -41,7 +37,6 @@ window.onload = async function () {
 function Aparecer(){
     var cartaoNumero = document.getElementById("cartaoNumero");
     var selectedValue = cartaoNumero.options[cartaoNumero.selectedIndex].value;
-    console.log(selectedValue)
     if(selectedValue=='add'){
         document.getElementById("lableInput").style.display="flex";
         document.getElementById("nTitular").value= "";
@@ -143,23 +138,17 @@ function Atualizar(id){
 
 async function EditarMeioPagamento(id,cartaoON,selecionado){
 
-    
-
     let cartaoSelecionado;
     let nTitular =    document.getElementById("nTitular").value;
-    let nCartao=    document.getElementById("nCartao").value;
-    let dCartao=    document.getElementById("dCartao").value;
-    let cvcCode=    document.getElementById("cvcCode").value;
+    let nCartao =    document.getElementById("nCartao").value;
+    let dCartao =    document.getElementById("dCartao").value;
+    let cvcCode =    document.getElementById("cvcCode").value;
 
     if(selecionado){
-
         cartaoSelecionado=true;
-        teste();
-        console.log("sdsds")
-
-
+        TirarSelecionado();
     }
-    else if(typeof selecionado === 'undefined' ||selecionado==false) {
+    else if(typeof selecionado === 'undefined' || selecionado==false) {
         cartaoSelecionado=false;
 
     }
@@ -168,30 +157,26 @@ async function EditarMeioPagamento(id,cartaoON,selecionado){
     if(nTitular!="" && nCartao !="" && dCartao!="" && cvcCode!=""){
         try {
             let info = {
-                cardName: nTitular,
-                cardNumber: nCartao,
-                cardExpiry: dCartao,
-                cardCVV: cvcCode,
                 selected: cartaoSelecionado,
-                paymentON:cartaoON,
-                cardID:id,
-                cardUserID:userID
+                cardUserID: userID
             }
+
+            console.log("selecionado: " + id);
             
             let mPagamento = await $.ajax({
-                url: "/api/meiosPagamento/"+userID+"/editar",
+                url: "/api/meiosPagamento/"+id+"/editar",
                 method: "put",
                 data: JSON.stringify(info),
                 contentType: "application/json",
                 dataType: "json"
             });
 
-            } catch (err) {
-                console.log(err);
-                if (err.status == 404) {
-                    alert(err.responseJSON.msg);
-                }
+        } catch (err) {
+            console.log(err);
+            if (err.status == 404) {
+                alert(err.responseJSON.msg);
             }
+        }
 
     }
     else {
@@ -217,7 +202,9 @@ async function EditarMeioPagamento(id,cartaoON,selecionado){
 
 
 
-async function teste(){
+async function TirarSelecionado() {
+
+
     try {
         let mpSelecionado = await $.ajax({
 
@@ -226,13 +213,14 @@ async function teste(){
             dataType: "json"
         });
 
+            console.log("tirar: " + mpSelecionado.payment_method_id);
 
             try {
                 let info = {
                     selected: false,
-                    cardUserID:userID
+                    cardUserID: userID
                 }
-                
+                console.log(info)
                 let mPagamento = await $.ajax({
                     url: "/api/meiosPagamento/"+mpSelecionado.payment_method_id+"/editar",
                     method: "put",
@@ -242,12 +230,12 @@ async function teste(){
                 });
 
     
-                } catch (err) {
-                    console.log(err);
-                    if (err.status == 404) {
-                        alert(err.responseJSON.msg);
-                    }
+            } catch (err) {
+                console.log(err);
+                if (err.status == 404) {
+                    alert(err.responseJSON.msg);
                 }
+            }
 
 
     } catch (err) {
@@ -256,7 +244,5 @@ async function teste(){
             alert(err.responseJSON.msg);
         }
     }
-    console.log(123)
-    return
 
 }
