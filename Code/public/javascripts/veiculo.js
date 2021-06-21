@@ -190,6 +190,7 @@ async function EditarVeiculo(id, veiculoON, selecionado) {
     if (selecionado) {
 
         veiculoSelecionado = true;
+        teste();
     }
     else if(typeof selecionado === 'undefined' ||selecionado==false) {
         veiculoSelecionado = false;
@@ -245,5 +246,54 @@ async function EditarVeiculo(id, veiculoON, selecionado) {
     }
 
     window.location = "account.html";
+
+}
+
+
+
+
+
+
+async function teste(){
+    try {
+        let vSelecionado = await $.ajax({
+
+            url: "/api/veiculos/"+userID+"/selecionado",
+            method: "get",
+            dataType: "json"
+        });
+
+
+            try {
+                let info = {
+                    selected: false,
+                    cardUserID:userID
+                }
+                
+                let mPagamento = await $.ajax({
+                    url: "/api/veiculos/"+vSelecionado.vehicle_id+"/editar",
+                    method: "put",
+                    data: JSON.stringify(info),
+                    contentType: "application/json",
+                    dataType: "json"
+                });
+
+    
+                } catch (err) {
+                    console.log(err);
+                    if (err.status == 404) {
+                        alert(err.responseJSON.msg);
+                    }
+                }
+
+
+    } catch (err) {
+        console.log(err);
+        if (err.status == 404) {
+            alert(err.responseJSON.msg);
+        }
+    }
+    console.log(123)
+    return
 
 }
