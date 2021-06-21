@@ -20,4 +20,13 @@ router.get('/tipoVeiculo', async function(req, res, next) {
 });
 
 
+//vai buscar os veiculos selecionados de um certo utilizadoor
+router.get('/:id/selecionado', async function(req, res, next) {
+    let id = req.params.id;
+    let result = await veiculosModel.getVeiculoSelecionado(id);
+    res.status(result.status).send(result.data);  
+
+});
+
+
 module.exports = router;
