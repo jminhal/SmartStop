@@ -10,10 +10,10 @@ let userHistorico = JSON.parse(sessionStorage.getItem("userHistorico"));
 window.onload = async function () {
     let aux, precoPorHora;
 
-
+    //Caso venha para ver o historico por onde a conta passou
     if(userHistorico){
-        document.getElementById("backArrow").href = "account.html";
 
+        // Vai buscar todas as reservas do utilizador
         try {
             reservas = await $.ajax({
 
@@ -21,7 +21,6 @@ window.onload = async function () {
                 method: "get",
                 dataType: "json"
             });
-            console.log(reservas)
 
             if(reservas.length > 0){
 
@@ -34,6 +33,8 @@ window.onload = async function () {
                     aux+="<tr><td>"+reservas[i].park_name+"</td><td>"+reservas[i].park_localization+"</td><td>"+reservas[i].reservation_date+"</td><td>"+reservas[i].reservation_start_day+"</td><td>"+reservas[i].reservation_duration+"</td><td>"+reservas[i].vehicle_model+" - "+reservas[i].vehicle_brand+"</td><td>**** **** **** "+reservas[i].payment_method_card_number.toString().substring(11,15)+"</td><td>"+precoPorHora+"</td></tr>";
             
                 }
+                aux += " </table>";
+                document.getElementById("tabela").innerHTML = aux;
 
             
 
@@ -51,10 +52,12 @@ window.onload = async function () {
     
 
     
+        //Caso venha para saber quem passou por aquele parque
 
         else{  
             document.getElementById("backArrow").href = "infoparque.html";
 
+            // Vai buscar todas as pessoas que passaram por aquele parque
             try {
                 reservas = await $.ajax({
             
@@ -82,11 +85,13 @@ window.onload = async function () {
                         
 
                     }
-
+                    aux += " </table>";
+                    document.getElementById("tabela").innerHTML = aux;
     
                 
     
                 }
+
                
             
             } catch (err) {
@@ -97,8 +102,7 @@ window.onload = async function () {
             }
     
         }
-        aux += " </table>";
-        document.getElementById("tabela").innerHTML = aux;
+
     
     
 
