@@ -8,6 +8,7 @@ sessionStorage.setItem("editarApagarParque", JSON.stringify(editarApagarParque))
 
 window.onload = async function () {
 
+
   //verificar se é moderador ou utilizador
   if(moderador==0){
     let userDropBox= "<a href='#' class='selected'>Conta</a>"+
