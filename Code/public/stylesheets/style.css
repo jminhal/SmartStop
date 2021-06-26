@@ -94,6 +94,28 @@ body{
   width: 100px;
   margin-bottom: 10px;
 }
+.btnVL{
+  color: #2D2D2D;
+  background-color: #eed029;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #eed029;
+  cursor: pointer;
+  width: 110px;
+  margin-bottom: 10px;
+
+}
+.btnCC{
+  color: white;
+  background-color: #2D2D2D;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #2D2D2D;
+  cursor: pointer;
+  width: 120px;
+  margin-bottom: 10px;
+
+}
 
 .newPasswordBTN{
   color: #2D2D2D;

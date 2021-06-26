@@ -28,7 +28,7 @@ function CarregarRegisto() {
     //mete as os inputs
     aux += "<div class='boxInput'><input type='text' placeholder='Escreva o seu nome' class='input' id='name'><input type='password' placeholder='A sua senha' class='input' id='pw'><input type='text'  placeholder='Escreva o seu email' class='input' id='email'><input id='date' class='input' type='date' ><input type='text' placeholder='Escreva o seu telemovel' class='input' id='telemovel'><input type='text' placeholder='Escreva o seu nif' class='input' id='nif'></div>";
     //mete os butttons
-    aux += "<div class='btnBox'><button class='btn' onclick='CarregarLogin()'>Login</button><button class='btn' id='btn' onclick='Registo()'>Registo</button></div>";
+    aux += "<div class='btnBox'><button class='btnVL' onclick='CarregarLogin()'>Voltar ao Login</button><button class='btnCC' id='btn' onclick='Registo()'>Criar conta</button></div>";
     
 
 
