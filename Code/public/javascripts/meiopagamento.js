@@ -60,7 +60,6 @@ function Aparecer(){
         document.getElementById("nCartao").value=meios[selectedValue].payment_method_card_number;
         document.getElementById("dCartao").value=meios[selectedValue].payment_method_expiry_date;
         document.getElementById("cvcCode").value=meios[selectedValue].payment_method_cvv;
-
         document.getElementById("btnBox").innerHTML='<button class="btn" onclick="Remover('+meios[selectedValue].payment_method_id+','+meios[selectedValue].payment_method_selected+')">Remover</button><button class="btn" onclick="Atualizar('+meios[selectedValue].payment_method_id+')">Atualizar</button>';
         if(meios[selectedValue].payment_method_selected==false){
             document.getElementById("checkBoxLable").innerHTML="Deseja tornar este cartão como principal?";
@@ -81,6 +80,18 @@ async function Adicionar(){
     let cvcCode=    document.getElementById("cvcCode").value;
     let selectedCartao= document.getElementById("selectedCartao");
 
+
+
+
+    if(selectedCartao){
+        cartaoSelecionado=true;
+        TirarSelecionado();
+    }
+    else if( selectedCartao==false) {
+        cartaoSelecionado=false;
+    }
+    
+
     if(nTitular!="" && nCartao !="" && dCartao!="" && cvcCode!=""){
         try {
             let info = {
@@ -88,7 +99,7 @@ async function Adicionar(){
                 cardNumber: nCartao,
                 cardExpiry: dCartao,
                 cardCVV: cvcCode,
-                selected: selectedCartao.checked,
+                selected: cartaoSelecionado,
                 cardUser:userID
             }
 

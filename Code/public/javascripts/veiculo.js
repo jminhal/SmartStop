@@ -118,6 +118,22 @@ async function Adicionar() {
     let vCategoria = document.getElementById("vCategoria").value;
     let selectedVeiculo = document.getElementById("selectedVeiculo");
 
+
+
+    if (selectedVeiculo) {
+        veiculoSelecionado = true;
+        TirarSelecionado();
+    }
+    else if(selectedVeiculo==false) {
+
+
+        veiculoSelecionado = false;
+    }
+
+
+
+
+
     if (vMarca != "" && vModelo != "" && vData != "" && vMatricula != "" && vCategoria != "") {
         try {
             let info = {
@@ -126,7 +142,7 @@ async function Adicionar() {
                 vRegistration: vMatricula,
                 vDate: vData,
                 vCategory: vCategoria,
-                vSelected: selectedVeiculo.checked,
+                vSelected: veiculoSelecionado,
                 vUserID: userID
             }
             let veiculo = await $.ajax({
@@ -194,7 +210,6 @@ async function EditarVeiculo(id, veiculoON, selecionado) {
     else if(selecionado==false) {
 
 
-        console.log(selecionado)
         veiculoSelecionado = false;
     }
     else if(typeof selecionado === 'undefined'){
@@ -202,6 +217,7 @@ async function EditarVeiculo(id, veiculoON, selecionado) {
 
         veiculoSelecionado = true;
     }
+
     if (vMarca != "" && vModelo != "" && vData != "" && vMatricula != "" && vCategoria != "") {
         try {
             let info = {
