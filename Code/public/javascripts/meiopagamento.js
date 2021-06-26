@@ -213,21 +213,29 @@ async function EditarMeioPagamento(id,cartaoON,selecionado){
 
 async function TirarSelecionado() {
 
-
+    //vai apanhar o meio de pagamento selecionado
     try {
         let mpSelecionado = await $.ajax({
 
             url: "/api/meiosPagamento/"+userID+"/selecionado",
             method: "get",
             dataType: "json"
-        });
+          });
 
             console.log("tirar: " + mpSelecionado.payment_method_id);
-
+            //vai remover o meio de pagamento selecionado
             try {
                 let info = {
+                    cardName: mpSelecionado.payment_method_card_name,
+                    cardNumber: mpSelecionado.payment_method_card_number,
+                    cardExpiry: mpSelecionado.payment_method_expiry_date,
+                    cardCVV:  mpSelecionado.payment_method_cvv,
                     selected: false,
+                    paymentON: mpSelecionado.payment_method_ON,
                     cardUserID: userID
+/*
+                    selected: false,
+                    cardUserID: userID*/
                 }
                 console.log(info)
                 let mPagamento = await $.ajax({
