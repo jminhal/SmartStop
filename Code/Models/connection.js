@@ -3,8 +3,8 @@ const mysql = require('mysql')
 const pool = mysql.createPool({
   connectionLimit: 10,
   host: '149.56.78.29',
-  user: 'smartsto_admin ',
-  password: 'smartstopadmin',
+  user: 'smartsto',
+  password: 'tYR;r6Ued0-8C6',
   database: 'smartsto_app'
 })
 
