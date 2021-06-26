@@ -31,13 +31,3 @@ INSERT INTO reservations(reservation_date, reservation_duration, reservation_sta
 
 
 
-
-INSERT INTO users (user_fullname, user_email, user_password, user_birthday, user_mobile, user_nif, user_moderador) VALUES ("Jorge Minhalma" , "jorge@IADE.pt", "asd123", '2000-12-12',96969696,213456789,1);
-INSERT INTO users (user_fullname, user_email, user_password, user_birthday, user_mobile, user_nif, user_moderador) VALUES ("Miguel Amaro" , "miguel@IADE.pt", "asd123",'2000-12-12' ,96969696,213456789,1);
-INSERT INTO users (user_fullname, user_email, user_password, user_birthday, user_mobile, user_nif, user_moderador) VALUES ("José Brandão" , "jose@IADE.pt", "asd123", '2000-12-12',96969696, 213456789,0);
-INSERT INTO users (user_fullname, user_email, user_password, user_birthday, user_mobile, user_nif, user_moderador) VALUES ("Pedro Amaro" , "pedro@IADE.pt", "asd123", '2000-12-12',96969696,213456789,0);
-
-
-
-
-
