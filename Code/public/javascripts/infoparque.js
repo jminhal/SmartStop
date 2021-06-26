@@ -21,10 +21,10 @@ if (moderador == 1) {
     "<a href='dashboard.html' >Dashboard</a>"+
     "<a href='#' onclick='logout()'>Logout</a>";
   document.getElementById("userDropBox").innerHTML = userDropBox;
+  document.getElementById("btns").innerHTML = "<button id='btnHistoricoParque' onclick='historicoParque()' >Historico do parque</button> <button id='btnEditarParque' onclick='EditarParque()' >Editar Parque</button>";
 
-
-
-
+  }
+  
   document.getElementById("backArrow").href = sessionStorage.getItem("pagina");
 
   getLocalizacao();
@@ -63,10 +63,6 @@ if (moderador == 1) {
 
  
 
-
-    document.getElementById("btns").innerHTML = "<button id='btnHistoricoParque' onclick='historicoParque()' >Historico do parque</button> <button id='btnEditarParque' onclick='EditarParque()' >Editar Parque</button>";
-
-  }
 }
 
 
