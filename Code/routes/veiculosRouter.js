@@ -8,7 +8,7 @@ var veiculosModel = require('../Models/veiculosModel');
 router.put('/:id/editar', async function(req, res, next) { 
     let id = req.params.id;
     let body = req.body;
-    body.vUserID=id;
+    body.veiculoID=id;
     let result = await veiculosModel.editarVeiculo(body);
     res.status(result.status).send(result.data);  
 });
