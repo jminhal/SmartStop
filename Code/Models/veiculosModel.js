@@ -13,7 +13,6 @@ module.exports.editarVeiculo = async function(body) {
 };
 
 
-
 //vai os tipos de veiculo
 module.exports.getTipoVeiculo = async function() {
     try {
@@ -28,7 +27,7 @@ module.exports.getTipoVeiculo = async function() {
 };
 
 //vai buscar os veiculos selecionados de um certo utilizadoor
-module.exports.getMeioPagamentoSelecionado = async function(id) {
+module.exports.getVeiculoSelecionado = async function(id) {
     try {
         let sql = "SELECT * FROM vehicles WHERE vehicle_user_id = ? AND vehicle_selected = true";
         let result = await pool.query(sql,[id]);
