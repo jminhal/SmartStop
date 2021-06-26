@@ -86,7 +86,6 @@ function Aparecer() {
 
 
     else {
-        console.log(veiculos[selectedValue])
         document.getElementById("lableInput").style.display = "flex";
         document.getElementById("vMarca").value = veiculos[selectedValue].vehicle_model;
         document.getElementById("vModelo").value = veiculos[selectedValue].vehicle_brand;
@@ -177,25 +176,32 @@ function Atualizar(id) {
 
 async function EditarVeiculo(id, veiculoON, selecionado) {
 
-
+    let veiculoSelecionado;
     let vMarca = document.getElementById("vMarca").value;
     let vModelo = document.getElementById("vModelo").value;
     let vData = document.getElementById("vData").value;
     let vMatricula = document.getElementById("vMatricula").value;
     let vCategoria = document.getElementById("vCategoria").value;
 
-
-    let veiculoSelecionado;
-    console.log(selecionado)
     if (selecionado) {
 
+
+
+
         veiculoSelecionado = true;
-        teste();
+        TirarSelecionado();
     }
-    else if(typeof selecionado === 'undefined' ||selecionado==false) {
+    else if(selecionado==false) {
+
+
+        console.log(selecionado)
         veiculoSelecionado = false;
     }
-    console.log(veiculoSelecionado)
+    else if(typeof selecionado === 'undefined'){
+
+
+        veiculoSelecionado = true;
+    }
     if (vMarca != "" && vModelo != "" && vData != "" && vMatricula != "" && vCategoria != "") {
         try {
             let info = {
@@ -206,14 +212,13 @@ async function EditarVeiculo(id, veiculoON, selecionado) {
                 vCategory: vCategoria,
                 vSelected: veiculoSelecionado,
                 vON: veiculoON,
-                vID: id,
                 vUserID: userID
 
 
             }
 
             console.log(info)
-            let veiculo = await $.ajax({
+            let vehicle = await $.ajax({
                 url: "/api/veiculos/" + id + "/editar",
                 method: "put",
                 data: JSON.stringify(info),
@@ -254,7 +259,11 @@ async function EditarVeiculo(id, veiculoON, selecionado) {
 
 
 
-async function teste(){
+
+
+async function TirarSelecionado() {
+
+    //vai apanhar o veiculo selecionado
     try {
         let vSelecionado = await $.ajax({
 
@@ -262,30 +271,35 @@ async function teste(){
             method: "get",
             dataType: "json"
         });
-        console.log(vSelecionado)
 
+            console.log("tirar: " + vSelecionado.vehicle_id);
+            //vai remover o veiculo selecionado
             try {
                 let info = {
-                    selected: false,
-                    cardUserID:userID
+                    vModel: vSelecionado.vehicle_model,
+                    vBrand: vSelecionado.vehicle_brand,
+                    vRegistration: vSelecionado.vehicle_registration,
+                    vDate: vSelecionado.vehicle_registration_date,
+                    vCategory: vSelecionado.vehicle_category,
+                    vSelected: false,
+                    vON: vSelecionado.vehicle_ON,
+                    vUserID: userID
                 }
-                
-                let veiculo = await $.ajax({
-                    url: "/api/veiculos/" +vSelecionado.vehicle_id+ "/editar",
+                //console.log(info)
+                let vehicle = await $.ajax({
+                    url: "/api/veiculos/"+vSelecionado.vehicle_id+"/editar",
                     method: "put",
                     data: JSON.stringify(info),
                     contentType: "application/json",
                     dataType: "json"
                 });
-                console.log(veiculo)
-
     
-                } catch (err) {
-                    console.log(err);
-                    if (err.status == 404) {
-                        alert(err.responseJSON.msg);
-                    }
+            } catch (err) {
+                console.log(err);
+                if (err.status == 404) {
+                    alert(err.responseJSON.msg);
                 }
+            }
 
 
     } catch (err) {
@@ -294,7 +308,4 @@ async function teste(){
             alert(err.responseJSON.msg);
         }
     }
-    console.log(123)
-    
-
 }
