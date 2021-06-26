@@ -214,7 +214,7 @@ async function EditarVeiculo(id, veiculoON, selecionado) {
 
             console.log(info)
             let veiculo = await $.ajax({
-                url: "/api/veiculos/" + userID + "/editar",
+                url: "/api/veiculos/" + id + "/editar",
                 method: "put",
                 data: JSON.stringify(info),
                 contentType: "application/json",
@@ -262,7 +262,7 @@ async function teste(){
             method: "get",
             dataType: "json"
         });
-
+        console.log(vSelecionado)
 
             try {
                 let info = {
@@ -270,13 +270,14 @@ async function teste(){
                     cardUserID:userID
                 }
                 
-                let mPagamento = await $.ajax({
-                    url: "/api/veiculos/"+vSelecionado.vehicle_id+"/editar",
+                let veiculo = await $.ajax({
+                    url: "/api/veiculos/" +vSelecionado.vehicle_id+ "/editar",
                     method: "put",
                     data: JSON.stringify(info),
                     contentType: "application/json",
                     dataType: "json"
                 });
+                console.log(veiculo)
 
     
                 } catch (err) {
@@ -294,6 +295,6 @@ async function teste(){
         }
     }
     console.log(123)
-    return
+    
 
 }

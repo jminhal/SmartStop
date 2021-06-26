@@ -38,18 +38,18 @@ try {
     });
     for (let i in users) {
         if(users[i].user_moderador){
-            tipoConta="<td  style='color: #eed029;'>MODERADOR</td>";
+            tipoConta="<td  style='color: #eed029; font-weight: bold;'>MODERADOR</td>";
             
         }
         else{
-            tipoConta="<td  style='color:  #2D2D2D;'>UTILIZADOR</td>";
+            tipoConta="<td  style='color:  #2D2D2D; font-weight: bold;'>UTILIZADOR</td>";
         }
         if(users[i].user_active){
-            Estado= "<td  style='color: green;'>ATIVO</td>"
+            Estado= "<td  style='color: green; font-weight: bold;'>ATIVO</td>"
             
         }
         else{
-            Estado= "<td  style='color: red;'>INATIVO</td>"
+            Estado= "<td  style='color: red; font-weight: bold;'>INATIVO</td>"
  
         }
 

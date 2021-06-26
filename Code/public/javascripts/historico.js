@@ -8,7 +8,8 @@ let userHistorico = JSON.parse(sessionStorage.getItem("userHistorico"));
 
 
 window.onload = async function () {
-    let aux;
+    let aux, precoPorHora;
+
 
     if(userHistorico){
         document.getElementById("backArrow").href = "account.html";
@@ -28,7 +29,9 @@ window.onload = async function () {
 
                 for (let i in reservas) {
             
-                    aux+="<tr><td>"+reservas[i].park_name+"</td><td>"+reservas[i].park_localization+"</td><td>"+reservas[i].reservation_date+"</td><td>"+reservas[i].reservation_start_day+"</td><td>"+reservas[i].reservation_duration+"</td><td>"+reservas[i].vehicle_model+" - "+reservas[i].vehicle_brand+"</td><td>**** **** **** "+reservas[i].payment_method_card_number.toString().substring(11,15)+"</td><td>"+reservas[i].reservation_duration*reservas[i].park_price_hour+"</td></tr>";
+                    precoPorHora = (parseFloat(reservas[i].reservation_duration.substring(0,2)) + (parseFloat(reservas[i].reservation_duration.substring(3,6)) /60)) *reservas[i].park_price_hour;
+
+                    aux+="<tr><td>"+reservas[i].park_name+"</td><td>"+reservas[i].park_localization+"</td><td>"+reservas[i].reservation_date+"</td><td>"+reservas[i].reservation_start_day+"</td><td>"+reservas[i].reservation_duration+"</td><td>"+reservas[i].vehicle_model+" - "+reservas[i].vehicle_brand+"</td><td>**** **** **** "+reservas[i].payment_method_card_number.toString().substring(11,15)+"</td><td>"+precoPorHora+"</td></tr>";
             
                 }
 
@@ -50,7 +53,6 @@ window.onload = async function () {
     
 
         else{  
-            let precoPorHora;
             document.getElementById("backArrow").href = "infoparque.html";
 
             try {

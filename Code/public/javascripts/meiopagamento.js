@@ -154,12 +154,21 @@ async function EditarMeioPagamento(id,cartaoON,selecionado){
     }
 
 
+
+
     if(nTitular!="" && nCartao !="" && dCartao!="" && cvcCode!=""){
         try {
             let info = {
+
+                cardName: nTitular,
+                cardNumber: nCartao,
+                cardExpiry: dCartao,
+                cardCVV: cvcCode,
                 selected: cartaoSelecionado,
-                cardUserID: userID
+                paymentON:cartaoON,
+                cardUserID:userID
             }
+
 
             console.log("selecionado: " + id);
             
