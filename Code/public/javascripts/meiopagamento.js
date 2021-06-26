@@ -148,13 +148,29 @@ async function EditarMeioPagamento(id,cartaoON,selecionado){
         cartaoSelecionado=true;
         TirarSelecionado();
     }
-    else if(typeof selecionado === 'undefined' || selecionado==false) {
+    else if( selecionado==false) {
         cartaoSelecionado=false;
 
+
+
+    }
+    
+    else if(typeof selecionado === 'undefined'){
+
+        cartaoSelecionado=true;
     }
 
 
 
+
+
+
+
+
+
+
+
+    
 
     if(nTitular!="" && nCartao !="" && dCartao!="" && cvcCode!=""){
         try {
