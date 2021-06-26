@@ -71,7 +71,7 @@ module.exports.editarParque = async function(body) {
 module.exports.getReservasParque = async function(id) {
     try {
 
-        let sql = "SELECT P.park_name, U.user_fullname,  DATE_FORMAT(R.reservation_start_day, '%d-%m-%y') AS 'reservation_start_day' , DATE_FORMAT(R.reservation_duration, '%H:%i') AS 'reservation_duration',P.park_price_hour, V.vehicle_model, V.vehicle_brand, MP.payment_method_card_number FROM parks AS P, reservations AS R, users AS U, vehicles AS V, payment_methods AS MP WHERE P.park_id=R.reservation_park_id AND  R.reservation_payment_method=MP.payment_method_id AND V.vehicle_id=R.reservation_vehicle AND P.park_id=?";
+        let sql = "SELECT P.park_name, U.user_fullname, DATE_FORMAT(R.reservation_start_day, '%d-%m-%y') AS 'reservation_start_day' , DATE_FORMAT(R.reservation_duration, '%H:%i') AS 'reservation_duration',P.park_price_hour, V.vehicle_model, V.vehicle_brand, MP.payment_method_card_number FROM reservations R, payment_methods MP, vehicles V, users U, parks P WHERE P.park_id= ? AND P.park_id=R.reservation_park_id AND R.reservation_payment_method=MP.payment_method_id AND V.vehicle_id=R.reservation_vehicle AND U.user_id = R.reservation_user_id";
         let result = await pool.query(sql, [id]);
         console.log(result)
 
