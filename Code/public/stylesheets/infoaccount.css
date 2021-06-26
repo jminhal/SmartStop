@@ -85,35 +85,7 @@ body{
     justify-content: center;
 }
 
-.boxInput{
-  display: flex;
-  flex-direction: column;
-  width: min-content;}
 
-.input{
-  width: 250px;
-  height: 50px;
-  margin-bottom: 15px;
-
-}
-.btnBox{
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 150px;
-
-}
-.btn{
-  color: white;
-  background-color: #2D2D2D;
-  padding: 10px;
-  border-radius: 8px;
-  border: 2px solid #2D2D2D;
-  cursor: pointer;
-  width: 130px;
-  margin-right: 5px;
-}
 
 .topBoxLogo{
   width: 33.3%;
@@ -126,9 +98,8 @@ body{
 
 
 
-
 .boxLabel{
-  display: flex;
+  display: none;
   flex-direction: column;
   width: min-content;
 }
@@ -146,7 +117,7 @@ body{
 .lableInput{
 
   width: 100%;
-  display: flex;
+  display: none;
   justify-content: center;
 
 }
@@ -178,4 +149,90 @@ width: 143px;
   margin-left: 50px;
   width: 50px;
   margin-top: 5%;
+}
+
+  
+#LoginRegisto{
+  z-index: 1100;
+  position: absolute;
+  display: none;
+
+}
+
+
+.boxChild{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1%;
+  border: 2px solid #2D2D2D;
+  background-color: whitesmoke;
+
+}
+
+
+.inputBox{
+display: flex;
+flex-direction: column;
+margin-top: 2%;
+
+
+}
+
+
+
+
+#confirmPassword{
+  z-index: 1100;
+  position: absolute;
+  top: 35%;
+  left: 30%;
+}
+
+
+
+
+
+
+
+.boxInput{
+  display: flex;
+  flex-direction: column;
+  width: min-content;
+}
+
+
+.input{
+  width: 250px;
+  height: 50px;
+  margin-bottom: 15px;
+
+}
+.btnsBox{
+  width: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding-top: 150px;
+
+}
+
+
+.btnBox{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 150px;
+
+}
+.btn{
+  color: white;
+  background-color: #2D2D2D;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #2D2D2D;
+  cursor: pointer;
+  width: 130px;
+  margin-right: 5px;
 }
