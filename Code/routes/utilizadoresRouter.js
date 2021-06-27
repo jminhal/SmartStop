@@ -34,7 +34,6 @@ router.get('/', async function(req, res, next) {
 
 //vai verificar se o utilizador existe e vai buscar
 router.get('/login', async function(req, res, next) {
-    console.log(121212)
     let obj = req.query;
     let result = await utilizadoresModel.getUserByEmail(obj.email);
 
