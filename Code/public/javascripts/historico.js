@@ -12,6 +12,8 @@ window.onload = async function () {
 
     //Caso venha para ver o historico por onde a conta passou
     if(userHistorico){
+        document.getElementById("backArrow").href = "account.html";
+
 
         // Vai buscar todas as reservas do utilizador
         try {
