@@ -287,6 +287,7 @@ async function TirarSelecionado() {
             method: "get",
             dataType: "json"
         });
+        if(vSelecionado.data != "undefined"){
 
             console.log("tirar: " + vSelecionado.vehicle_id);
             //vai remover o veiculo selecionado
@@ -316,6 +317,7 @@ async function TirarSelecionado() {
                     alert(err.responseJSON.msg);
                 }
             }
+        }
 
 
     } catch (err) {

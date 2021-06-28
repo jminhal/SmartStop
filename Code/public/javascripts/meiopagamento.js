@@ -248,40 +248,41 @@ async function TirarSelecionado() {
             method: "get",
             dataType: "json"
           });
+          if(mpSelecionado.data != "undefined"){
+                console.log("tirar: " + mpSelecionado.payment_method_id);
+                //vai remover o meio de pagamento selecionado
+                try {
+                    let info = {
+                        cardName: mpSelecionado.payment_method_card_name,
+                        cardNumber: mpSelecionado.payment_method_card_number,
+                        cardExpiry: mpSelecionado.payment_method_expiry_date,
+                        cardCVV:  mpSelecionado.payment_method_cvv,
+                        selected: false,
+                        paymentON: mpSelecionado.payment_method_ON,
+                        cardUserID: userID
+    /*
+                        selected: false,
+                        cardUserID: userID*/
+                    }
+                    console.log(info)
+                    let mPagamento = await $.ajax({
+                        url: "/api/meiosPagamento/"+mpSelecionado.payment_method_id+"/editar",
+                        method: "put",
+                        data: JSON.stringify(info),
+                        contentType: "application/json",
+                        dataType: "json"
+                    });
 
-            console.log("tirar: " + mpSelecionado.payment_method_id);
-            //vai remover o meio de pagamento selecionado
-            try {
-                let info = {
-                    cardName: mpSelecionado.payment_method_card_name,
-                    cardNumber: mpSelecionado.payment_method_card_number,
-                    cardExpiry: mpSelecionado.payment_method_expiry_date,
-                    cardCVV:  mpSelecionado.payment_method_cvv,
-                    selected: false,
-                    paymentON: mpSelecionado.payment_method_ON,
-                    cardUserID: userID
-/*
-                    selected: false,
-                    cardUserID: userID*/
+        
+                } catch (err) {
+                    console.log(err);
+                    if (err.status == 404) {
+                        alert(err.responseJSON.msg);
+                    }
                 }
-                console.log(info)
-                let mPagamento = await $.ajax({
-                    url: "/api/meiosPagamento/"+mpSelecionado.payment_method_id+"/editar",
-                    method: "put",
-                    data: JSON.stringify(info),
-                    contentType: "application/json",
-                    dataType: "json"
-                });
 
-    
-            } catch (err) {
-                console.log(err);
-                if (err.status == 404) {
-                    alert(err.responseJSON.msg);
-                }
             }
-
-
+            
     } catch (err) {
         console.log(err);
         if (err.status == 404) {
